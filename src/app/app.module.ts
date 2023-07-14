@@ -25,8 +25,6 @@ import { ReviewComponent } from './pages/product/review/review.component';
 
 @NgModule({
   declarations: [
-
-  
     LoginComponent,
          LayoutComponent,
          UsersComponent,

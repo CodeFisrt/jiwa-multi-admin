@@ -18,18 +18,15 @@ import { DeliveryLocationsComponent } from './pages/product/delivery-locations/d
 import { ReviewComponent } from './pages/product/review/review.component';
 
 const routes: Routes = [
-
   {
     path : "",
     redirectTo : "login",
     pathMatch : "full"
   },
-
   {
     path : "login",
     component : LoginComponent
   },
-
   {
     path : '',
     component : LayoutComponent,
