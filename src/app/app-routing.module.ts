@@ -61,7 +61,7 @@ const routes: Routes = [
       },
       {
         path : "productList",
-        component : ProductListComponent
+        component :ProductListComponent
       },
       {
         path : "basicDetails",
@@ -86,7 +86,7 @@ const routes: Routes = [
       {
         path : "review",
         component : ReviewComponent
-      }
+      },
     ]
   }
 

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -25,7 +25,8 @@ import { ReviewComponent } from './pages/product/review/review.component';
 
 @NgModule({
   declarations: [
-    LoginComponent,
+        AppComponent,
+          LoginComponent,
          LayoutComponent,
          UsersComponent,
          VendorRegistrationsComponent,
@@ -47,9 +48,11 @@ import { ReviewComponent } from './pages/product/review/review.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
