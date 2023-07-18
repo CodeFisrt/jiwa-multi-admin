@@ -18,8 +18,6 @@ import { OffersComponent } from './pages/product/offers/offers.component';
 import { DeliveryLocationsComponent } from './pages/product/delivery-locations/delivery-locations.component';
 import { ReviewComponent } from './pages/product/review/review.component';
 import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
 
@@ -50,10 +48,7 @@ const routes: Routes = [
         path : "vendorlist",
         component : VendorlistComponent
       },
-      {
-        path : "vendor-registrations",
-        component : VendorRegistrationsComponent
-      },
+
       {
         path: "vendor-registrations",
         component: VendorRegistrationsComponent
