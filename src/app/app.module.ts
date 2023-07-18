@@ -24,9 +24,8 @@ import { VarientsComponent } from './pages/product/varients/varients.component';
 import { OffersComponent } from './pages/product/offers/offers.component';
 import { DeliveryLocationsComponent } from './pages/product/delivery-locations/delivery-locations.component';
 import { ReviewComponent } from './pages/product/review/review.component';
-import { OrderService } from './core/services/order.service';
 import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+
 
 
 @NgModule({
@@ -39,6 +38,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     VendorCategoriesComponent,
     CartItemsComponent,
     OrdersComponent,
+    VendorBannerComponent,
     WishlistComponent,
     CustomersComponent,
     ProductListComponent,
