@@ -1,1 +1,199 @@
-<p>orders works!</p>
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="col-12" *ngIf="showFirstDiv">
+            <div class="card">
+                <div class="card-header" [ngClass]="{'bg-success': headerColor} ">
+                    <div class="row">
+                        <div class="col-6 text-white">
+                            <h4 class="m-0"> Vendor Order List</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <table class="table table-hover table-bordered text-center">
+                        <thead class="text-black">
+                            <tr>
+                                <th>Sr No</th>
+                                <th>Vendor Name</th>
+                                <th>Customer Name</th>
+                                <th>Order Date</th>
+                                <th>Total Amount</th>
+                                <th>Contact</th>
+                                <th>Email</th>
+                                <!-- <th>Action</th> -->
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <ng-container *ngIf="orderObj && orderProductsAvailable; else noOrderProducts">
+                                <tr *ngFor="let order of orderArray; let sr = index" class="table-row-pointer"
+                                    (click)="editVendor(order.orderId); toggleDivs(); ">
+                                    <th>{{sr + 1}}</th>
+                                    <td>{{ order.vendorName }}</td>
+                                    <td>{{ order.firstName }} {{ order.lastName }}</td>
+                                    <td>{{ order.orderDate | date }}</td>
+                                    <td>{{ order.totalAmount }}</td>
+                                    <td>{{ order.mobileNo }}</td>
+                                    <td>{{ order.email }}</td>
+                                    <!-- <td>
+                                        <i class="fa fa-edit text-success me-2 pointer-cursor"
+                                            ></i>
+                                    </td> -->
+                                </tr>
+                            </ng-container>
+                            <!-- <ng-container *ngIf="isloader">
+                                <tr>
+                                    <td colspan="8">
+                                        <div class="spinner-border text-primary"></div>
+                                        <div class="spinner-border text-secondary"></div>
+                                        <div class="spinner-border text-success"></div>
+                                        <div class="spinner-border text-danger"></div>
+                                        <div class="spinner-border text-warning"></div>
+                                        <div class="spinner-border text-info"></div>
+                                        <div class="spinner-border text-light"></div>
+                                        <div class="spinner-border text-dark"></div>
+                                    </td>
+                                </tr>
+                            </ng-container> -->
+                            <ng-template #noOrderProducts>
+                                <tbody>
+                                  <tr>
+                                    <td colspan="8">No data available</td>
+                                  </tr>
+                                </tbody>
+                              </ng-template>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-12" *ngIf="showSecondDiv">
+            <div class="row">
+                <div class="card">
+                    <div class="card-header" [ngClass]="{'bg-success': headerColor}">
+                        <div class="row align-items-center">
+                            <div class="col-12 d-flex justify-content-between align-items-center text-white">
+                                <h4 class="m-0">Order Details</h4>
+                                <button class="btn btn-success btn-sm" (click)="goBack()">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="card-header">
+                                    <h4>Order Product List</h4>
+                                </div>
+                                <table class="table table-hover table-bordered text-center">
+                                    <thead class="text-black">
+                                        <tr>
+                                            <th>Sr No</th>
+                                            <th>Name</th>
+                                            <th>SKU</th>
+                                            <th>Thumbnail ImageUrl</th>
+                                            <th>IsStock Available</th>
+                                            <th>Quantity</th>
+                                            <th>Base Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody *ngIf="orderProductsAvailable; else noOrderProducts">
+                                        <ng-container *ngIf="orderObj && orderProductsAvailable; else noOrderProducts">
+                                        <!-- <ng-container *ngIf="!isloader"> -->
+                                        <tr *ngFor="let item of orderObj.jiwaVendorOrderProducts; let sr = index">
+                                            <th>{{sr + 1}}</th>
+                                            <td>{{ item.shortName }}</td>
+                                            <td>{{ item.sku }}</td>
+                                            <td>{{ item.thumbnailImageUrl }}</td>
+                                            <td>{{ item.isStockAvailable ? 'Yes' : 'No'}}</td>
+                                            <td>{{ item.quantity}}</td>
+                                            <td>{{ item.productBasePrice }}</td>
+                                        </tr>
+                                         </ng-container>
+                                    </tbody>
+                                    <ng-template #noOrderProducts>
+                                        <tbody>
+                                          <tr>
+                                            <td colspan="7">No data available</td>
+                                          </tr>
+                                        </tbody>
+                                      </ng-template>
+                                </table>
+                            </div>
+                            <div class="col-6">
+                                <div>
+                                    <h4>Order Details & Shopping Address Information</h4>
+                                </div>
+                                <div class="row">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Order Details</h5>
+                                            <div class="row mt-3">
+                                                <div class="col-6">
+                                                    <p><strong>Order Date: </strong> {{ orderObj.orderDate }}</p>
+                                                    <p><strong>Customer Name: </strong> {{ orderObj.customerName }}</p>
+                                                    <p><strong>Mobile No: </strong> {{ orderObj.mobileNo }}</p>
+                                                    <p><strong>Email: </strong> {{ orderObj.email }}</p>
+                                                </div>
+                                                <div class="col-6">
+                                                    <p><strong>Amount: </strong> {{ orderObj.totalAmount }}</p>
+                                                    <p><strong>Payment Narration: </strong> {{ orderObj.paymentNaration
+                                                        }}</p>
+                                                    <p><strong>Is Payment Received: </strong> {{
+                                                        orderObj.isPaymentReceived ? 'Yes' : 'No' }}</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> <br>
+                                <div class="row">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h5 class="card-title">Shipping Address</h5>
+                                            <div class="row" *ngIf="shippingDataAvailable">
+                                                <div class="row mt-3">
+                                                    <div class="col-6">
+                                                        <p><strong>Address 1 : </strong> {{
+                                                            orderObj.shippingAddress.addressLine1 }}</p>
+                                                        <p><strong>Address 2 : </strong> {{
+                                                            orderObj.shippingAddress.addressLine2 }}</p>
+                                                        <p><strong>Pin : </strong> {{ orderObj.shippingAddress.pin }}
+                                                        </p>
+                                                        <p><strong>Address Title: </strong> {{
+                                                            orderObj.shippingAddress.addressTitle }}</p>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <p><strong>City: </strong> {{ orderObj.shippingAddress.city }}
+                                                        </p>
+                                                        <p><strong>State: </strong> {{ orderObj.shippingAddress.state }}
+                                                        </p>
+                                                        <p><strong>Contact: </strong> {{
+                                                            orderObj.shippingAddress.phoneNo }}
+                                                        </p>
+                                                        <p><strong>Is Default Address: </strong> {{
+                                                            orderObj.shippingAddress.isDefaultAddress ? 'Yes' : 'No' }}
+                                                        </p>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row mt-3">
+                                                    <div class="col-6">
+                                                        <p><strong>Is Active: </strong> {{
+                                                            orderObj.shippingAddress.isActive
+                                                            ? 'Yes' : 'No' }}</p>
+                                                    </div>
+                                                    <div class="col-6">
+                                                        <p><strong>Created On: </strong> {{
+                                                            orderObj.shippingAddress.createdOn }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
