@@ -20,6 +20,7 @@ import { ReviewComponent } from './pages/product/review/review.component';
 import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
 
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
 
 const routes: Routes = [
   // {
@@ -45,9 +46,10 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path: "users",
-        component: UsersComponent
+        path : "vendorlist",
+        component : VendorlistComponent
       },
+
       {
         path: "vendor-registrations",
         component: VendorRegistrationsComponent
