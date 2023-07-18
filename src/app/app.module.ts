@@ -21,10 +21,12 @@ import { VarientsComponent } from './pages/product/varients/varients.component';
 import { OffersComponent } from './pages/product/offers/offers.component';
 import { DeliveryLocationsComponent } from './pages/product/delivery-locations/delivery-locations.component';
 import { ReviewComponent } from './pages/product/review/review.component';
+import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
 
 
 @NgModule({
   declarations: [
+    AppComponent,
     LoginComponent,
          LayoutComponent,
          UsersComponent,
@@ -40,7 +42,8 @@ import { ReviewComponent } from './pages/product/review/review.component';
          VarientsComponent,
          OffersComponent,
          DeliveryLocationsComponent,
-         ReviewComponent
+         ReviewComponent,
+         VendorlistComponent
   ],
   imports: [
     BrowserModule,
