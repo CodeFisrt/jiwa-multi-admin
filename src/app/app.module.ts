@@ -25,6 +25,7 @@ import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banne
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     VendorCategoriesComponent,
     CartItemsComponent,
     OrdersComponent,
+    VendorBannerComponent,
     WishlistComponent,
     CustomersComponent,
     ProductListComponent,
