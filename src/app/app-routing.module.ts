@@ -16,8 +16,10 @@ import { VarientsComponent } from './pages/product/varients/varients.component';
 import { OffersComponent } from './pages/product/offers/offers.component';
 import { DeliveryLocationsComponent } from './pages/product/delivery-locations/delivery-locations.component';
 import { ReviewComponent } from './pages/product/review/review.component';
+import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
 
 const routes: Routes = [
+
   {
     path : "",
     redirectTo : "login",
@@ -31,9 +33,14 @@ const routes: Routes = [
     path : '',
     component : LayoutComponent,
     children : [
+
       {
         path : "users",
         component : UsersComponent
+      },
+      {
+        path : "vendorlist",
+        component : VendorlistComponent
       },
       {
         path : "vendor-registrations",
