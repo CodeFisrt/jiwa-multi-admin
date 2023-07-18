@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './pages/login/login.component';
 import { LayoutComponent } from './pages/layout/layout.component';
@@ -25,22 +25,23 @@ import { ReviewComponent } from './pages/product/review/review.component';
 
 @NgModule({
   declarations: [
+    AppComponent,
     LoginComponent,
-         LayoutComponent,
-         UsersComponent,
-         VendorRegistrationsComponent,
-         VendorCategoriesComponent,
-         CartItemsComponent,
-         OrdersComponent,
-         WishlistComponent,
-         CustomersComponent,
-         ProductListComponent,
-         BasicDetailsComponent,
-         SpecificationComponent,
-         VarientsComponent,
-         OffersComponent,
-         DeliveryLocationsComponent,
-         ReviewComponent
+    LayoutComponent,
+    UsersComponent,
+    VendorRegistrationsComponent,
+    VendorCategoriesComponent,
+    CartItemsComponent,
+    OrdersComponent,
+    WishlistComponent,
+    CustomersComponent,
+    ProductListComponent,
+    BasicDetailsComponent,
+    SpecificationComponent,
+    VarientsComponent,
+    OffersComponent,
+    DeliveryLocationsComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,
