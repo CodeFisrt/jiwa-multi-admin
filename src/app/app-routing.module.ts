@@ -20,6 +20,7 @@ import { ReviewComponent } from './pages/product/review/review.component';
 import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 const routes: Routes = [
   // {
@@ -28,29 +29,33 @@ const routes: Routes = [
   //   pathMatch : "full"
   // },
   {
-  path:"**",
-  component:VendorBannerComponent,
-
-},
-  {
-    path : "login",
-    component : LoginComponent
+    path: "",
+    redirectTo: "login",
+    pathMatch: "full"
   },
   {
-    path : '',
-    component : LayoutComponent,
-    children : [
+    path: "login",
+    component: LoginComponent
+  },
+  {
+    path: '',
+    component: LayoutComponent,
+    children: [
       {
-        path : "users",
-        component : UsersComponent
+        path: "dashboard",
+        component: DashboardComponent
       },
       {
-        path : "vendor-registrations",
-        component : VendorRegistrationsComponent
+        path: "users",
+        component: UsersComponent
       },
       {
-        path : "vendor-categories",
-        component : VendorCategoriesComponent
+        path: "vendor-registrations",
+        component: VendorRegistrationsComponent
+      },
+      {
+        path: "vendor-categories",
+        component: VendorCategoriesComponent
       },
       {
         path : "vendor-banner",
@@ -61,45 +66,61 @@ const routes: Routes = [
         component : CartItemsComponent
       },
       {
-        path : "orders",
-        component : OrdersComponent
+        path: "cartItems",
+        component: CartItemsComponent
       },
       {
-        path : "wishlist",
-        component : WishlistComponent
+        path: "orders",
+        component: OrdersComponent
       },
       {
-        path : "customers",
-        component : CustomersComponent
+        path: "wishlist",
+        component: WishlistComponent
       },
       {
+
         path : "productList",
-        component : ProductListComponent
+        component :ProductListComponent
+},
+{
+        path: "customers",
+        component: CustomersComponent
+
       },
       {
-        path : "basicDetails",
-        component : BasicDetailsComponent
+        path: "productList",
+        component: ProductListComponent
       },
       {
-        path : "specification",
-        component : SpecificationComponent
+        path: "basicDetails",
+        component: BasicDetailsComponent
       },
       {
-        path : "varients",
-        component : VarientsComponent
+        path: "specification",
+        component: SpecificationComponent
       },
       {
-        path : "offers",
-        component : OffersComponent
+        path: "varients",
+        component: VarientsComponent
       },
       {
-        path : "delivery-locations",
-        component : DeliveryLocationsComponent
+        path: "offers",
+        component: OffersComponent
       },
       {
+
         path : "review",
         component : ReviewComponent
+      },
+{
+        path: "delivery-locations",
+        component: DeliveryLocationsComponent
+      },
+      {
+        path: "review",
+        component: ReviewComponent
       }
+
     ]
   }
 
