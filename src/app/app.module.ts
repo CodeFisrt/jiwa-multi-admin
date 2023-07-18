@@ -1,5 +1,8 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+
+
+
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -22,6 +25,8 @@ import { OffersComponent } from './pages/product/offers/offers.component';
 import { DeliveryLocationsComponent } from './pages/product/delivery-locations/delivery-locations.component';
 import { ReviewComponent } from './pages/product/review/review.component';
 import { OrderService } from './core/services/order.service';
+import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
 @NgModule({
@@ -42,16 +47,23 @@ import { OrderService } from './core/services/order.service';
     VarientsComponent,
     OffersComponent,
     DeliveryLocationsComponent,
-    ReviewComponent
+    ReviewComponent,
+    DashboardComponent,
+    VendorBannerComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+
+
   ],
-  providers: [OrderService],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
