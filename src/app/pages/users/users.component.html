@@ -112,11 +112,11 @@
                                     <button class="btn btn-sm btn-secondary" (click)="onReset()">Reset</button>
                                 </div>
                                 <div class="col-6">
-                                    <button class="btn btn-sm btn-warning" *ngIf="userObj.vendorId !==0"
+                                    <button class="btn btn-sm btn-warning" *ngIf="userObj.jiwaUserId !==0"
                                         (click)="updateuser()">Update</button>
                                     <div class="col-6">
                                         <button type="button" [disabled]="form.invalid" class="btn btn-sm btn-success"
-                                            *ngIf="userObj.vendorId == 0" (click)="onsaveUser()"> <span
+                                            *ngIf="userObj.jiwaUserId == 0" (click)="onsaveUser()"> <span
                                                 *ngIf="isapicalload"
                                                 class="spinner-border spinner-border-sm"></span>Save</button>
                                     </div>
