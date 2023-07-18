@@ -1,5 +1,6 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { LoginComponent } from './pages/login/login.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { UsersComponent } from './pages/users/users.component';
@@ -16,13 +17,21 @@ import { VarientsComponent } from './pages/product/varients/varients.component';
 import { OffersComponent } from './pages/product/offers/offers.component';
 import { DeliveryLocationsComponent } from './pages/product/delivery-locations/delivery-locations.component';
 import { ReviewComponent } from './pages/product/review/review.component';
+import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
+  // {
+  //   path : "",
+  //   redirectTo : "login",
+  //   pathMatch : "full"
+  // },
   {
-    path : "",
-    redirectTo : "login",
-    pathMatch : "full"
-  },
+  path:"**",
+  component:VendorBannerComponent,
+
+},
   {
     path : "login",
     component : LoginComponent
@@ -42,6 +51,10 @@ const routes: Routes = [
       {
         path : "vendor-categories",
         component : VendorCategoriesComponent
+      },
+      {
+        path : "vendor-banner",
+        component : VendorBannerComponent
       },
       {
         path : "cartItems",
@@ -93,7 +106,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule,RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
