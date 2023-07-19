@@ -49,6 +49,10 @@ const routes: Routes = [
         path : "vendorlist",
         component : VendorlistComponent
       },
+      {
+        path:"user",
+        component:UsersComponent
+      },
 
       {
         path: "vendor-registrations",
