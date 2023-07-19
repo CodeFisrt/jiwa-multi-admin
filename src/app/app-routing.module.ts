@@ -18,9 +18,9 @@ import { OffersComponent } from './pages/product/offers/offers.component';
 import { DeliveryLocationsComponent } from './pages/product/delivery-locations/delivery-locations.component';
 import { ReviewComponent } from './pages/product/review/review.component';
 import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
 
 const routes: Routes = [
   // {
@@ -46,9 +46,14 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path: "users",
-        component: UsersComponent
+        path : "vendorlist",
+        component : VendorlistComponent
       },
+      {
+        path:"users",
+        component:UsersComponent
+      },
+
       {
         path: "vendor-registrations",
         component: VendorRegistrationsComponent
@@ -58,12 +63,12 @@ const routes: Routes = [
         component: VendorCategoriesComponent
       },
       {
-        path : "vendor-banner",
-        component : VendorBannerComponent
+        path: "vendor-banner",
+        component: VendorBannerComponent
       },
       {
-        path : "cartItems",
-        component : CartItemsComponent
+        path: "cartItems",
+        component: CartItemsComponent
       },
       {
         path: "cartItems",
@@ -79,10 +84,10 @@ const routes: Routes = [
       },
       {
 
-        path : "productList",
-        component :ProductListComponent
-},
-{
+        path: "productList",
+        component: ProductListComponent
+      },
+      {
         path: "customers",
         component: CustomersComponent
 
@@ -109,10 +114,10 @@ const routes: Routes = [
       },
       {
 
-        path : "review",
-        component : ReviewComponent
+        path: "review",
+        component: ReviewComponent
       },
-{
+      {
         path: "delivery-locations",
         component: DeliveryLocationsComponent
       },
@@ -127,7 +132,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule,RouterModule.forRoot(routes)],
+  imports: [RouterModule, RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

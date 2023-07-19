@@ -13,18 +13,7 @@
       <div class="modal-body">
         <form>
           <div class="row">
-            <div class="col-8 mt-4 ">
-              <div class="div">
-                <input type="file"  name="BannerImageUrl "(change)="onChangeFile($event)" [ngModel]="Bannerobj.BannerImageUrl"
-                  class="form-control" />
-              </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-6">
-              <label for="">Vendor Id</label>
-              <input type="id"  name="BannerId" class="form-control"  [ngModel]="Bannerobj.BannerId" />
-            </div>
+
             <div class="col-6">
               <label for="">Order No</label>
               <input type="id" name="OrderNo" class="form-control"  [ngModel]="Bannerobj.OrderNo" />
@@ -37,6 +26,15 @@
             </div>
 
           </div>
+          <div class="row">
+            <div class="col-8 mt-4 ">
+              <div class="div">
+                <input type="file"  name="BannerImageUrl "(change)="onChangeFile($event)" [ngModel]="Bannerobj.BannerImageUrl"
+                  class="form-control" />
+              </div>
+            </div>
+          </div>
+
         </form>
       </div>
       <div class="modal-footer">
@@ -62,7 +60,7 @@
 
 
         <div class="div text-end">
-          <button class="btn btn-danger mt-2 btn-sm" (click)="onDelete(Banner.BannerImageUrl)">
+          <button class="btn btn-danger mt-2 btn-sm" (click)="onDelete(Banner.BannerId)">
             Delete
           </button>
         </div>
