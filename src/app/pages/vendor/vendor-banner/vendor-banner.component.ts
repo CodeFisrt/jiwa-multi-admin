@@ -11,8 +11,8 @@ export class VendorBannerComponent implements OnInit {
    Bannerobj: any = {
      "BannerId": 0,
      "VendorId": "104",
-     "BannerImageUrl": "string",
-     "OrderNo": 1,
+     "BannerImageUrl": "",
+     "OrderNo": 0,
      "IsActive": true,
      "CreatedOn": "2023-07-16T14:23:22.255Z",
      "CreatedBy": 0
