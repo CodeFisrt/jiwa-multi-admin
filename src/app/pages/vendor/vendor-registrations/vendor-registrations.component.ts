@@ -13,7 +13,6 @@ export class VendorRegistrationsComponent implements OnInit{
   }
   ngOnInit(): void {
     this.productid();
-    
   }
 productobj:any={
   "productId": 0,
