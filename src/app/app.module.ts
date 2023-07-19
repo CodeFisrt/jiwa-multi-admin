@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -14,13 +13,15 @@ import { CartItemsComponent } from './pages/vendor/cart-items/cart-items.compone
 import { OrdersComponent } from './pages/vendor/orders/orders.component';
 import { WishlistComponent } from './pages/vendor/wishlist/wishlist.component';
 import { CustomersComponent } from './pages/vendor/customers/customers.component';
-import { ProductListComponent } from './pages/product/product-list/product-list.component';
 import { BasicDetailsComponent } from './pages/product/basic-details/basic-details.component';
 import { SpecificationComponent } from './pages/product/specification/specification.component';
 import { VarientsComponent } from './pages/product/varients/varients.component';
 import { OffersComponent } from './pages/product/offers/offers.component';
 import { DeliveryLocationsComponent } from './pages/product/delivery-locations/delivery-locations.component';
 import { ReviewComponent } from './pages/product/review/review.component';
+import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
+import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,6 @@ import { ReviewComponent } from './pages/product/review/review.component';
     OrdersComponent,
     WishlistComponent,
     CustomersComponent,
-    ProductListComponent,
     BasicDetailsComponent,
     SpecificationComponent,
     VarientsComponent,

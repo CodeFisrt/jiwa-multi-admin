@@ -1,1 +1,101 @@
-<p>login works!</p>
+<section class="main">
+  <div class="layer">
+
+    <div class="bottom-grid">
+      <div class="logo">
+        <img src="../login/shopping-bag-logo-vector-14881160.jpg" alt="">
+
+      </div>
+      <div class="links">
+        <ul class="links-unordered-list" style="margin-right: 822px;  margin-top: 25px;
+          margin-bottom: 16px;">
+          <li class="active">
+            <a routerLink="login" class="">Login</a>
+          </li>
+          <li class="">
+            <a routerLink="registration" class="">Register</a>
+          </li>
+          <li class="">
+            <a routerLink="about-us" class="">About Us</a>
+          </li>
+          <li class="">
+            <a routerLink="contact-us" class="">Contact Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="header-main">
+      <div class="content-w3ls">
+
+        <div class="content-bottom">
+          <h1 class="head text-center" style="color: #fff; margin-bottom: 40px; font-size: 33px;">LOGIN</h1>
+          <form action="#" method="post">
+            <div class="field-group">
+              <span class="fa fa-user" aria-hidden="true"></span>
+              <div class="wthree-field">
+                <input name="text1" id="text1" type="text" value="" [(ngModel)]="loginObj.UserName"
+                  placeholder="Username" #UserName="ngModel" required>
+              </div>
+            </div>
+
+            <div style="    margin-top: -19px;
+              margin-left: 22px;
+              margin-bottom: -18px;
+           color: #de6f6f;" class="usernm" *ngIf="UserName.touched || UserName.dirty">
+              <span *ngIf="UserName.errors?.['required']">Required!</span>
+            </div>
+
+            <div class="field-group">
+              <span class="fa fa-lock" aria-hidden="true"></span>
+              <div class="wthree-field">
+                <input name="password" id="myInput" type="Password" [(ngModel)]="loginObj.UserPassword"
+                  placeholder="Password" #UserPassword="ngModel" required>
+              </div>
+            </div>
+            <div style="    margin-top: -19px;
+              margin-left: 22px;
+              margin-bottom: 2px;
+           color:#de6f6f;" class="pwd" *ngIf="UserPassword.touched || UserPassword.dirty">
+              <span *ngIf="UserPassword.errors?.['required']">Required!</span>
+            </div>
+
+
+
+            <div class="wthree-field">
+
+              <button class="btn btn-primary" type="button" (click)="checkLoginDetails()">
+                <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loader"></span>
+                LOGIN
+              </button>
+            </div>
+
+            <ul class="list-login">
+              <li class="switch-agileits">
+                <label class="switch">
+                  <input type="checkbox">
+                  <span class="slider round"></span>
+                  keep Logged in
+                </label>
+              </li>
+              <li>
+                <a href="#" class="text-right">forgot password?</a>
+              </li>
+              <li class="clearfix"></li>
+            </ul>
+            <ul class="list-login-bottom">
+              <li class="">
+                <a class="" style="cursor: pointer;" href="registration">Create New Account</a>
+              </li>
+              <li class="">
+                <a href="#" class="text-right">Need Help?</a>
+              </li>
+              <li class="clearfix"></li>
+            </ul>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+</section>
