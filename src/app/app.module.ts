@@ -13,7 +13,6 @@ import { CartItemsComponent } from './pages/vendor/cart-items/cart-items.compone
 import { OrdersComponent } from './pages/vendor/orders/orders.component';
 import { WishlistComponent } from './pages/vendor/wishlist/wishlist.component';
 import { CustomersComponent } from './pages/vendor/customers/customers.component';
-import { ProductListComponent } from './pages/product/product-list/product-list.component';
 import { BasicDetailsComponent } from './pages/product/basic-details/basic-details.component';
 import { SpecificationComponent } from './pages/product/specification/specification.component';
 import { VarientsComponent } from './pages/product/varients/varients.component';
@@ -23,8 +22,7 @@ import { ReviewComponent } from './pages/product/review/review.component';
 import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
 import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
-
-
+import { ProductListComponent } from './pages/product/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -36,20 +34,18 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     VendorCategoriesComponent,
     CartItemsComponent,
     OrdersComponent,
-    VendorBannerComponent,
     WishlistComponent,
     CustomersComponent,
-    ProductListComponent,
     BasicDetailsComponent,
     SpecificationComponent,
     VarientsComponent,
     OffersComponent,
     DeliveryLocationsComponent,
     ReviewComponent,
-    DashboardComponent,
+    VendorlistComponent,
     VendorBannerComponent,
-    VendorlistComponent
-
+    DashboardComponent,
+    ProductListComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,12 +53,8 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-
-
-
   ],
   providers: [],
   bootstrap: [AppComponent],
-
 })
-export class AppModule { }
+export class AppModule {}
