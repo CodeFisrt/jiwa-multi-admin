@@ -75,13 +75,13 @@
   <div class="row">
     <div class="col-12  mt-3" *ngIf="cardviewtoggle">
       <div class="row">
-        <div class="col-4 d-flex justify-content-center align-items-center mt-3" *ngFor="let card of myproduct">
+        <div class="col-3 d-flex justify-content-center align-items-center mt-3" *ngFor="let card of myproduct">
           <div class="card shadow " style="width: 18rem;">
             <div class="card-header">
               <h5 class="fw-bolder text-danger-emphasis text-decoration-underline"> {{card.vendorName}}</h5>
             </div>
             <div class="card-body text-center">
-              <img alt="Card image" class="card-img-top" height="1%"
+              <img alt="Card image" class="card-img-top" height="130px"
                 src="http://storeapi.gerasim.in/customer/{{card.thumbnailImageUrl}}">
               <b class="text-danger "> Name</b>
               <h4 class="fw-bolder ">{{card.shortName}}</h4>
