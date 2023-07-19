@@ -45,6 +45,17 @@ deletecard(id:number){
         })
   }
 }
+updateproduct(){
+  this.https.post("http://onlinetestapi.gerasim.in/api/Aqua/UpdateProductImage", this.productobj).subscribe((resp:any)=>{
+    if(resp.result){
+      alert("package Update successfullly.....")
+      this.productid()
+    }
+    else{
+      alert(resp.result)
+    }
+  })
+}
   productid(){
     this.https.get("http://onlinetestapi.gerasim.in/api/Aqua/GetAllProduct").subscribe((res:any)=>{
     this.myproductid=res.data
