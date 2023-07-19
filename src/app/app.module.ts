@@ -1,9 +1,5 @@
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-
-
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -24,13 +20,14 @@ import { VarientsComponent } from './pages/product/varients/varients.component';
 import { OffersComponent } from './pages/product/offers/offers.component';
 import { DeliveryLocationsComponent } from './pages/product/delivery-locations/delivery-locations.component';
 import { ReviewComponent } from './pages/product/review/review.component';
+import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
 import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 
 
+
 @NgModule({
   declarations: [
-
     AppComponent,
     LoginComponent,
     LayoutComponent,
@@ -39,6 +36,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     VendorCategoriesComponent,
     CartItemsComponent,
     OrdersComponent,
+    VendorBannerComponent,
     WishlistComponent,
     CustomersComponent,
     ProductListComponent,
@@ -50,6 +48,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
     ReviewComponent,
     DashboardComponent,
     VendorBannerComponent,
+    VendorlistComponent
 
   ],
   imports: [
