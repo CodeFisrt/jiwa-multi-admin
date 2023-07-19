@@ -129,12 +129,14 @@
                   card.thumbnailImageUrl
                 }}"
               />
-              <b class="text-danger"> Name</b>
-              <h4 class="fw-bolder">{{ card.shortName }}</h4>
-              <b class="text-danger">Price</b>
-              <h4 class="fw-bolder">
-                {{ card.productBasePrice | currency : "INR" }}
-              </h4>
+              <div class="d-flex">
+                <div class="p-2 fs-5 fw-semibold flex-fill">
+                  {{ card.shortName }}
+                </div>
+                <div class="p-2 fs-5 fw-semibold flex-fill">
+                  {{ card.productBasePrice | currency : "INR" }}
+                </div>
+              </div>
             </div>
           </div>
         </div>
