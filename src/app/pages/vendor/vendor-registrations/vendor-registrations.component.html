@@ -29,8 +29,9 @@
             </div>
             <div class="col-6">
               <label for=""><b>Select ProductID</b></label>
-              <select name="" id="" class="form-select"  [(ngModel)]="productobj.ProductId">
-                <option value="idis.productId" *ngFor="let idis of myproductid">{{idis.productId}}</option>
+              <select class="form-control form-select" name="productId" id="" [(ngModel)]="productobj.productId">
+                <option value="productid.productId" *ngFor="let productid of prductid">{{productid.productId}}
+                </option>
               </select>
             </div>
           </div>

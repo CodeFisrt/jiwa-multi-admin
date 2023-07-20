@@ -7,12 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vendor-registrations.component.css']
 })
 export class VendorRegistrationsComponent implements OnInit{
-  myproductid:any[]=[]
+  myproductid:any[]=[];
+  prductid:any[]=[]
   constructor(private https:HttpClient){
 
   }
   ngOnInit(): void {
     this.productid();
+    this.getallproductid();
   }
 productobj:any={
   "ProductImageId": 0,
@@ -56,6 +58,11 @@ savechanges(){
       alert(res.result)
     )
   })
+}
+getallproductid(){
+this.https.get("http://onlinetestapi.gerasim.in/api/Aqua/GetAllProduct").subscribe((res:any)=>{
+  this.prductid=res.data;
+})
 }
   productid(){
     this.https.get("http://onlinetestapi.gerasim.in/api/Aqua/GetImagesByProducId?productid=144").subscribe((res:any)=>{
