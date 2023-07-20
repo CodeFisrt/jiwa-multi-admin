@@ -58,6 +58,7 @@ export class CustomersComponent {
     this.tableWidth = 'col-12';
     this.table = true;
     this.formClose = false;
+    this.font = '16px';
   }
   
 
