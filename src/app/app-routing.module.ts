@@ -50,6 +50,10 @@ const routes: Routes = [
         component : VendorlistComponent
       },
       {
+        path:"users",
+        component:UsersComponent
+      },
+      {
         path:"user",
         component:UsersComponent
       },
@@ -63,12 +67,12 @@ const routes: Routes = [
         component: VendorCategoriesComponent
       },
       {
-        path : "vendor-banner",
-        component : VendorBannerComponent
+        path: "vendor-banner",
+        component: VendorBannerComponent
       },
       {
-        path : "cartItems",
-        component : CartItemsComponent
+        path: "cartItems",
+        component: CartItemsComponent
       },
       {
         path: "cartItems",
@@ -84,10 +88,10 @@ const routes: Routes = [
       },
       {
 
-        path : "productList",
-        component :ProductListComponent
-},
-{
+        path: "productList",
+        component: ProductListComponent
+      },
+      {
         path: "customers",
         component: CustomersComponent
 
@@ -114,10 +118,10 @@ const routes: Routes = [
       },
       {
 
-        path : "review",
-        component : ReviewComponent
+        path: "review",
+        component: ReviewComponent
       },
-{
+      {
         path: "delivery-locations",
         component: DeliveryLocationsComponent
       },
@@ -132,7 +136,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule,RouterModule.forRoot(routes)],
+  imports: [RouterModule, RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
