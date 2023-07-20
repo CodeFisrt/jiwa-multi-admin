@@ -57,7 +57,7 @@ updateproduct(){
   })
 }
   productid(){
-    this.https.get("http://onlinetestapi.gerasim.in/api/Aqua/GetAllProduct").subscribe((res:any)=>{
+    this.https.get("http://onlinetestapi.gerasim.in/api/Aqua/GetImagesByProducId?productid=144").subscribe((res:any)=>{
     this.myproductid=res.data
     })
   }
