@@ -22,7 +22,7 @@ export class CustomersComponent {
 
   formWidth : string = 'col-0';
   font:string = '16px';
-  fontWeight : number = 700;
+  fontWeight : number = 500;
 
   ngOnInit(){
     this.getAllCustomer();
