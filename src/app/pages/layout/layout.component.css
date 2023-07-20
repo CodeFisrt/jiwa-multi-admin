@@ -1,9 +1,14 @@
 
 .navbar{
-    margin-left: -119px;
-    margin-right: -120px;
+    margin-left: 0px;
+    margin-right: 0px;
     height: 100px;
 }
+
+.dropdown-menu .dropdown-item{
+  cursor: pointer;
+}
+
 
 .navbar-nav li a:hover{
     background-color: #ffffff;
@@ -13,7 +18,7 @@
   }
 
 .navbar-nav li button:hover{
-    background-color: #fc636b;
+   
     color: #ffffff;
     transition: all 0.5s;
     cursor: pointer;
@@ -24,4 +29,8 @@
 
     padding: 7px 20px;
     margin-right: 36px;
+}
+
+ul li button{
+  margin-left: 184px;
 }

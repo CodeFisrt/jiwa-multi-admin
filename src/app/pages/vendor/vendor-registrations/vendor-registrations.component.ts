@@ -7,39 +7,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vendor-registrations.component.css']
 })
 export class VendorRegistrationsComponent implements OnInit{
-  myproductid:any[]=[]
+  myproductid:any[]=[];
+  prductid:any[]=[]
   constructor(private https:HttpClient){
 
   }
   ngOnInit(): void {
     this.productid();
+    this.getallproductid();
   }
 productobj:any={
-  "productId": 0,
-  "vendorId": 0,
-  "sku": "string",
-  "shortName": "string",
-  "fullName": "string",
-  "productCategoryId": 0,
-  "shortDescription": "string",
-  "longDescription": "string",
-  "createdOn": "2023-07-18T08:10:43.339Z",
-  "preatedBy": 0,
-  "productType": "string",
-  "isStockAvailable": true,
-  "modifiedOn": "2023-07-18T08:10:43.339Z",
-  "modifiedBy": 0,
-  "isVarientAvailable": true,
-  "isSpecificationAvailable": true,
-  "productBasePrice": 0,
-  "searchKeyWords": "string",
-  "thumbnailImageUrl": "string"
+  "ProductImageId": 0,
+  "ProductId": 0,
+  "ImageUrl": "string",
+  "IsThumbnailImage": true,
+  "OrderNo": 0
 }
 
 deletecard(id:number){
   const isdelete=confirm("Are You want to delete record")
   if(isdelete){
-    this.https.post("http://onlinetestapi.gerasim.in/api/Aqua/DeleteProdutImageByProductId?id="+id ,{}).subscribe((res:any)=>{
+    this.https.post("http://onlinetestapi.gerasim.in/api/Aqua/GetImagesByProducId?productid=144"+id ,{}).subscribe((res:any)=>{
       if (res.result) {
         alert('Category deleted Success');
         this.productid();
@@ -59,6 +47,22 @@ updateproduct(){
       alert(resp.result)
     }
   })
+}
+savechanges(){
+  this.https.post("http://onlinetestapi.gerasim.in/api/Aqua/AddNewProductImage",this.productobj).subscribe((res:any)=>{
+    if(res.message){
+      alert("Entry Created Successfully");
+      this.productid();
+    }
+    else(
+      alert(res.result)
+    )
+  })
+}
+getallproductid(){
+this.https.get("http://onlinetestapi.gerasim.in/api/Aqua/GetAllProduct").subscribe((res:any)=>{
+  this.prductid=res.data;
+})
 }
   productid(){
     this.https.get("http://onlinetestapi.gerasim.in/api/Aqua/GetImagesByProducId?productid=144").subscribe((res:any)=>{
