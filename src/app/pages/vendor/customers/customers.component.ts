@@ -18,6 +18,7 @@ export class CustomersComponent {
   formClose :boolean = false;
   table : boolean = true;
   tableWidth : string = 'col-12';
+  
   formWidth : string = 'col-0';
 
   font:string = '16px';
