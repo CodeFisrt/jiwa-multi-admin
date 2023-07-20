@@ -18,7 +18,7 @@ export class UsersComponent {
     "userRole": "",
     "userName": "",
     "password": "",
-    "createdOn": "",
+    "createdOn": new Date(),
     "createdBy": 0
   }
   onReset() {
