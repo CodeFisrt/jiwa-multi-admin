@@ -1,7 +1,7 @@
 
 .navbar{
-    margin-left: -119px;
-    margin-right: -120px;
+    margin-left: 0px;
+    margin-right: 0px;
     height: 100px;
 }
 
@@ -29,4 +29,8 @@
 
     padding: 7px 20px;
     margin-right: 36px;
+}
+
+ul li button{
+  margin-left: 184px;
 }
