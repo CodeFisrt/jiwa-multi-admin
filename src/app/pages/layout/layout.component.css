@@ -1,28 +1,4 @@
 
-.navbar{
-    margin-left: -119px;
-    margin-right: -120px;
-    height: 100px;
+.nav-link {
+  color: white;
 }
-
-.navbar-nav li a:hover{
-    background-color: #ffffff;
-    color: #000000;
-    transition: all 0.5s;
-    cursor: pointer;
-  }
-
-.navbar-nav li button:hover{
-    background-color: #fc636b;
-    color: #ffffff;
-    transition: all 0.5s;
-    cursor: pointer;
-  }
-
-  .navbar-nav li button{
-    border-radius: 7px;
-  
-    padding: 7px 20px;
-    margin-right: 36px;
-}
-  
