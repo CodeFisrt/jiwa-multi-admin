@@ -27,17 +27,31 @@
                 <input class="form-control" type="file" (change)="changefile($event)">
               </form>
             </div>
+            <div class="col-6">
+              <label for=""><b>Select ProductID</b></label>
+              <select name="" id="" class="form-select"  [(ngModel)]="productobj.ProductId">
+                <option value="idis.productId" *ngFor="let idis of myproductid">{{idis.productId}}</option>
+              </select>
+            </div>
           </div>
           <div class="row mt-3">
-            <div class="col-6">
-              <label for="">Active </label>
-              <input type="checkbox" name="" id="">
+            <div class="row">
+              <div class="col-6">
+                <label for="">Enter Order No</label>
+                <input type="text" class="form-control" [(ngModel)]="productobj.OrderNo" name="" id="">
+              </div>
+              <div class="col-6">
+                <label for="">Active </label>
+                <input type="checkbox" [(ngModel)]="productobj.IsThumbnailImage"  name="" id="">
+              </div>
             </div>
+
+
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-primary" (click)="savechanges()">Save changes</button>
         </div>
       </div>
     </div>
