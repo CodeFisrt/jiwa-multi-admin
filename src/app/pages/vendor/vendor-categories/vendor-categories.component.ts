@@ -118,13 +118,7 @@ export class VendorCategoriesComponent {
   deleteCategory(id: number) {
     const isConfirm = confirm('Are you want to delete');
     if (isConfirm) {
-      this.http
-        .get(
-          'http://onlinetestapi.gerasim.in/api/Aqua/DeleteCategoryById?id=' +
-            id,
-          {}
-        )
-        .subscribe((Res: any) => {
+      this.http.get('http://onlinetestapi.gerasim.in/api/Aqua/DeleteCategoryById?id=' +id,{}).subscribe((Res: any) => {
           if (Res.result) {
             alert('Category deleted Success');
             this.getcategory();
