@@ -39,9 +39,13 @@ productobj:any={
 deletecard(id:number){
   const isdelete=confirm("Are You want to delete record")
   if(isdelete){
-    this.https.post("http://onlinetestapi.gerasim.in/api/Aqua/DeleteProdutImageByProductId?productId="+id ,{}).subscribe((res:any)=>{
-      debugger;
-          this.productid();
+    this.https.post("http://onlinetestapi.gerasim.in/api/Aqua/DeleteProdutImageByProductId?id="+id ,{}).subscribe((res:any)=>{
+      if (res.result) {
+        alert('Category deleted Success');
+        this.productid();
+      } else {
+        alert(res.message);
+      }
         })
   }
 }
