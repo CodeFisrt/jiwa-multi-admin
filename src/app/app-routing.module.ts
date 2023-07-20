@@ -21,6 +21,7 @@ import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banne
 
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
+import { ProductFormComponent } from './pages/product/product-form/product-form.component';
 
 const routes: Routes = [
   // {
@@ -128,7 +129,11 @@ const routes: Routes = [
       {
         path: "review",
         component: ReviewComponent
-      }
+      },
+      {
+        path: "product-form",
+        component: ProductFormComponent
+      },
 
     ]
   }
