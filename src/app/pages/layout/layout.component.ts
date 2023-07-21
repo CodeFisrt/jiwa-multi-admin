@@ -13,4 +13,5 @@ export class LayoutComponent {
     this.router.navigateByUrl('login');
     localStorage.removeItem('account')
   }
+
 }

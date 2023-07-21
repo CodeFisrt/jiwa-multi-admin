@@ -26,7 +26,7 @@
                         <tbody>
                             <ng-container *ngIf="orderObj && orderProductsAvailable; else noOrderProducts">
                                 <tr *ngFor="let order of orderArray; let sr = index" class="table-row-pointer"
-                                    (click)="editVendor(order.orderId); toggleDivs(); ">
+                                    >
                                     <th>{{sr + 1}}</th>
                                     <td>{{ order.vendorName }}</td>
                                     <td>{{ order.firstName }} {{ order.lastName }}</td>
@@ -34,6 +34,9 @@
                                     <td>{{ order.totalAmount }}</td>
                                     <td>{{ order.mobileNo }}</td>
                                     <td>{{ order.email }}</td>
+                                    <td>
+                                        <button  class="btn btn-success btn-sm" (click)="editVendor(order.orderId); toggleDivs(); ">open</button>
+                                    </td>
                                     <!-- <td>
                                         <i class="fa fa-edit text-success me-2 pointer-cursor"
                                             ></i>
@@ -83,13 +86,14 @@
                                 <div class="card-header">
                                     <h4>Order Product List</h4>
                                 </div>
+                                <div class="card-body">
                                 <table class="table table-hover table-bordered text-center">
                                     <thead class="text-black">
                                         <tr>
                                             <th>Sr No</th>
                                             <th>Name</th>
                                             <th>SKU</th>
-                                            <th>Thumbnail ImageUrl</th>
+                                            <!-- <th>Thumbnail ImageUrl</th> -->
                                             <th>IsStock Available</th>
                                             <th>Quantity</th>
                                             <th>Base Price</th>
@@ -102,7 +106,7 @@
                                             <th>{{sr + 1}}</th>
                                             <td>{{ item.shortName }}</td>
                                             <td>{{ item.sku }}</td>
-                                            <td>{{ item.thumbnailImageUrl }}</td>
+                                            <!-- <td>{{ item.thumbnailImageUrl }}</td> -->
                                             <td>{{ item.isStockAvailable ? 'Yes' : 'No'}}</td>
                                             <td>{{ item.quantity}}</td>
                                             <td>{{ item.productBasePrice }}</td>
@@ -118,14 +122,18 @@
                                       </ng-template>
                                 </table>
                             </div>
+                            </div>
                             <div class="col-6">
                                 <div>
-                                    <h4>Order Details & Shopping Address Information</h4>
+                                    <!-- <h4>Order Details & Shopping Address Information</h4> -->
                                 </div>
                                 <div class="row">
                                     <div class="card">
+                                        <div class="card-header">
+                                           <h4>Order Details</h4> 
+                                        </div>
                                         <div class="card-body">
-                                            <h5 class="card-title">Order Details</h5>
+                                            <!-- <h5 class="card-title">Order Details</h5> -->
                                             <div class="row mt-3">
                                                 <div class="col-6">
                                                     <p><strong>Order Date: </strong> {{ orderObj.orderDate }}</p>
@@ -143,11 +151,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div> <br>
+                                </div> 
+                                <br>
                                 <div class="row">
                                     <div class="card">
+                                        <div class="card-header">
+                                            <h4>Shipping Address</h4> 
+                                         </div>
                                         <div class="card-body">
-                                            <h5 class="card-title">Shipping Address</h5>
+                                            <!-- <h5 class="card-title">Shipping Address</h5> -->
                                             <div class="row" *ngIf="shippingDataAvailable">
                                                 <div class="row mt-3">
                                                     <div class="col-6">

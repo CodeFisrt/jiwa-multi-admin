@@ -53,6 +53,10 @@ const routes: Routes = [
         path:"users",
         component:UsersComponent
       },
+      {
+        path:"user",
+        component:UsersComponent
+      },
 
       {
         path: "vendor-registrations",
