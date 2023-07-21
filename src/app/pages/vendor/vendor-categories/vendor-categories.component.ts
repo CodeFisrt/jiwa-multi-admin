@@ -61,7 +61,7 @@ export class VendorCategoriesComponent {
       const formData = new FormData();
       formData.append('file', file);
       this.http
-        .post('https://storeapi.gerasim.in/api/Customer/Upload', FormData)
+        .post('https://storeapi.gerasim.in/api/Customer/Upload', formData)
         .subscribe((res: any) => {
           this.categoryObj.bannerImage = res;
         });
