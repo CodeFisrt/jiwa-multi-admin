@@ -10,7 +10,6 @@ export class VendorRegistrationsComponent implements OnInit{
   productimages:any[]=[];
   prductid:any[]=[]
   constructor(private https:HttpClient){
-
   }
   ngOnInit(): void {
     this.getproductimage();
