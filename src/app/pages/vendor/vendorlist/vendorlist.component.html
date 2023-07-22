@@ -111,7 +111,7 @@
                   <input type="text" name="vendorName" #vendor="ngModel" placeholder=" Enter Name" required
                     minlength="6" maxlength="20" class="form-control" [(ngModel)]="vendorobj.vendorName">
                   <div class="text-danger" *ngIf="vendor.touched || vendor.dirty ">
-                    <span *ngIf="vendor.errors?.['required']"> This Is Required</span>
+                    <span *ngIf="vendor.errors?.['required']"> <i class="fa-light fa-eye" style="color: #e7eaee;"></i>This Is Required</span>
 
 
                   </div>
