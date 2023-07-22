@@ -19,7 +19,7 @@ export class VendorRegistrationsComponent implements OnInit{
 productobj:any={
   "productImageId": 0,
   "productId": 0,
-  "imageUrl": "string",
+  "imageUrl": "",
   "isThumbnailImage": true,
   "orderNo": 0
 }
@@ -27,7 +27,7 @@ productobj:any={
 deletecard(id:number){
   const isdelete=confirm("Are You want to delete record")
   if(isdelete){
-    this.https.get("http://onlinetestapi.gerasim.in/api/Aqua/DeleteProdutImageByProductId?id="+id ,{}).subscribe((res:any)=>{
+    this.https.get("http://onlinetestapi.gerasim.in/api/Aqua/DeleteProdutImageByProductId?id="+id).subscribe((res:any)=>{
       if (res.result) {
         alert('Category deleted Success');
         this.getproductimage();
@@ -38,12 +38,11 @@ deletecard(id:number){
   }
 }
 eidtproduct(id:number){
-  this.productobj=id;
-debugger
-  // this.https.post('http://onlinetestapi.gerasim.in/api/Aqua/UpdateProductImage' + id ,this.productobj)
-  // .subscribe((res: any) => {
-  //   this.productobj = res.data;
-  // });
+  debugger
+   this.https.post('http://onlinetestapi.gerasim.in/api/Aqua/UpdateProductImage'+ id, {})
+  .subscribe((res: any) => {
+     this.productobj = res.data;
+   });
 }
 savechanges(){
   this.https.post("http://onlinetestapi.gerasim.in/api/Aqua/AddNewProductImage",this.productobj).subscribe((res:any)=>{
