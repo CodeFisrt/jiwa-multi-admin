@@ -78,6 +78,7 @@ this.https.get("http://onlinetestapi.gerasim.in/api/Aqua/GetAllProduct").subscri
       formdata.append('file',file);
       this.https.post("https://storeapi.gerasim.in/api/Customer/Upload",formdata).subscribe((res:any)=>{
         debugger;
+        this.productobj.ImageUrl = res;
       });
     }
     else{

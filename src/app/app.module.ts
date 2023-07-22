@@ -23,7 +23,11 @@ import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.compon
 import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
+<<<<<<< HEAD
 import { ProductreviewComponent } from './pages/product/productreview/productreview.component';
+=======
+import { ProductFormComponent } from './pages/product/product-form/product-form.component';
+>>>>>>> 4a7533d2f5f762c9e87cebe298700f3f7241f2ea
 
 @NgModule({
   declarations: [
@@ -47,7 +51,11 @@ import { ProductreviewComponent } from './pages/product/productreview/productrev
     VendorBannerComponent,
     DashboardComponent,
     ProductListComponent,
+<<<<<<< HEAD
     ProductreviewComponent,
+=======
+    ProductFormComponent,
+>>>>>>> 4a7533d2f5f762c9e87cebe298700f3f7241f2ea
   ],
   imports: [
     BrowserModule,
