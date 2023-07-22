@@ -1,0 +1,144 @@
+<main class="demo-page-content">
+  <div class="row">
+    <div class="col-8">
+    </div>
+    <div class="col-4">
+      <section>
+        <form>
+          <div class="href-target " id="input-types"></div>
+          <h1 class="fw-bold text-primary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="feather feather-align-justify">
+              <line x1="21" y1="10" x2="3" y2="10" />
+              <line x1="21" y1="6" x2="3" y2="6" />
+              <line x1="21" y1="14" x2="3" y2="14" />
+              <line x1="21" y1="18" x2="3" y2="18" />
+            </svg>
+            Product Details
+
+            <button class="btn btn-danger rounded-pill ms-5 fw-bold">Close</button>
+          </h1>
+
+
+          <div class="nice-form-group fw-bold">
+            <label>Name</label>
+            <input type="text" placeholder="Enter name" value="" [(ngModel)]="productObj.fullName" />
+          </div>
+
+          <div class="nice-form-group fw-bold">
+            <label> Short Name</label>
+            <input type="text" placeholder="Short name" value="" [(ngModel)]="productObj.ShortName" />
+          </div>
+          <div class="d-flex pt-2 fw-bold">
+            <div class="">
+              <label>Product Id</label> <br>
+              <input type="text" placeholder="Product Id" value="" [(ngModel)]="productObj.productId" />
+            </div>
+            <div class="ms-4">
+              <label>Vendor Id</label> <br>
+              <input type="text" placeholder="Vendor Id" value="" [(ngModel)]="productObj.vendorId" />
+            </div>
+          </div>
+          <div class="d-flex pt-2 fw-bold">
+            <div class="">
+              <label>SKU</label> <br>
+              <input type="text" placeholder="sku" value="" [(ngModel)]="productObj.sku" />
+            </div>
+            <div class="ms-4">
+              <label>Product Category Id</label> <br>
+              <input type="text" placeholder="Category Id" value="" [(ngModel)]="productObj.productCategoryId" />
+            </div>
+          </div>
+
+          <div class="d-flex pt-2 fw-bold">
+            <div class="">
+              <label>Short Description</label> <br>
+              <input type="text" placeholder="" value="" [(ngModel)]="productObj.shortDescription" />
+            </div>
+            <div class="ms-4">
+              <label>Long Description</label> <br>
+              <input type="text" placeholder="" value="" [(ngModel)]="productObj.longDescription" />
+            </div>
+          </div>
+
+          <div class="fw-bold pt-2">
+            <label>Product Type</label> <br>
+            <select type="text" name="" [(ngModel)]="productObj.productType" class="form-control form-select">
+              <option value="Product Type" *ngFor="let product  of productArray" [value]="product.productType">
+                {{product.ProductType}}</option>
+            </select>
+          </div>
+          <div class="d-flex pt-2 fw-bold">
+            <div class="">
+              <label>ProductBasePrice</label> <br>
+              <input type="text" placeholder="" value="" [(ngModel)]="productObj.productBasePrice" />
+            </div>
+            <div class="ms-4">
+              <label>SearchKeyWords</label> <br>
+              <input type="search" placeholder="" value="" [(ngModel)]="productObj.SearchKeyWords" />
+            </div>
+          </div>
+
+          <div class="nice-form-group fw-bold">
+            <label>Thumbnail Image Url</label>
+            <input type="url" placeholder="www.google.com" [(ngModel)]="productObj.thumbnailImageUrl" value="" />
+          </div>
+
+          <div class="d-flex pt-2 fw-bold">
+            <div class="">
+              <label>Is Varient Available</label> <br>
+              <input type="text" placeholder="" value="" [(ngModel)]="productObj.isVarientAvailable" />
+            </div>
+            <div class="ms-4">
+              <label>Is Specification Available</label> <br>
+              <input type="text" placeholder="" value="" [(ngModel)]="productObj.isSpecificationAvailable" />
+            </div>
+          </div>
+
+          <fieldset class="nice-form-group ">
+            <div class="nice-form-group fw-bold">
+              <input type="checkbox" [(ngModel)]="productObj.isStockAvailable" id="check-1" />
+              <label for="check-1">Is Stock Available</label>
+            </div>
+          </fieldset>
+
+          <div class="d-flex pt-2 fw-bold">
+            <div class="">
+              <label>Modified On</label> <br>
+              <input type="text" placeholder="" value="" [(ngModel)]="productObj.modifiedOn" />
+            </div>
+            <div class="ms-4">
+              <label>Modified By</label> <br>
+              <input type="search" placeholder="" value="" [(ngModel)]="productObj.modifiedBy" />
+            </div>
+          </div>
+
+          <div class="d-flex pt-2 fw-bold">
+            <div class="">
+              <label>Created On</label> <br>
+              <input type="text" placeholder="" value="" [(ngModel)]="productObj.createdOn" />
+            </div>
+            <div class="ms-4">
+              <label>Created By</label> <br>
+              <input type="search" placeholder="" value="" [(ngModel)]="productObj.createdBy" />
+            </div>
+          </div>
+          <div>
+
+            <div class="d-flex pt-2 fw-bold">
+              <div class="">
+                <button type="button" (click)="onSave()" class="btn btn-success me-5">Save</button>
+              </div>
+              <div class="ms-4">
+                <button class="btn btn-danger ms-5" type="reset" (click)="onReset()">Reset</button>
+              </div>
+            </div>
+          </div>
+          <script src="https://gist.github.com/nielsVoogt/e25c9c8f2b8456bbd1239b775d21333f.js"></script>
+
+        </form>
+      </section>
+    </div>
+  </div>
+</main>

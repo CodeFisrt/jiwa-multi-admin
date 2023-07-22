@@ -57,7 +57,7 @@ export class UsersComponent {
       this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/DeleteUserById?userid=" + id).subscribe((res: any) => {
         if (res.result) {
           alert("user delete succcessfully");
-          this.userObj();
+          this.getAllUsers();
         } else {
           alert(res.message)
         }
