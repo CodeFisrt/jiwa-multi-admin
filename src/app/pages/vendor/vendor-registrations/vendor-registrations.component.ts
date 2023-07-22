@@ -45,6 +45,7 @@ eidtproduct(id:number){
    });
 }
 savechanges(){
+  debugger
   this.https.post("http://onlinetestapi.gerasim.in/api/Aqua/AddNewProductImage",this.productobj).subscribe((res:any)=>{
     if(res.message){
       alert("Entry Created Successfully");
