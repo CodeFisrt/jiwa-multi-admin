@@ -21,7 +21,7 @@ import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banne
 
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
-
+import { ProductreviewComponent } from './pages/product/productreview/productreview.component';
 const routes: Routes = [
   // {
   //   path : "",
@@ -91,10 +91,15 @@ const routes: Routes = [
         path: "productList",
         component: ProductListComponent
       },
+
       {
         path: "customers",
         component: CustomersComponent
 
+      },
+      {
+        path:"productreview",
+        component:ProductreviewComponent
       },
       {
         path: "productList",

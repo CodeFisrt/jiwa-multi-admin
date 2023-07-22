@@ -23,6 +23,7 @@ import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.compon
 import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
+import { ProductreviewComponent } from './pages/product/productreview/productreview.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { ProductListComponent } from './pages/product/product-list/product-list.
     VendorBannerComponent,
     DashboardComponent,
     ProductListComponent,
+    ProductreviewComponent,
   ],
   imports: [
     BrowserModule,
