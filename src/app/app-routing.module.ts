@@ -21,12 +21,8 @@ import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banne
 
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
-<<<<<<< HEAD
 import { ProductreviewComponent } from './pages/product/productreview/productreview.component';
-=======
 import { ProductFormComponent } from './pages/product/product-form/product-form.component';
-
->>>>>>> 4a7533d2f5f762c9e87cebe298700f3f7241f2ea
 const routes: Routes = [
   // {
   //   path : "",
