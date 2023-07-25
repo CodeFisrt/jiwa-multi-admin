@@ -22,6 +22,7 @@ import { ProductreviewComponent } from './pages/product/productreview/productrev
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
 import { ProductFormComponent } from './pages/product/product-form/product-form.component';
+import { ProductParentPageComponent } from './pages/product/product-parent-page/product-parent-page.component';
 
 const routes: Routes = [
   // {
@@ -139,6 +140,10 @@ const routes: Routes = [
         path: "product-form",
         component: ProductFormComponent
       },
+      {
+        path:"product-page",
+        component:ProductParentPageComponent
+      }
 
     ]
   }
