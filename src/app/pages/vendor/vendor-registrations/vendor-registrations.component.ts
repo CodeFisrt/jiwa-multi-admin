@@ -7,52 +7,48 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./vendor-registrations.component.css']
 })
 export class VendorRegistrationsComponent implements OnInit{
-  myproductid:any[]=[];
+  productimages:any[]=[];
   prductid:any[]=[]
   constructor(private https:HttpClient){
-
   }
   ngOnInit(): void {
-    this.productid();
+    this.getproductimage();
     this.getallproductid();
   }
 productobj:any={
-  "ProductImageId": 0,
-  "ProductId": 0,
-  "ImageUrl": "string",
-  "IsThumbnailImage": true,
-  "OrderNo": 0
+  "productImageId": 0,
+  "productId": 0,
+  "imageUrl": "",
+  "isThumbnailImage": true,
+  "orderNo": 0
 }
 
 deletecard(id:number){
   const isdelete=confirm("Are You want to delete record")
   if(isdelete){
-    this.https.post("http://onlinetestapi.gerasim.in/api/Aqua/GetImagesByProducId?productid=144"+id ,{}).subscribe((res:any)=>{
+    this.https.get("http://onlinetestapi.gerasim.in/api/Aqua/DeleteProdutImageByProductId?id="+id).subscribe((res:any)=>{
       if (res.result) {
         alert('Category deleted Success');
-        this.productid();
+        this.getproductimage();
       } else {
         alert(res.message);
       }
         })
   }
 }
-updateproduct(){
-  this.https.post("http://onlinetestapi.gerasim.in/api/Aqua/UpdateProductImage", this.productobj).subscribe((resp:any)=>{
-    if(resp.result){
-      alert("package Update successfullly.....")
-      this.productid()
-    }
-    else{
-      alert(resp.result)
-    }
-  })
+eidtproduct(id:number){
+  debugger
+   this.https.post('http://onlinetestapi.gerasim.in/api/Aqua/UpdateProductImage'+ id, {})
+  .subscribe((res: any) => {
+     this.productobj = res.data;
+   });
 }
 savechanges(){
+  debugger
   this.https.post("http://onlinetestapi.gerasim.in/api/Aqua/AddNewProductImage",this.productobj).subscribe((res:any)=>{
     if(res.message){
       alert("Entry Created Successfully");
-      this.productid();
+      this.getproductimage();
     }
     else(
       alert(res.result)
@@ -64,9 +60,9 @@ this.https.get("http://onlinetestapi.gerasim.in/api/Aqua/GetAllProduct").subscri
   this.prductid=res.data;
 })
 }
-  productid(){
+  getproductimage(){
     this.https.get("http://onlinetestapi.gerasim.in/api/Aqua/GetImagesByProducId?productid=144").subscribe((res:any)=>{
-    this.myproductid=res.data
+    this.productimages=res.data
     })
   }
   changefile(event:any){

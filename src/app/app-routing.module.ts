@@ -18,11 +18,16 @@ import { OffersComponent } from './pages/product/offers/offers.component';
 import { DeliveryLocationsComponent } from './pages/product/delivery-locations/delivery-locations.component';
 import { ReviewComponent } from './pages/product/review/review.component';
 import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
-
+import { ProductreviewComponent } from './pages/product/productreview/productreview.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
+<<<<<<< HEAD
 import { ProductreviewComponent } from './pages/product/productreview/productreview.component';
 import { ProductFormComponent } from './pages/product/product-form/product-form.component';
+=======
+import { ProductFormComponent } from './pages/product/product-form/product-form.component';
+
+>>>>>>> c5cb466fd0c2c10938fe5748b82468ab29ce59e4
 const routes: Routes = [
   // {
   //   path : "",
