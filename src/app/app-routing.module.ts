@@ -21,13 +21,9 @@ import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banne
 import { ProductreviewComponent } from './pages/product/productreview/productreview.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
-<<<<<<< HEAD
-import { ProductreviewComponent } from './pages/product/productreview/productreview.component';
 import { ProductFormComponent } from './pages/product/product-form/product-form.component';
-=======
-import { ProductFormComponent } from './pages/product/product-form/product-form.component';
+import { ProductParentPageComponent } from './pages/product/product-parent-page/product-parent-page.component';
 
->>>>>>> c5cb466fd0c2c10938fe5748b82468ab29ce59e4
 const routes: Routes = [
   // {
   //   path : "",
@@ -144,6 +140,10 @@ const routes: Routes = [
         path: "product-form",
         component: ProductFormComponent
       },
+      {
+        path:"product-page",
+        component:ProductParentPageComponent
+      }
 
     ]
   }
