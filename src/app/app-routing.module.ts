@@ -18,9 +18,11 @@ import { OffersComponent } from './pages/product/offers/offers.component';
 import { DeliveryLocationsComponent } from './pages/product/delivery-locations/delivery-locations.component';
 import { ReviewComponent } from './pages/product/review/review.component';
 import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
-
+import { ProductreviewComponent } from './pages/product/productreview/productreview.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
+import { ProductFormComponent } from './pages/product/product-form/product-form.component';
+import { ProductParentPageComponent } from './pages/product/product-parent-page/product-parent-page.component';
 
 const routes: Routes = [
   // {
@@ -91,10 +93,15 @@ const routes: Routes = [
         path: "productList",
         component: ProductListComponent
       },
+
       {
         path: "customers",
         component: CustomersComponent
 
+      },
+      {
+        path:"productreview",
+        component:ProductreviewComponent
       },
       {
         path: "productList",
@@ -132,6 +139,14 @@ const routes: Routes = [
       {
         path: "varients",
         component: VarientsComponent
+      },
+      {
+        path: "product-form",
+        component: ProductFormComponent
+      },
+      {
+        path:"product-page",
+        component:ProductParentPageComponent
       }
 
     ]

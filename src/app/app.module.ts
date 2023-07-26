@@ -25,6 +25,10 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
 
 
+import { ProductreviewComponent } from './pages/product/productreview/productreview.component';
+import { ProductFormComponent } from './pages/product/product-form/product-form.component';
+import { ProductParentPageComponent } from './pages/product/product-parent-page/product-parent-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,10 +47,15 @@ import { ProductListComponent } from './pages/product/product-list/product-list.
     OffersComponent,
     DeliveryLocationsComponent,
     ReviewComponent,
+    ProductFormComponent,
     VendorlistComponent,
     VendorBannerComponent,
     DashboardComponent,
     ProductListComponent,
+    ProductreviewComponent,
+    ProductFormComponent,
+    ProductreviewComponent,
+    ProductParentPageComponent
   ],
   imports: [
     BrowserModule,
