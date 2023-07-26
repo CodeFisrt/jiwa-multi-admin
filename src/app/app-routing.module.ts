@@ -23,6 +23,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.component';
 import { ProductFormComponent } from './pages/product/product-form/product-form.component';
 import { ProductParentPageComponent } from './pages/product/product-parent-page/product-parent-page.component';
+import { ProductpagesComponent } from './pages/product/productpages/productpages.component';
 
 const routes: Routes = [
   // {
@@ -46,6 +47,10 @@ const routes: Routes = [
       {
         path: "dashboard",
         component: DashboardComponent
+      },
+      {
+        path:"app-productpages",
+        component:ProductpagesComponent
       },
       {
         path : "vendorlist",

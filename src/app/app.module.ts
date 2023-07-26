@@ -28,6 +28,7 @@ import { ProductListComponent } from './pages/product/product-list/product-list.
 import { ProductreviewComponent } from './pages/product/productreview/productreview.component';
 import { ProductFormComponent } from './pages/product/product-form/product-form.component';
 import { ProductParentPageComponent } from './pages/product/product-parent-page/product-parent-page.component';
+import { ProductpagesComponent } from './pages/product/productpages/productpages.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ProductParentPageComponent } from './pages/product/product-parent-page/
     ProductreviewComponent,
     ProductFormComponent,
     ProductreviewComponent,
-    ProductParentPageComponent
+    ProductParentPageComponent,
+    ProductpagesComponent
   ],
   imports: [
     BrowserModule,
