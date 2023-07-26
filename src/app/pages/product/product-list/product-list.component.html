@@ -1,16 +1,32 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div class="d-flex mt-3 rounded-3"
-        style="background-image: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114));">
+      <div
+        class="d-flex mt-3 rounded-3"
+        style="
+          background-image: linear-gradient(
+            to right,
+            rgb(242, 112, 156),
+            rgb(255, 148, 114)
+          );
+        "
+      >
         <div class="p-2 flex-grow-1">
           <h4>Product's</h4>
         </div>
-        <div class="p-2"><button class="btn  btn-success text-white text-dark"
-            (click)="cardtoggle()">{{ cardmsg == true ? 'Card View' : 'Table View' }}</button>
+        <div class="p-2">
+          <button
+            class="btn btn-success text-white text-dark"
+            (click)="cardtoggle()"
+          >
+            {{ cardmsg == true ? "Card View" : "Table View" }}
+          </button>
         </div>
-        <div class="p-2"> <button class="btn  btn-success text-white text-dark"><i class="fa-solid fa-plus"
-              style="color: #f7f7f7;"></i> Add Product</button></div>
+        <div class="p-2">
+          <button class="btn btn-success text-white text-dark">
+            <i class="fa-solid fa-plus" style="color: #f7f7f7"></i> Add Product
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -18,36 +34,53 @@
     <div class="col-12" *ngIf="cardview">
       <div class="card">
         <div class="card-body">
-          <table class="table table-hover ">
-            <thead >
+          <table class="table table-hover">
+            <thead>
               <tr>
                 <th>Sr No</th>
                 <th>Name</th>
                 <th>SKU</th>
                 <th>vendor Name</th>
-                <th> Price </th>
+                <th>Price</th>
                 <th>Available</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               <ng-container *ngIf="!pagespinnger">
-                <tr *ngFor="let product of myproduct;let srno=index">
-                  <td>{{srno+1}}</td>
-                  <td>{{product.shortName}}</td>
-                  <td>{{product.sku}}</td>
-                  <td>{{product.vendorName}}</td>
-                  <td>{{product.productBasePrice}}</td>
+                <tr *ngFor="let product of myproduct; let srno = index">
+                  <td>{{ srno + 1 }}</td>
+                  <td>{{ product.shortName }}</td>
+                  <td>{{ product.sku }}</td>
+                  <td>{{ product.vendorName }}</td>
+                  <td>{{ product.productBasePrice }}</td>
                   <td>
-                    <span *ngIf="product.isStockAvailable"><i class="fa fa-check-square"
-                        style="font-size:20px;color:green"></i></span>
-                    <span *ngIf="!product.isStockAvailable"><i class="fa fa-times-circle"
-                        style="font-size:20px;color:red"></i></span>
+                    <span *ngIf="product.isStockAvailable"
+                      ><i
+                        class="fa fa-check-square"
+                        style="font-size: 20px; color: green"
+                      ></i
+                    ></span>
+                    <span *ngIf="!product.isStockAvailable"
+                      ><i
+                        class="fa fa-times-circle"
+                        style="font-size: 20px; color: red"
+                      ></i
+                    ></span>
                   </td>
                   <td>
-                    <button class="btn"><i class="fa-solid fa-user-pen fa-lg" style="color: #005eff;"></i></button>
-                    <button class="btn"><i class="fa-sharp fa-solid fa-trash fa-lg"
-                        style="color: #ff0000;"></i></button>
+                    <button class="btn">
+                      <i
+                        class="fa-solid fa-user-pen fa-lg"
+                        style="color: #005eff"
+                      ></i>
+                    </button>
+                    <button class="btn">
+                      <i
+                        class="fa-sharp fa-solid fa-trash fa-lg"
+                        style="color: #ff0000"
+                      ></i>
+                    </button>
                   </td>
                 </tr>
               </ng-container>
@@ -73,20 +106,27 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-12  mt-3" *ngIf="cardviewtoggle">
+    <div class="col-12 mt-3" *ngIf="cardviewtoggle">
       <div class="row">
-        <div class="col-3 d-flex justify-content-center align-items-center mt-3" *ngFor="let card of myproduct">
-          <div class="card shadow " style="width: 18rem;">
+        <div
+          class="col-3 d-flex justify-content-center align-items-center mt-3"
+          *ngFor="let card of myproduct"
+        >
+          <div class="card shadow" style="width: 18rem">
             <div class="card-header">
-              <h6 class="fw-bolder text-danger-emphasis text-decoration-underline"> {{card.vendorName}}</h6>
+              <h6
+                class="fw-bolder text-danger-emphasis text-decoration-underline"
+              >
+                {{ card.vendorName }}
+              </h6>
             </div>
             <div class="card-body text-center">
               <img alt="Card image" class="card-img-top" height="130px"
                 src="http://storeapi.gerasim.in/customer/{{card.thumbnailImageUrl}}">
                 <div class="d-flex">
-                  <div class="p-2 fs-5 fw-semibold flex-fill">{{card.shortName}}</div>
-                  <div class="p-2 fs-5 fw-semibold flex-fill">{{card.productBasePrice | currency:'INR'}}</div>
-                </div>
+                  <div class="p-2 fw-semibold flex-fill">{{card.shortName}}</div>
+                  <div class="p-2 fw-semibold flex-fill">{{card.productBasePrice | currency:'INR'}}</div>
+              </div>
             </div>
           </div>
         </div>

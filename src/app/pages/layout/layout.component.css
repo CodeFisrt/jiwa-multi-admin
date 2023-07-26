@@ -1,4 +1,36 @@
 
-.nav-link {
-  color: white;
+.navbar{
+    margin-left: 0px;
+    margin-right: 0px;
+    height: 100px;
+}
+
+.dropdown-menu .dropdown-item{
+  cursor: pointer;
+}
+
+
+.navbar-nav li a:hover{
+    background-color: #ffffff;
+    color: #000000;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+
+.navbar-nav li button:hover{
+   
+    color: #ffffff;
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+
+  .navbar-nav li button{
+    border-radius: 7px;
+
+    padding: 7px 20px;
+    margin-right: 36px;
+}
+
+ul li button{
+  margin-left: 184px;
 }

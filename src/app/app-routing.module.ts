@@ -53,6 +53,10 @@ const routes: Routes = [
         path:"users",
         component:UsersComponent
       },
+      {
+        path:"user",
+        component:UsersComponent
+      },
 
       {
         path: "vendor-registrations",
@@ -124,6 +128,10 @@ const routes: Routes = [
       {
         path: "review",
         component: ReviewComponent
+      },
+      {
+        path: "varients",
+        component: VarientsComponent
       }
 
     ]

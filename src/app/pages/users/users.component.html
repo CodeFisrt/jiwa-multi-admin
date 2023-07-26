@@ -30,7 +30,7 @@
                             <td>{{user.userName}}</td>
                             <td>{{user.userRole}}</td>
                             <td>{{user.vendorName}}</td>
-                            <td>{{user.createdOn }}</td>
+                            <td>{{user.createdOn | date: 'dd-MM-yyyy' }}</td>
                             <td>
                                 <i class="fa fa-edit text-success me-3" (click)="edituser(user)"></i>
                                 <i class="fa fa-trash text-danger" (click)="userdelete(user.jiwaUserId)"></i>
@@ -48,7 +48,7 @@
             <div class="card-header" [ngClass]="{'bg-success': isSecondDivVisible}">
                 <div class="row">
                     <div class="col-6 text-white">
-                        <h4>New List</h4>
+                        <h4>Add Users</h4>
                     </div>
                     <div class="col-6 text-end">
                         <button class="btn btn-danger" (click)="removeClasses()">Close</button>
@@ -57,73 +57,64 @@
             </div>
             <div class="card-body ">
                 <form #form="ngForm">
-                    <div class="myBox">
-                        <div class="row ms-2 mt-3">
-                            <h3 class="text-center">Add Users</h3>
-                            <div class="row">
-                                <div class="col-6">
-                                    <label for="">Select Vendors</label>
-                                    <select class="form-control" name="vendorId" placeholder="Select Vendor"
-                                        [(ngModel)]="userObj.vendorId">
-                                        <option *ngFor="let Vendor of vendorArray" [value]="Vendor.vendorId">
-                                            {{Vendor.vendorName}}</option>
-                                    </select>
-                                </div>
-                                <div class="col-6">
-                                    <label for="">User Name:</label>
-                                    <input type="text" name="userName" required #userName="ngModel" class="form-control"
-                                        [(ngModel)]="userObj.userName" placeholder="Enter User Name">
-                                    <div class="text-danger" *ngIf="userName.touched || userName.dirty ">
-                                        <span *ngIf="userName.errors?.['required']">This is required</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6 p-3">
-                                    <label for="">User Role:</label>
-                                    <input type="text" name="userRole" required #userRole="ngModel" class="form-control"
-                                        [(ngModel)]="userObj.userRole" placeholder="Enter User Role">
-                                    <div class="text-danger" *ngIf="userRole.touched || userRole.dirty ">
-                                        <span *ngIf="userRole.errors?.['required']">This is required</span>
-                                    </div>
-                                </div>
-                                <div class="col-6 p-3">
-                                    <label for="">created On:</label>
-                                    <input type="date" name="createdOn" class="form-control"
-                                        [(ngModel)]="userObj.createdOn" placeholder="created On">
-                                </div>
-                            </div>
-                            <div class="row">
 
-                                <div class="col-6 p-3">
-                                    <label for="">Password:</label>
-                                    <input type="text" name="password" pattern="^[0-9]{5,5}$" required minlength="5"
-                                        #password="ngModel" class="form-control" [(ngModel)]="userObj.password"
-                                        placeholder="Enter Password">
-                                    <div class="text-danger" *ngIf="password.touched || password.dirty ">
-                                        <span *ngIf="password.errors?.['required']">This is required</span>
-                                        <span *ngIf="password.errors?.['minlength']">Min 5 chars is required</span>
-                                        <span *ngIf="password.errors?.['pattern']">pattern is required</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row text-center">
-                                <div class="col-6">
-                                    <button class="btn btn-sm btn-secondary" (click)="onReset()">Reset</button>
-                                </div>
-                                <div class="col-6">
-                                    <button class="btn btn-sm btn-warning" *ngIf="userObj.jiwaUserId !==0"
-                                        (click)="updateuser()">Update</button>
-                                    <div class="col-6">
-                                        <button type="button" [disabled]="form.invalid" class="btn btn-sm btn-success"
-                                            *ngIf="userObj.jiwaUserId == 0" (click)="onsaveUser()"> <span
-                                                *ngIf="isapicalload"
-                                                class="spinner-border spinner-border-sm"></span>Save</button>
-                                    </div>
-                                </div>
+
+                    <div class="row">
+                        <div class="col-6 pt-2">
+                            <label for="">Select Vendors</label>
+                            <select class="form-control" name="vendorId" placeholder="Select Vendor"
+                                [(ngModel)]="userObj.vendorId">
+                                <option *ngFor="let Vendor of vendorArray" [value]="Vendor.vendorId">
+                                    {{Vendor.vendorName}}</option>
+                            </select>
+                        </div>
+                        <div class="col-6 pt-2">
+                            <label for="">User Name</label>
+                            <input type="text" name="userName" required #userName="ngModel" class="form-control"
+                                [(ngModel)]="userObj.userName" placeholder="Enter User Name">
+                            <div class="text-danger" *ngIf="userName.touched || userName.dirty ">
+                                <span *ngIf="userName.errors?.['required']">This is required</span>
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-6 pt-2">
+                            <label for="">User Role</label>
+                            <input type="text" name="userRole" required #userRole="ngModel" class="form-control"
+                                [(ngModel)]="userObj.userRole" placeholder="Enter User Role">
+                            <div class="text-danger" *ngIf="userRole.touched || userRole.dirty ">
+                                <span *ngIf="userRole.errors?.['required']">This is required</span>
+                            </div>
+                        </div>
+                        <div class="col-6 pt-2">
+                            <label for="">Password</label>
+                            <input type="text" name="password" pattern="^[0-9]{5,5}$" required minlength="5"
+                                #password="ngModel" class="form-control" [(ngModel)]="userObj.password"
+                                placeholder="Enter Password">
+                            <div class="text-danger" *ngIf="password.touched || password.dirty ">
+                                <span *ngIf="password.errors?.['required']">This is required</span>
+                                <span *ngIf="password.errors?.['minlength']">Min 5 chars is required</span>
+                                <span *ngIf="password.errors?.['pattern']">pattern is required</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="row text-center mt-3">
+                        <div class="col-6">
+                            <button class="btn btn-sm btn-secondary" (click)="onReset()">Reset</button>
+                        </div>
+                        <div class="col-6">
+                            <button class="btn btn-sm btn-warning" *ngIf="userObj.jiwaUserId !==0"
+                                (click)="updateuser()">Update</button>
+                            <div class="col-6">
+                                <button type="button" [disabled]="form.invalid" class="btn btn-sm btn-success"
+                                    *ngIf="userObj.jiwaUserId == 0" (click)="onsaveUser()"> <span *ngIf="isapicalload"
+                                        class="spinner-border spinner-border-sm"></span>Save</button>
+                            </div>
+                        </div>
+                    </div>
+
                 </form>
             </div>
         </div>
