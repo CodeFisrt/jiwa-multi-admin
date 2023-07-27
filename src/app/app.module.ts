@@ -66,6 +66,7 @@ import { ProductpagesComponent } from './pages/product/productpages/productpages
     HttpClientModule,
     ReactiveFormsModule,
   ],
+
   providers: [],
   bootstrap: [AppComponent],
 })
