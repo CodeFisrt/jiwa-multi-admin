@@ -4,11 +4,15 @@ import { Router } from '@angular/router';
 import { DeliveryLocObjArrayData, DeliveryLocationCreateArray } from 'src/app/core/interfaces/deliverLocation';
 import { ProductArray } from 'src/app/core/interfaces/product';
 import { ProductService } from 'src/app/core/services/product.service';
+import { AllServiceService } from 'src/app/service/all-service.service';
+
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-delivery-locations',
   templateUrl: './delivery-locations.component.html',
   styleUrls: ['./delivery-locations.component.css'],
+  providers: [MessageService]
 })
 export class DeliveryLocationsComponent {
 
@@ -25,7 +29,7 @@ export class DeliveryLocationsComponent {
   }];
 
 
-  constructor(private productSrv: ProductService, private router: Router) { }
+  constructor(private productSrv: ProductService, private router: Router, private allservice: AllServiceService, private msgService: MessageService, private confirmService: ConfirmationService) { }
   ngOnInit(): void {
     this.getproductList();
 
@@ -36,7 +40,7 @@ export class DeliveryLocationsComponent {
     // debugger;
     this.productSrv.getAllProducts().subscribe((response: any) => {
       if (response.result == true) {
-            this.ProductArray = response.data
+        this.ProductArray = response.data
 
       } else {
         alert(response.message);
@@ -48,18 +52,19 @@ export class DeliveryLocationsComponent {
   getDeliveryLocations(productId: number) {
     this.productSrv.GetDeliveryLocationsByProductId(productId).subscribe((response: any) => {
       if (response.result == true) {
-        if(response.data != 0) {
+        if (response.data != 0) {
           this.deliveryLocations = response.data;
           this.deliveryLocationsAvailable = true; // Set the flag to true when locations are available
           this.showSecondDiv = true;
           this.showFirstDiv = false;
-        } else
-        {
-          alert("Delivery locations not available for this product")
+        } else {
+          this.msgService.add({ key: "bc", severity: 'error', summary: 'Not Available', detail: 'Delivery locations not available for this product', life: 2000 });
+          //alert("Delivery locations not available for this product")
           this.deliveryLocationsAvailable = false; // Set the flag to true when locations are available
         }
         // this.router.navigateByUrl('/deliveryLocationList')
       } else {
+        this.msgService.add({ key: "bc", severity: 'error', summary: 'Not Available', detail: 'Delivery locations not available for this product', life: 2000 });
         alert(response.message);
       }
     })
@@ -71,11 +76,13 @@ export class DeliveryLocationsComponent {
     if (newDeliveryLocation.deliveryLocationId === 0) {
       this.productSrv.createdelverlyLocation([newDeliveryLocation]).subscribe((response: any) => {
         if (response.result === true) {
-          alert("Delivery pincode saved successfully");
+          this.msgService.add({ key: "bc", severity: 'success', summary: 'Success', detail: 'Delivery pincode saved successfully', life: 2000 });
+          //alert("Delivery pincode saved successfully");
           // this.getDeliveryLocations(this.deliveryObjarray[0].productId);
           this.getproductList();
         } else {
-          alert(response.message);
+          this.msgService.add({ key: "bc", severity: 'error', summary: 'Not saved', detail: 'Delivery pincode not saved', life: 2000 });
+          //alert(response.message);
         }
       });
     }
@@ -88,14 +95,16 @@ export class DeliveryLocationsComponent {
     this.productSrv.updateDeliveryLocation(this.deliveryLocations).subscribe(
       (response: any) => {
         if (response.result === true) {
-          alert("Delivery pincode updated successfully");
+          this.msgService.add({ key: "bc", severity: 'success', summary: 'Success', detail: 'Delivery pincode updated successfully', life: 2000 });
+          //alert("Delivery pincode updated successfully");
           this.showFirstDiv = true;
           this.showSecondDiv = false;
           // this.getDeliveryLocations(this.deliveryObjarray[0].productId);
 
           // this.getDeliveryLocations(updatedDeliveryLocation.productId);
         } else {
-          alert(response.message);
+          this.msgService.add({ key: "bc", severity: 'error', summary: 'Not saved', detail: 'Delivery pincode not updated', life: 2000 });
+          //alert(response.message);
         }
       },
       (error: any) => {
@@ -106,18 +115,41 @@ export class DeliveryLocationsComponent {
   }
 
   deleteDeliveryLocation(id: number) {
-    const isConfirm = confirm("Are you want to delete");
-    if (isConfirm) {
-      this.productSrv.deleteDeliveryLocation(id).subscribe((response: any) => {
-        if (response.result) {
-          alert("DeliveryLocation deleted successfully")
-          this.getDeliveryLocations(this.deliveryObjarray[0].productId);
-          this.getproductList();
-        } else {
-          alert(response.message);
-        }
-      })
-    }
+    // const isConfirm = confirm("Are you want to delete");
+
+    // if (isConfirm) {
+    //   this.productSrv.deleteDeliveryLocation(id).subscribe((response: any) => {
+    //     if (response.result) {
+    //       this.msgService.add({ key: "bc", severity: 'success', summary: 'Success', detail: 'Delivery pincode deleted successfully', life: 2000 });
+    //       //alert("DeliveryLocation deleted successfully")
+    //       this.getDeliveryLocations(this.deliveryObjarray[0].productId);
+    //       this.getproductList();
+    //     } else {
+    //       this.msgService.add({ key: "bc", severity: 'error', summary: 'Not saved', detail: 'Delivery pincode not updated', life: 2000 });
+    //       //alert(response.message);
+    //     }
+    //   })
+    // }
+
+    this.confirmService.confirm({
+      message: "Are You Sure You want to delete?",
+      accept: () => {
+        this.productSrv.deleteDeliveryLocation(id).subscribe((response: any) => {
+          if (response.result) {
+            this.msgService.add({ key: "bc", severity: 'success', summary: 'Success', detail: 'Delivery pincode deleted successfully', life: 2000 });
+            //alert("DeliveryLocation deleted successfully")
+            this.getDeliveryLocations(this.deliveryObjarray[0].productId);
+            this.getproductList();
+          } else {
+            this.msgService.add({ key: "bc", severity: 'error', summary: 'Not saved', detail: 'Delivery pincode not updated', life: 2000 });
+
+            //alert(response.message);
+          }
+        })
+      }
+    })
+
+
   }
 
   toggleDivs() {

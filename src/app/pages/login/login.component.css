@@ -163,7 +163,7 @@ form .field-group .wthree-field {
 
 }
 
-.wthree-field button.btn {
+.wthree-field .p-button {
     background: #fc636b;
     border: none;
     color: #fff;

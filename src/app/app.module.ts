@@ -4,6 +4,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
+
 import { LoginComponent } from './pages/login/login.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { UsersComponent } from './pages/users/users.component';
@@ -29,6 +35,7 @@ import { ProductreviewComponent } from './pages/product/productreview/productrev
 import { ProductFormComponent } from './pages/product/product-form/product-form.component';
 import { ProductParentPageComponent } from './pages/product/product-parent-page/product-parent-page.component';
 import { ProductpagesComponent } from './pages/product/productpages/productpages.component';
+import { ConfirmationService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -65,8 +72,12 @@ import { ProductpagesComponent } from './pages/product/productpages/productpages
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ToastModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    ConfirmDialogModule
   ],
-  providers: [],
+  providers: [ConfirmationService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

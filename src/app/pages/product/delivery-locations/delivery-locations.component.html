@@ -1,153 +1,162 @@
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-12 mt-3 mb-3">
-            <form>
-                <div class="row">
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="">Select Product</label>
-                            <select name="select" class="form-control" [(ngModel)]="deliveryObjarray[0].productId">
-                                <!-- <option selected="selected">a</option> -->
-                                <option *ngFor="let product of ProductArray" [value]="product.productId">
-                                    {{product.shortName}}</option>
-                            </select>
-                            <!-- <label for="productId">Select Product</label>
+  <div class="row">
+    <div class="col-12 mt-3 mb-3">
+      <form>
+        <div class="row">
+          <div class="col-3">
+            <div class="form-group">
+              <label for="">Select Product</label>
+              <select name="select" class="form-control" [(ngModel)]="deliveryObjarray[0].productId">
+                <!-- <option selected="selected">a</option> -->
+                <option *ngFor="let product of ProductArray" [value]="product.productId">
+                  {{product.shortName}}</option>
+              </select>
+              <!-- <label for="productId">Select Product</label>
                 <select name="productId" class="form-control" [(ngModel)]="deliveryObjarray[0].productId" id="productId">
                   <option *ngFor="let product of ProductArray" [value]="product.productId">{{ product.shortName }}
                   </option>
                 </select> -->
-                        </div>
-                    </div>
-                    <div class="col-3">
-                        <div class="form-group">
-                            <label for="pinCode">Pin Code</label>
-                            <input type="text" name="pinCode" class="form-control"
-                                [(ngModel)]="deliveryObjarray[0].pinCode" id="pinCode">
-                        </div>
-                    </div>
-                    <div class="col-2">
-                        <div class="form-group">
-                            <label>&nbsp;</label>
-                            <div class="d-flex justify-content-start">
-                                <!-- Optional reset button -->
-                                <!-- <button class="btn btn-primary me-2" (click)="reset()">Reset</button> -->
-                                <button type="submit" class="btn btn-success"
-                                    (click)="createDeliveryLocation()">Add</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </form>
+            </div>
+          </div>
+          <div class="col-3">
+            <div class="form-group">
+              <label for="pinCode">Pin Code</label>
+              <input type="text" name="pinCode" class="form-control" [(ngModel)]="deliveryObjarray[0].pinCode"
+                id="pinCode">
+            </div>
+          </div>
+          <div class="col-2">
+            <div class="form-group">
+              <label>&nbsp;</label>
+              <div class="d-flex justify-content-start">
+                <!-- Optional reset button -->
+                <!-- <button class="btn btn-primary me-2" (click)="reset()">Reset</button> 
+                <button type="submit" class="btn btn-success" (click)="createDeliveryLocation()">Add</button>-->
+                <p-toast position="bottom-center" key="bc"></p-toast>
+                <button label="Add" class="p-button" pButton pRipple type="button" (click)="createDeliveryLocation()"
+                  style="padding: 7px 15px 10px 15px; color: #ffffff;
+                      background: #198754;
+                      border: 1px solid #146c43;"></button>
+              </div>
+            </div>
+          </div>
         </div>
+      </form>
     </div>
-    <div class="row">
-        <div class="col-12" *ngIf="showFirstDiv">
-            <div class="card">
-                <div class="card-header bg-success">
-                    <div class="row">
-                        <div class="text-white">
-                            <h4 class="m-0">Product List</h4>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="col-12">
-                        <table class="table table-hover table-bordered text-center mt-3">
-                            <thead class="text-black">
-                                <tr>
-                                    <th>Sr No</th>
-                                    <th>Vendor Name</th>
-                                    <th>Short Name</th>
-                                    <th>SKU</th>
-                                    <th>Product Price</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr *ngFor="let product of ProductArray; let sr = index">
-                                    <td>{{ sr + 1 }}</td>
-                                    <td>{{ product.vendorName }}</td>
-                                    <td>{{ product.shortName }}</td>
-                                    <td>{{ product.sku }}</td>
-                                    <td>{{ product.productBasePrice }}</td>
-                                    <td>
-                                        <button class="btn btn-success btn-sm me-2 pointer-cursor"
-                                            (click)="getDeliveryLocations(product.productId)">Open</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
+  </div>
+  <div class="row">
+    <div class="col-12" *ngIf="showFirstDiv">
+      <div class="card">
+        <div class="card-header bg-success">
+          <div class="row">
+            <div class="text-white">
+              <h4 class="m-0">Product List</h4>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="col-12">
+            <table class="table table-hover table-bordered text-center mt-3">
+              <thead class="text-black">
+                <tr>
+                  <th>Sr No</th>
+                  <th>Vendor Name</th>
+                  <th>Short Name</th>
+                  <th>SKU</th>
+                  <th>Product Price</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let product of ProductArray; let sr = index">
+                  <td>{{ sr + 1 }}</td>
+                  <td>{{ product.vendorName }}</td>
+                  <td>{{ product.shortName }}</td>
+                  <td>{{ product.sku }}</td>
+                  <td>{{ product.productBasePrice }}</td>
+                  <td>
+                    <p-toast position="bottom-center" key="bc"></p-toast>
+                    <button label="Open" class="p-button" pButton pRipple type="button"
+                      (click)="getDeliveryLocations(product.productId)" style="padding: 7px 15px 10px 15px; color: #ffffff;
+                      background: #198754;
+                      border: 1px solid #146c43;"></button>
+                    <!-- <button class="btn btn-success btn-sm me-2 pointer-cursor"
+                                            (click)="getDeliveryLocations(product.productId)">Open</button> -->
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-                    <!-- <div *ngIf="!deliveryLocationsAvailable">
+          <!-- <div *ngIf="!deliveryLocationsAvailable">
               <p>Delivery locations not available for this product.</p>
             </div> -->
 
-                </div>
-            </div>
+        </div>
+      </div>
 
-        </div>
-        <div class="col-12" *ngIf="showSecondDiv">
-            <div class="card">
-                <div class="card-header bg-success">
-                    <div class="row">
-                        <div class="col-12 d-flex justify-content-between align-items-center text-white">
-                            <h4 class="m-0">Delivery Locations</h4>
-                            <button class="btn btn-success btn-sm" (click)="goBack()">Back</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <div class="col-12" *ngIf="deliveryLocationsAvailable; ">
-                        <div *ngIf="deliveryLocations && deliveryLocations.length">
-                            <ul class="list-group">
-                                <li class="list-group-item" *ngFor="let location of deliveryLocations">
-                                    <div class="row">
-                                        <div class="col-2">
-                                            <div class="form-group">
-                                                <label>Pin Code:</label>
-                                                <input type="text" class="form-control" [(ngModel)]="location.pinCode">
-                                            </div>
-                                        </div>
-                                        <div class="col-3">
-                                            <div class="form-group">
-                                                <label>Short Name:</label>
-                                                <input type="text" class="form-control"
-                                                    [(ngModel)]="location.shortName" disabled="true">
-                                            </div>
-                                        </div>
-                                        <div class="col-2">
-                                            <div class="form-group">
-                                                <label>SKU:</label>
-                                                <input type="text" class="form-control" [(ngModel)]="location.sku" disabled="true">
-                                            </div>
-                                        </div>
-                                        <div class="col-1">
-                                            <div class="form-group ">
-                                                <label>&nbsp;</label>
-                                                <div class="d-flex justify-content-start">
-                                                    <i class="fa fa-trash text-danger pointer-cursor"
-                                                        (click)="deleteDeliveryLocation(location.deliveryLocationId)"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-1">
-                                            <div class="form-group ">
-                                                <label>&nbsp;</label>
-                                                <div class="d-flex justify-content-start">
-                                                    <button type="submit" class="btn btn-success btn-sm"
-                                                        (click)="updateDeliveryLocation()"> Update
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
+    <div class="col-12" *ngIf="showSecondDiv">
+      <div class="card">
+        <div class="card-header bg-success">
+          <div class="row">
+            <div class="col-12 d-flex justify-content-between align-items-center text-white">
+              <h4 class="m-0">Delivery Locations</h4>
+              <button class="btn btn-success btn-sm" (click)="goBack()">Back</button>
+            </div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="col-12" *ngIf="deliveryLocationsAvailable; ">
+            <div *ngIf="deliveryLocations && deliveryLocations.length">
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let location of deliveryLocations">
+                  <div class="row">
+                    <div class="col-2">
+                      <div class="form-group">
+                        <label>Pin Code:</label>
+                        <input type="text" class="form-control" [(ngModel)]="location.pinCode">
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="form-group">
+                        <label>Short Name:</label>
+                        <input type="text" class="form-control" [(ngModel)]="location.shortName" disabled="true">
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <div class="form-group">
+                        <label>SKU:</label>
+                        <input type="text" class="form-control" [(ngModel)]="location.sku" disabled="true">
+                      </div>
+                    </div>
+                    <div class="col-1">
+                      <div class="form-group ">
+                        <label>&nbsp;</label>
+                        <div class="d-flex justify-content-start">
+                          <i class="fa fa-trash text-danger pointer-cursor"
+                            (click)="deleteDeliveryLocation(location.deliveryLocationId)"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-1">
+                      <div class="form-group ">
+                        <label>&nbsp;</label>
+                        <div class="d-flex justify-content-start">
+                          <button type="submit" class="btn btn-success btn-sm" (click)="updateDeliveryLocation()">
+                            Update
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+<p-toast></p-toast>
