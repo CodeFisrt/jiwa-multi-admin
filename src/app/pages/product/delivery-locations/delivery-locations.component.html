@@ -75,13 +75,8 @@
                   <td>{{ product.sku }}</td>
                   <td>{{ product.productBasePrice }}</td>
                   <td>
-                    <p-toast position="bottom-center" key="bc"></p-toast>
-                    <button label="Open" class="p-button" pButton pRipple type="button"
-                      (click)="getDeliveryLocations(product.productId)" style="padding: 7px 15px 10px 15px; color: #ffffff;
-                      background: #198754;
-                      border: 1px solid #146c43;"></button>
-                    <!-- <button class="btn btn-success btn-sm me-2 pointer-cursor"
-                                            (click)="getDeliveryLocations(product.productId)">Open</button> -->
+                    <button class="btn btn-success btn-sm me-2 pointer-cursor"
+                      (click)="getDeliveryLocations(product.productId)">Open</button>
                   </td>
                 </tr>
               </tbody>

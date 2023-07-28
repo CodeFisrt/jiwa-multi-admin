@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { AllServiceService } from 'src/app/service/all-service.service';
+
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-product-list',
@@ -12,7 +15,7 @@ export class ProductListComponent {
   cardview: boolean = true;
   cardviewtoggle: boolean = false;
   cardmsg: boolean = true;
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private allservice: AllServiceService, private msgService: MessageService, private confirmService: ConfirmationService) {
     this.getallproduct();
   }
   cardtoggle() {

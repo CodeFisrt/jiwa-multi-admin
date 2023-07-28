@@ -8,25 +8,15 @@ import { Component } from '@angular/core';
 })
 export class CartItemsComponent {
 
-  cardArray:any[]=[];
-  
-  constructor(private http:HttpClient){
-    this.loadCart(); 
+  cardArray: any[] = [];
+
+  constructor(private http: HttpClient) {
+    this.loadCart();
   }
- 
-  loadCart(){
-    this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/GetAllCartItems").subscribe((res:any)=>{
-      this.cardArray=res.data;
+
+  loadCart() {
+    this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/GetAllCartItems").subscribe((res: any) => {
+      this.cardArray = res.data;
     })
   }
-
-
-
-
-
-
-
-
-
-
 }

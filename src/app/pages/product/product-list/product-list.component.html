@@ -1,31 +1,29 @@
 <div class="container">
   <div class="row">
     <div class="col-12">
-      <div
-        class="d-flex mt-3 rounded-3"
-        style="
+      <div class="d-flex mt-3 rounded-3" style="
           background-image: linear-gradient(
             to right,
             rgb(242, 112, 156),
             rgb(255, 148, 114)
           );
-        "
-      >
+        ">
         <div class="p-2 flex-grow-1">
-          <h4>Product's</h4>
+          <h4>Products</h4>
         </div>
         <div class="p-2">
-          <button
-            class="btn btn-success text-white text-dark"
-            (click)="cardtoggle()"
-          >
+          <button class="btn btn-success text-white text-dark" (click)="cardtoggle()">
             {{ cardmsg == true ? "Card View" : "Table View" }}
           </button>
         </div>
         <div class="p-2">
-          <button class="btn btn-success text-white text-dark">
+          <p-toast position="bottom-center" key="bc"></p-toast>
+          <button label="Add Product" class="p-button-success" pButton pRipple type="button" style="padding: 5px 15px 6px 15px; color: #ffffff;
+                      background: #198754;
+                      border: 1px solid #146c43;"> <i class="fa-solid fa-plus" style="color: #f7f7f7"></i></button>
+          <!-- <button class="btn btn-success text-white text-dark">
             <i class="fa-solid fa-plus" style="color: #f7f7f7"></i> Add Product
-          </button>
+          </button> -->
         </div>
       </div>
     </div>
@@ -55,31 +53,17 @@
                   <td>{{ product.vendorName }}</td>
                   <td>{{ product.productBasePrice }}</td>
                   <td>
-                    <span *ngIf="product.isStockAvailable"
-                      ><i
-                        class="fa fa-check-square"
-                        style="font-size: 20px; color: green"
-                      ></i
-                    ></span>
-                    <span *ngIf="!product.isStockAvailable"
-                      ><i
-                        class="fa fa-times-circle"
-                        style="font-size: 20px; color: red"
-                      ></i
-                    ></span>
+                    <span *ngIf="product.isStockAvailable"><i class="fa fa-check-square"
+                        style="font-size: 20px; color: green"></i></span>
+                    <span *ngIf="!product.isStockAvailable"><i class="fa fa-times-circle"
+                        style="font-size: 20px; color: red"></i></span>
                   </td>
                   <td>
                     <button class="btn">
-                      <i
-                        class="fa-solid fa-user-pen fa-lg"
-                        style="color: #005eff"
-                      ></i>
+                      <i class="fa-solid fa-user-pen fa-lg" style="color: #005eff"></i>
                     </button>
                     <button class="btn">
-                      <i
-                        class="fa-sharp fa-solid fa-trash fa-lg"
-                        style="color: #ff0000"
-                      ></i>
+                      <i class="fa-sharp fa-solid fa-trash fa-lg" style="color: #ff0000"></i>
                     </button>
                   </td>
                 </tr>
@@ -108,24 +92,19 @@
   <div class="row">
     <div class="col-12 mt-3" *ngIf="cardviewtoggle">
       <div class="row">
-        <div
-          class="col-3 d-flex justify-content-center align-items-center mt-3"
-          *ngFor="let card of myproduct"
-        >
+        <div class="col-3 d-flex justify-content-center align-items-center mt-3" *ngFor="let card of myproduct">
           <div class="card shadow" style="width: 18rem">
             <div class="card-header">
-              <h6
-                class="fw-bolder text-danger-emphasis text-decoration-underline"
-              >
+              <h6 class="fw-bolder text-danger-emphasis text-decoration-underline">
                 {{ card.vendorName }}
               </h6>
             </div>
             <div class="card-body text-center">
               <img alt="Card image" class="card-img-top" height="130px"
                 src="http://storeapi.gerasim.in/customer/{{card.thumbnailImageUrl}}">
-                <div class="d-flex">
-                  <div class="p-2 fw-semibold flex-fill">{{card.shortName}}</div>
-                  <div class="p-2 fw-semibold flex-fill">{{card.productBasePrice | currency:'INR'}}</div>
+              <div class="d-flex">
+                <div class="p-2 fw-semibold flex-fill">{{card.shortName}}</div>
+                <div class="p-2 fw-semibold flex-fill">{{card.productBasePrice | currency:'INR'}}</div>
               </div>
             </div>
           </div>

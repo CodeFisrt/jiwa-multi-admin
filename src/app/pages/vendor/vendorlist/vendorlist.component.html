@@ -111,7 +111,8 @@
                   <input type="text" name="vendorName" #vendor="ngModel" placeholder=" Enter Name" required
                     minlength="6" maxlength="20" class="form-control" [(ngModel)]="vendorobj.vendorName">
                   <div class="text-danger" *ngIf="vendor.touched || vendor.dirty ">
-                    <span *ngIf="vendor.errors?.['required']"> <i class="fa-light fa-eye" style="color: #e7eaee;"></i>This Is Required</span>
+                    <span *ngIf="vendor.errors?.['required']"> <i class="fa-light fa-eye"
+                        style="color: #e7eaee;"></i>This Is Required</span>
 
 
                   </div>
@@ -153,7 +154,8 @@
                 </div>
                 <div class="col-4">
                   <label for="">City</label>
-                  <input type="text" name="city" class="form-control" [(ngModel)]="vendorobj.city" placeholder=" Enter City">
+                  <input type="text" name="city" class="form-control" [(ngModel)]="vendorobj.city"
+                    placeholder=" Enter City">
                 </div>
                 <div class="col-4">
                   <label for="">State</label>
@@ -236,14 +238,28 @@
 
               <div class="row text-center mt-3">
                 <div class="col-4">
-                  <button class="btn btn-secondary " (click)="reset()"> Reset</button>
+                  <p-toast position="bottom-center" key="bc"></p-toast>
+                  <button label="Reset" class="p-button" (click)="reset()" pButton pRipple type="button" style="padding: 7px 15px 10px 15px; color: #ffffff;
+                          "></button>
+                  <!-- <button class="btn btn-secondary " (click)="reset()"> Reset</button> -->
                 </div>
                 <div class="col-4">
-                  <button class="btn btn-success " *ngIf="vendorobj.vendorId == 0" (click)="onSavevendors()"
+                  <p-toast position="bottom-center" key="bc"></p-toast>
+                  <button label="Save" class="p-button-success" pButton pRipple type="button"
+                    *ngIf="vendorobj.vendorId == 0" (click)="onSavevendors()" style="padding: 7px 15px 10px 15px; color: #ffffff;
+                      background: #198754;
+                      border: 1px solid #146c43;"><span *ngIf="isapicalload"
+                      class="spinner-border spinner-border-sm"></span></button>
+                  <!-- <button class="btn btn-success " *ngIf="vendorobj.vendorId == 0" (click)="onSavevendors()"
                     [disabled]="form.invalid">
-                    <span *ngIf="isapicalload" class="spinner-border spinner-border-sm"></span>Save </button>
-                  <button class="btn btn-success " *ngIf="vendorobj.vendorId!== 0" (click)="onupdatevendors()">update
-                  </button>
+                    <span *ngIf="isapicalload" class="spinner-border spinner-border-sm"></span>Save </button> -->
+
+                  <p-toast position="bottom-center" key="bc"></p-toast>
+                  <button label="Update" class="p-button-warning" pButton pRipple type="button"
+                    *ngIf="vendorobj.vendorId!== 0" (click)="onupdatevendors()" style="padding: 7px 15px 10px 15px; color: #ffffff;
+                      "></button>
+                  <!-- <button class="btn btn-success " *ngIf="vendorobj.vendorId!== 0" (click)="onupdatevendors()">update
+                  </button> -->
 
                 </div>
               </div>
@@ -256,3 +272,4 @@
     </div>
   </div>
 </div>
+<p-toast></p-toast>

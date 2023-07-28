@@ -92,67 +92,72 @@
       </div>
 
 
-    <div class="card-body">
-      <form #form="ngForm">
-        <div class="row">
-          <div class="col-6">
-            <label for="">Select customerId </label>
-            <select class="form-control" placeholder="Select customer name" [(ngModel)]="userObj.customerId">
-              <option *ngFor="let customer of customerArray" [value]="customer.customerId">{{ customer.firstName }}
-              </option>
-            </select>
+      <div class="card-body">
+        <form #form="ngForm">
+          <div class="row">
+            <div class="col-6">
+              <label for="">Select customerId </label>
+              <select class="form-control" placeholder="Select customer name" [(ngModel)]="userObj.customerId">
+                <option *ngFor="let customer of customerArray" [value]="customer.customerId">{{ customer.firstName }}
+                </option>
+              </select>
+            </div>
+            <div class="col-6">
+              <label for="">Select productId</label>
+              <select class="form-control" placeholder="Select product" placeholder="Select product name"
+                [(ngModel)]="userObj.productId">
+                <option *ngFor="let product of  productArray" [value]="product.productId">{{ product.shortName }}
+                </option>
+              </select>
+            </div>
           </div>
-          <div class="col-6">
-            <label for="">Select productId</label>
-            <select class="form-control" placeholder="Select product" placeholder="Select product name"
-              [(ngModel)]="userObj.productId">
-              <option *ngFor="let product of  productArray" [value]="product.productId">{{ product.shortName }}
-              </option>
-            </select>
+          <div class="row">
+            <div class="col-6 p-3">
+              <label for="">Created Date</label>
+              <input type="date" name="createdDate" class="form-control" placeholder="Select Created Date"
+                [(ngModel)]="userObj.createdDate" placeholder="Enter User Role">
+            </div>
+            <div class="col-6 p-3">
+              <label for="">Review Title</label>
+              <input type="text" name="reviewTitle" class="form-control" placeholder=" Enter Review Title"
+                [(ngModel)]="userObj.reviewTitle" placeholder="reviewTitle">
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-6 p-3">
-            <label for="">Created Date</label>
-            <input type="date" name="createdDate" class="form-control" placeholder="Select Created Date"
-              [(ngModel)]="userObj.createdDate" placeholder="Enter User Role">
+          <div class="row">
+            <div class="col-6 p-3">
+              <label for="">Review</label>
+              <input type="text" name="Enter Review" required class="form-control" placeholder=" Enter Review "
+                [(ngModel)]="userObj.review" placeholder="review">
+            </div>
+            <div class="col-6 p-3">
+              <label for="">Product Rating</label>
+              <input type="text" name="productRating" class="form-control" placeholder=" Enter Product Rating "
+                [(ngModel)]="userObj.productRating" placeholder="Enter productRating">
+            </div>
           </div>
-          <div class="col-6 p-3">
-            <label for="">Review Title</label>
-            <input type="text" name="reviewTitle" class="form-control" placeholder=" Enter Review Title"
-              [(ngModel)]="userObj.reviewTitle" placeholder="reviewTitle">
+          <div class="row">
+            <div class="col-6 p-3">
+              <label for="">ShowOn Website</label>
+              <input type="checkbox" name="showOnWebsite" [(ngModel)]="userObj.showOnWebsite"
+                placeholder="Enter showOnWebsite">
+            </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-6 p-3">
-            <label for="">Review</label>
-            <input type="text" name="Enter Review" required class="form-control" placeholder=" Enter Review "
-              [(ngModel)]="userObj.review" placeholder="review">
+          <div class="row text-center">
+            <div class="col-6">
+              <button class="btn btn-secondary" (click)="resetForm()">Reset</button>
+            </div>
+            <div class="col-6">
+              <p-toast position="bottom-center" key="bc"></p-toast>
+              <button label="Save" class="p-button-success" pButton pRipple type="button" (click)="onSaveUser()" style="padding: 7px 15px 10px 15px; color: #ffffff;
+                      background: #198754;
+                      border: 1px solid #146c43;"></button>
+              <!-- <button class="btn btn-sm btn-success" (click)="onSaveUser()" [disabled]="form.invalid"> <span
+                *ngIf="isapicalload" class="spinner-border spinner-border-sm"></span>Save</button> -->
+            </div>
           </div>
-          <div class="col-6 p-3">
-            <label for="">Product Rating</label>
-            <input type="text" name="productRating" class="form-control" placeholder=" Enter Product Rating "
-              [(ngModel)]="userObj.productRating" placeholder="Enter productRating">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6 p-3">
-            <label for="">ShowOn Website</label>
-            <input type="checkbox" name="showOnWebsite" [(ngModel)]="userObj.showOnWebsite"
-              placeholder="Enter showOnWebsite">
-          </div>
-        </div>
-        <div class="row text-center">
-          <div class="col-6">
-            <button class="btn btn-sm btn-secondary" (click)="resetForm()">Reset</button>
-          </div>
-          <div class="col-6">
-            <button class="btn btn-sm btn-success" (click)="onSaveUser()" [disabled]="form.invalid"> <span
-                *ngIf="isapicalload" class="spinner-border spinner-border-sm"></span>Save</button>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   </div>
 </div>
-</div>
+<p-toast></p-toast>

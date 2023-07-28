@@ -1,122 +1,133 @@
 <div class="row">
-    <div class="col-{{isSecondDivVisible ? '8' : '12'}}">
-        <div class="card">
-            <!-- User List -->
-            <div class="card-header" [ngClass]="{'bg-success': isFirstDiv} ">
-                <div class="row">
-                    <div class="col-6 text-white">
-                        <h4>Users List</h4>
-                    </div>
-                    <div class="col-6 text-end">
-                        <button class="btn btn-info   text-dark" (click)="addClasses()">Add</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <table class="table table-striped table-hover table-bordered">
-                    <thead>
-                        <tr>
-                            <th>Sr No</th>
-                            <th>User Name</th>
-                            <th>User Role</th>
-                            <th>Vendor Name</th>
-                            <th>Created On</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let user of userArray; let sr=index">
-                            <td>{{sr+1}}</td>
-                            <td>{{user.userName}}</td>
-                            <td>{{user.userRole}}</td>
-                            <td>{{user.vendorName}}</td>
-                            <td>{{user.createdOn | date: 'dd-MM-yyyy' }}</td>
-                            <td>
-                                <i class="fa fa-edit text-success me-3" (click)="edituser(user)"></i>
-                                <i class="fa fa-trash text-danger" (click)="userdelete(user.jiwaUserId)"></i>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-
-            </div>
+  <div class="col-{{isSecondDivVisible ? '8' : '12'}}">
+    <div class="card">
+      <!-- User List -->
+      <div class="card-header" [ngClass]="{'bg-success': isFirstDiv} ">
+        <div class="row">
+          <div class="col-6 text-white">
+            <h4>Users List</h4>
+          </div>
+          <div class="col-6 text-end">
+            <button class="btn btn-info   text-dark" (click)="addClasses()">Add</button>
+          </div>
         </div>
+      </div>
+      <div class="card-body">
+        <table class="table table-striped table-hover table-bordered">
+          <thead>
+            <tr>
+              <th>Sr No</th>
+              <th>User Name</th>
+              <th>User Role</th>
+              <th>Vendor Name</th>
+              <th>Created On</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of userArray; let sr=index">
+              <td>{{sr+1}}</td>
+              <td>{{user.userName}}</td>
+              <td>{{user.userRole}}</td>
+              <td>{{user.vendorName}}</td>
+              <td>{{user.createdOn | date: 'dd-MM-yyyy' }}</td>
+              <td>
+                <i class="fa fa-edit text-success me-3" (click)="edituser(user)"></i>
+                <i class="fa fa-trash text-danger" (click)="userdelete(user.jiwaUserId)"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
     </div>
-    <!-- User Registration Details -->
-    <div class="col-{{isSecondDivVisible ? '4' : '0'}}" *ngIf="isSecondDivVisible">
-        <div class="card">
-            <div class="card-header" [ngClass]="{'bg-success': isSecondDivVisible}">
-                <div class="row">
-                    <div class="col-6 text-white">
-                        <h4>Add Users</h4>
-                    </div>
-                    <div class="col-6 text-end">
-                        <button class="btn btn-danger" (click)="removeClasses()">Close</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card-body">
-                <form #form="ngForm">
-
-
-                    <div class="row">
-                        <div class="col-6 pt-2">
-                            <label for="">Select Vendors</label>
-                            <select class="form-control" name="vendorId" placeholder="Select Vendor"
-                                [(ngModel)]="userObj.vendorId">
-                                <option *ngFor="let Vendor of vendorArray" [value]="Vendor.vendorId">
-                                    {{Vendor.vendorName}}</option>
-                            </select>
-                        </div>
-                        <div class="col-6 pt-2">
-                            <label for="">User Name</label>
-                            <input type="text" name="userName" required #userName="ngModel" class="form-control"
-                                [(ngModel)]="userObj.userName" placeholder="Enter User Name">
-                            <div class="text-danger" *ngIf="userName.touched || userName.dirty ">
-                                <span *ngIf="userName.errors?.['required']">This is required</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-6 pt-2">
-                            <label for="">User Role</label>
-                            <input type="text" name="userRole" required #userRole="ngModel" class="form-control"
-                                [(ngModel)]="userObj.userRole" placeholder="Enter User Role">
-                            <div class="text-danger" *ngIf="userRole.touched || userRole.dirty ">
-                                <span *ngIf="userRole.errors?.['required']">This is required</span>
-                            </div>
-                        </div>
-                        <div class="col-6 pt-2">
-                            <label for="">Password</label>
-                            <input type="text" name="password" pattern="^[0-9]{5,5}$" required minlength="5"
-                                #password="ngModel" class="form-control" [(ngModel)]="userObj.password"
-                                placeholder="Enter Password">
-                            <div class="text-danger" *ngIf="password.touched || password.dirty ">
-                                <span *ngIf="password.errors?.['required']">This is required</span>
-                                <span *ngIf="password.errors?.['minlength']">Min 5 chars is required</span>
-                                <span *ngIf="password.errors?.['pattern']">pattern is required</span>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    <div class="row text-center mt-3">
-                        <div class="col-6">
-                            <button class="btn btn-sm btn-secondary" (click)="onReset()">Reset</button>
-                        </div>
-                        <div class="col-6">
-                            <button class="btn btn-sm btn-warning" *ngIf="userObj.jiwaUserId !==0"
-                                (click)="updateuser()">Update</button>
-                            <div class="col-6">
-                                <button type="button" [disabled]="form.invalid" class="btn btn-sm btn-success"
-                                    *ngIf="userObj.jiwaUserId == 0" (click)="onsaveUser()"> <span *ngIf="isapicalload"
-                                        class="spinner-border spinner-border-sm"></span>Save</button>
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
-            </div>
+  </div>
+  <!-- User Registration Details -->
+  <div class="col-{{isSecondDivVisible ? '4' : '0'}}" *ngIf="isSecondDivVisible">
+    <div class="card">
+      <div class="card-header" [ngClass]="{'bg-success': isSecondDivVisible}">
+        <div class="row">
+          <div class="col-6 text-white">
+            <h4>Add Users</h4>
+          </div>
+          <div class="col-6 text-end">
+            <button class="btn btn-danger" (click)="removeClasses()">Close</button>
+          </div>
         </div>
+      </div>
+      <div class="card-body">
+        <form #form="ngForm">
+
+
+          <div class="row">
+            <div class="col-6 pt-2">
+              <label for="">Select Vendors</label>
+              <select class="form-control" name="vendorId" placeholder="Select Vendor" [(ngModel)]="userObj.vendorId">
+                <option *ngFor="let Vendor of vendorArray" [value]="Vendor.vendorId">
+                  {{Vendor.vendorName}}</option>
+              </select>
+            </div>
+            <div class="col-6 pt-2">
+              <label for="">User Name</label>
+              <input type="text" name="userName" required #userName="ngModel" class="form-control"
+                [(ngModel)]="userObj.userName" placeholder="Enter User Name">
+              <div class="text-danger" *ngIf="userName.touched || userName.dirty ">
+                <span *ngIf="userName.errors?.['required']">This is required</span>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6 pt-2">
+              <label for="">User Role</label>
+              <input type="text" name="userRole" required #userRole="ngModel" class="form-control"
+                [(ngModel)]="userObj.userRole" placeholder="Enter User Role">
+              <div class="text-danger" *ngIf="userRole.touched || userRole.dirty ">
+                <span *ngIf="userRole.errors?.['required']">This is required</span>
+              </div>
+            </div>
+            <div class="col-6 pt-2">
+              <label for="">Password</label>
+              <input type="text" name="password" pattern="^[0-9]{5,5}$" required minlength="5" #password="ngModel"
+                class="form-control" [(ngModel)]="userObj.password" placeholder="Enter Password">
+              <div class="text-danger" *ngIf="password.touched || password.dirty ">
+                <span *ngIf="password.errors?.['required']">This is required</span>
+                <span *ngIf="password.errors?.['minlength']">Min 5 chars is required</span>
+                <span *ngIf="password.errors?.['pattern']">pattern is required</span>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row text-center mt-3">
+            <div class="col-6">
+              <p-toast position="bottom-center" key="bc"></p-toast>
+              <button label="Reset" class="p-button" (click)="onReset()" pButton pRipple type="button" style="padding: 7px 15px 10px 15px; color: #ffffff;
+                      "></button>
+              <!-- <button class="btn btn-sm btn-secondary" (click)="onReset()">Reset</button> -->
+            </div>
+            <div class="col-6">
+              <p-toast position="bottom-center" key="bc"></p-toast>
+              <button label="Update" class="p-button-warning" pButton pRipple type="button"
+                *ngIf="userObj.jiwaUserId !==0" (click)="updateuser()" style="padding: 7px 15px 10px 15px; color: #ffffff;
+                      "></button>
+              <!-- <button class="btn btn-sm btn-warning" *ngIf="userObj.jiwaUserId !==0"
+                (click)="updateuser()">Update</button> -->
+              <div class="col-6">
+                <p-toast position="bottom-center" key="bc"></p-toast>
+                <button label="Save" class="p-button-success" pButton pRipple type="button"
+                  *ngIf="userObj.jiwaUserId ==0" (click)="onsaveUser()" style="padding: 7px 15px 10px 15px; color: #ffffff;
+                      background: #198754;
+                      border: 1px solid #146c43;"></button>
+                <!-- <button type="button" [disabled]="form.invalid" class="btn btn-sm btn-success"
+                  *ngIf="userObj.jiwaUserId == 0" (click)="onsaveUser()"> <span *ngIf="isapicalload"
+                    class="spinner-border spinner-border-sm"></span>Save</button> -->
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
     </div>
+  </div>
 </div>
+<p-toast></p-toast>
