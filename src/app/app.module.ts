@@ -35,7 +35,7 @@ import { ProductreviewComponent } from './pages/product/productreview/productrev
 import { ProductFormComponent } from './pages/product/product-form/product-form.component';
 import { ProductParentPageComponent } from './pages/product/product-parent-page/product-parent-page.component';
 import { ProductpagesComponent } from './pages/product/productpages/productpages.component';
-import { ConfirmationService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @NgModule({
   declarations: [
@@ -77,7 +77,7 @@ import { ConfirmationService } from 'primeng/api';
     ButtonModule,
     ConfirmDialogModule
   ],
-  providers: [ConfirmationService],
+  providers: [ConfirmationService, MessageService],
   bootstrap: [AppComponent],
 })
 export class AppModule { }
