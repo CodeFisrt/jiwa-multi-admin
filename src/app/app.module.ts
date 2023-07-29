@@ -36,6 +36,8 @@ import { ProductFormComponent } from './pages/product/product-form/product-form.
 import { ProductParentPageComponent } from './pages/product/product-parent-page/product-parent-page.component';
 import { ProductpagesComponent } from './pages/product/productpages/productpages.component';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
 
 @NgModule({
   declarations: [
@@ -75,7 +77,8 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     ToastModule,
     BrowserAnimationsModule,
     ButtonModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    AngularEditorModule,
   ],
   providers: [ConfirmationService, MessageService],
   bootstrap: [AppComponent],
