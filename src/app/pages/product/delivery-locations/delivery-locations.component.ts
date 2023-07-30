@@ -38,7 +38,7 @@ export class DeliveryLocationsComponent {
   }
 
   getproductList() {
-    // debugger;
+
     this.productSrv.getAllProducts().subscribe((response: any) => {
       if (response.result == true) {
         this.ProductArray = response.data

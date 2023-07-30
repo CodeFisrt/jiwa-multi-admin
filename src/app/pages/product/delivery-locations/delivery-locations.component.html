@@ -56,7 +56,8 @@
         </div>
         <div class="card-body">
           <div class="col-12">
-            <table class="table table-hover table-bordered text-center mt-3">
+
+            <!-- <table class="table table-hover table-bordered text-center mt-3">
               <thead class="text-black">
                 <tr>
                   <th>Sr No</th>
@@ -80,7 +81,42 @@
                   </td>
                 </tr>
               </tbody>
-            </table>
+            </table> -->
+            <p-table [value]="ProductArray" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+              [tableStyle]="{ 'min-width': '50rem' }"
+              currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+              [rowsPerPageOptions]="[10, 25, 50]">
+              <ng-template pTemplate="header">
+                <tr>
+                  <th>Sr No</th>
+                  <th>Vendor Name</th>
+                  <th>Short Name</th>
+                  <th>SKU</th>
+                  <th>Product Price</th>
+                  <th>Action</th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-customer>
+                <tr *ngFor="let product of ProductArray; let sr = index">
+                  <td>{{ sr + 1 }}</td>
+                  <td>{{ product.vendorName }}</td>
+                  <td>{{ product.shortName }}</td>
+                  <td>{{ product.sku }}</td>
+                  <td>{{ product.productBasePrice }}</td>
+                  <td>
+                    <button class="btn btn-success btn-sm me-2 pointer-cursor"
+                      (click)="getDeliveryLocations(product.productId)">Open</button>
+                  </td>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="paginatorleft">
+                <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+              </ng-template>
+              <ng-template pTemplate="paginatorright">
+                <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+              </ng-template>
+            </p-table>
+
           </div>
 
           <!-- <div *ngIf="!deliveryLocationsAvailable">
@@ -129,8 +165,9 @@
                       <div class="form-group ">
                         <label>&nbsp;</label>
                         <div class="d-flex justify-content-start">
-                          <i class="fa fa-trash text-danger pointer-cursor"
-                            (click)="deleteDeliveryLocation(location.deliveryLocationId)"></i>
+                          <button class="p-button-danger" pButton type="button"
+                            style=" cursor: pointer; color: #fff;"><i class="fa-regular fa-trash-can"
+                              (click)=" deleteDeliveryLocation(location.deliveryLocationId)"></i></button>
                         </div>
                       </div>
                     </div>
@@ -155,3 +192,4 @@
   </div>
 </div>
 <p-toast></p-toast>
+<p-table></p-table>

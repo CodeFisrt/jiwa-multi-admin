@@ -8,7 +8,7 @@ import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ButtonModule } from 'primeng/button';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
-
+import { TableModule } from 'primeng/table';
 
 import { LoginComponent } from './pages/login/login.component';
 import { LayoutComponent } from './pages/layout/layout.component';
@@ -79,6 +79,7 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
     ButtonModule,
     ConfirmDialogModule,
     AngularEditorModule,
+    TableModule
   ],
   providers: [ConfirmationService, MessageService],
   bootstrap: [AppComponent],
