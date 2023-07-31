@@ -1,5 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { AllServiceService } from 'src/app/service/all-service.service';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-productreview',
@@ -8,8 +11,8 @@ import { Component } from '@angular/core';
 })
 export class ProductreviewComponent {
   isFirstDiv: boolean = true;
-  istableloader:boolean=false;
-  isapicalload:boolean=false;
+  istableloader: boolean = false;
+  isapicalload: boolean = false;
   isSecondDivVisible: boolean = true;
   customerArray: any[] = [];
   vendorArray: any[] = [];
@@ -24,19 +27,19 @@ export class ProductreviewComponent {
     showOnWebsite: true
   };
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router, private allservice: AllServiceService, private msgService: MessageService, private confirmService: ConfirmationService) {
     this.loadCustomer();
     this.loadProductReview();
     this.getAllProducts();
   }
 
   loadProductReview() {
-    this.istableloader=true;
+    this.istableloader = true;
     this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/GetProductReviewsByProductId").subscribe((res: any) => {
       this.vendorArray = res.data;
-      setTimeout(()=>{
-        this.istableloader=false;
-            },2000);
+      setTimeout(() => {
+        this.istableloader = false;
+      }, 2000);
 
     });
   }
@@ -54,19 +57,21 @@ export class ProductreviewComponent {
   }
 
   onSaveUser() {
-    if(!this.isapicalload){
-      this.isapicalload=true;
-    this.http.post("http://onlinetestapi.gerasim.in/api/Aqua/AddProductReview", this.userObj).subscribe((res: any) => {
-      this.isapicalload=false;
-    if (res.result) {
-        alert("Product review added successfully");
-        this.loadProductReview(); // Reload reviews after adding a new one
+    if (!this.isapicalload) {
+      this.isapicalload = true;
+      this.http.post("http://onlinetestapi.gerasim.in/api/Aqua/AddProductReview", this.userObj).subscribe((res: any) => {
+        this.isapicalload = false;
+        if (res.result) {
+          this.msgService.add({ key: "bc", severity: 'success', summary: 'Success', detail: 'Product review added successfully', life: 1000 });
+          //alert("Product review added successfully");
+          this.loadProductReview(); // Reload reviews after adding a new one
 
-      } else {
-        alert(res.message);
-      }
-    });
-  }
+        } else {
+          this.msgService.add({ key: "bc", severity: 'error', summary: 'Not added', detail: 'Review not added', life: 1000 });
+          //alert(res.message);
+        }
+      });
+    }
   }
   addClasses() {
     this.isFirstDiv = true;

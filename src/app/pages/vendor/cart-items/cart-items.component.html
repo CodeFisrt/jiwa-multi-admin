@@ -1,11 +1,11 @@
 <div class="row mt-2">
-    <div class="col-12">
-        <div class="card">
-            <div class="card-header bg-info fw-bold">cart information data
-            </div>
-            <div class="card-body">
-                
-                 <table class="table table-bordered">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-header bg-info fw-bold">cart information data
+      </div>
+      <div class="card-body">
+
+        <!-- <table class="table table-bordered">
                     <thead>
                         <tr>
                             <th>sr.No</th>
@@ -34,9 +34,66 @@
                             <td>{{item.productPrice}}</td>
                         </tr>
                     </tbody>
-                 </table>
-            </div>
-        </div>
-    </div>
-</div>
+                 </table> -->
 
+        <p-table [value]="cardArray" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+          [tableStyle]="{ 'min-width': '50rem' }"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [rowsPerPageOptions]="[10, 25, 50]">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>sr.No</th>
+              <th>vendorName</th>
+              <th>Full Name</th>
+              <th>product Name</th>
+              <th>sku</th>
+              <th>Images</th>
+              <th>quantity</th>
+              <th>Price</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-customer>
+            <ng-container *ngIf="!pagespinnger">
+              <tr *ngFor="let item of cardArray;let idx=index">
+                <td>{{idx+1}}</td>
+                <td>{{item.vendorName}}</td>
+                <td>{{item.firstName}} {{item.lastName}}</td>
+                <td>{{item.sku}}</td>
+                <td>{{item.shortName}}</td>
+                <td>
+                  <span>
+                    <img src="http://storeapi.gerasim.in/customer/{{item.thumbnailImageUrl}}"
+                      style="height:50px;width:100px">
+                  </span>
+                </td>
+                <td>{{item.quantity}}</td>
+                <td>{{item.productPrice}}</td>
+              </tr>
+            </ng-container>
+            <ng-container *ngIf="pagespinnger">
+              <tr>
+                <td colspan="8">
+                  <div class="spinner-grow text-muted"></div>
+                  <div class="spinner-grow text-primary"></div>
+                  <div class="spinner-grow text-success"></div>
+                  <div class="spinner-grow text-info"></div>
+                  <div class="spinner-grow text-warning"></div>
+                  <div class="spinner-grow text-danger"></div>
+                  <div class="spinner-grow text-secondary"></div>
+                  <div class="spinner-grow text-dark"></div>
+                  <div class="spinner-grow text-light"></div>
+                </td>
+              </tr>
+            </ng-container>
+          </ng-template>
+          <ng-template pTemplate="paginatorleft">
+            <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+          </ng-template>
+          <ng-template pTemplate="paginatorright">
+            <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>

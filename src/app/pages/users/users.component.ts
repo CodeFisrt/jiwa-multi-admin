@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AllServiceService } from 'src/app/service/all-service.service';
+
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -32,7 +36,7 @@ export class UsersComponent {
       "createdBy": 0
     }
   }
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router, private allservice: AllServiceService, private msgService: MessageService, private confirmService: ConfirmationService) {
     this.getAllUsers();
     this.loadAllVendor();
   }
@@ -68,10 +72,12 @@ export class UsersComponent {
   updateuser() {
     this.http.post('http://onlinetestapi.gerasim.in/api/Aqua/UpdateVendorUser', this.userObj).subscribe((res: any) => {
       if (res.result) {
-        alert("user updated successfully");
+        this.msgService.add({ key: "bc", severity: 'success', summary: 'Success', detail: 'User updated successfully', life: 1000 });
+        //alert("user updated successfully");
         this.getAllUsers();
       } else {
-        alert(res.message)
+        this.msgService.add({ key: "bc", severity: 'error', summary: 'Not updated', detail: 'User not updated', life: 1000 });
+        //alert(res.message)
       }
     });
   }
@@ -81,10 +87,12 @@ export class UsersComponent {
       this.http.post("http://onlinetestapi.gerasim.in/api/Aqua/CreateVendorUser", this.userObj).subscribe((res: any) => {
         this.isapicalload = false;
         if (res.result) {
-          alert("user created successfully");
+          this.msgService.add({ key: "bc", severity: 'success', summary: 'Success', detail: 'User created successfully', life: 1000 });
+          //alert("user created successfully");
           this.getAllUsers();
         } else {
-          alert(res.message)
+          this.msgService.add({ key: "bc", severity: 'error', summary: 'Not updated', detail: 'User not created', life: 1000 });
+          //alert(res.message)
         }
 
       })

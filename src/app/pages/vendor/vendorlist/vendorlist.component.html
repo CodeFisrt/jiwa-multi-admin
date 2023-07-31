@@ -16,7 +16,7 @@
       </div>
 
       <div class="card-body">
-        <table class="table table-striped table-hover table-bordered">
+        <!-- <table class="table table-striped table-hover table-bordered">
           <thead>
             <tr>
               <th>SrNo</th>
@@ -77,7 +77,89 @@
 
             </ng-container>
           </tbody>
-        </table>
+        </table> -->
+
+        <p-table [value]="vendorarray" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+          [tableStyle]="{ 'min-width': '50rem' }"
+          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+          [rowsPerPageOptions]="[10, 25, 50]">
+          <ng-template pTemplate="header">
+            <tr>
+              <th>SrNo</th>
+              <th>Vendor Name</th>
+              <th> Primary ContactNo</th>
+              <th>EmailId</th>
+              <th>Secondary ContactNo</th>
+              <th>City</th>
+              <th>State</th>
+              <th>Action</th>
+
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-customer>
+            <ng-container *ngIf="!istableloader">
+              <tr *ngFor="let vendor of vendorarray;let sr=index">
+                <td>{{sr+1}}</td>
+                <td>{{vendor.vendorName}}</td>
+                <td>{{vendor.primaryContactNo}}</td>
+                <td>{{vendor.emailId}}</td>
+                <td>{{vendor.secondaryContactNo}}</td>
+                <td>{{vendor.city}}</td>
+                <td>{{vendor.state}}</td>
+                <td>
+                  <button class="p-button-success" pButton type="button" style="    color: #fff;
+                      padding: 10px 10px;
+                      margin: 5px 2px;"><i class="fa fa-edit " (click)="editvendor(vendor.vendorId)"></i></button>
+
+                  <button class="p-button-danger" pButton type="button" style="    color: #fff;
+                      padding: 10px 10px;
+                      margin: 5px 2px;"><i class="fa-regular fa-trash-can"
+                      (click)="vendordelete(vendor.vendorId)"></i></button>
+
+                  <!-- <i class="fa fa-edit text-success  text-success m-1" (click)="editvendor(vendor.vendorId)"></i>
+                  <i class="fa fa-trash text-danger" (click)="vendordelete(vendor.vendorId)"></i> -->
+                </td>
+              </tr>
+            </ng-container>
+            <ng-container *ngIf="istableloader">
+              <tr>
+                <td colspan="8">
+                  <div class="spinner-border text-primary">
+
+                  </div>
+                  <div class="spinner-border text-secondary">
+
+                  </div>
+                  <div class="spinner-border text-success">
+
+                  </div>
+                  <div class="spinner-border text-danger">
+
+                  </div>
+                  <div class="spinner-border text-warning">
+
+                  </div>
+                  <div class="spinner-border text-info">
+
+                  </div>
+                  <div class="spinner-border text-light">
+
+                  </div>
+                  <div class="spinner-border text-dark">
+
+                  </div>
+                </td>
+              </tr>
+
+            </ng-container>
+            <ng-template pTemplate="paginatorleft">
+              <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+            </ng-template>
+            <ng-template pTemplate="paginatorright">
+              <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+            </ng-template>
+          </ng-template>
+        </p-table>
       </div>
 
     </div>
@@ -111,7 +193,8 @@
                   <input type="text" name="vendorName" #vendor="ngModel" placeholder=" Enter Name" required
                     minlength="6" maxlength="20" class="form-control" [(ngModel)]="vendorobj.vendorName">
                   <div class="text-danger" *ngIf="vendor.touched || vendor.dirty ">
-                    <span *ngIf="vendor.errors?.['required']"> <i class="fa-light fa-eye" style="color: #e7eaee;"></i>This Is Required</span>
+                    <span *ngIf="vendor.errors?.['required']"> <i class="fa-light fa-eye"
+                        style="color: #e7eaee;"></i>This Is Required</span>
 
 
                   </div>
@@ -153,7 +236,8 @@
                 </div>
                 <div class="col-4">
                   <label for="">City</label>
-                  <input type="text" name="city" class="form-control" [(ngModel)]="vendorobj.city" placeholder=" Enter City">
+                  <input type="text" name="city" class="form-control" [(ngModel)]="vendorobj.city"
+                    placeholder=" Enter City">
                 </div>
                 <div class="col-4">
                   <label for="">State</label>
@@ -236,14 +320,28 @@
 
               <div class="row text-center mt-3">
                 <div class="col-4">
-                  <button class="btn btn-secondary " (click)="reset()"> Reset</button>
+                  <p-toast position="bottom-center" key="bc"></p-toast>
+                  <button label="Reset" class="p-button" (click)="reset()" pButton pRipple type="button" style="padding: 7px 15px 10px 15px; color: #ffffff;
+                          "></button>
+                  <!-- <button class="btn btn-secondary " (click)="reset()"> Reset</button> -->
                 </div>
                 <div class="col-4">
-                  <button class="btn btn-success " *ngIf="vendorobj.vendorId == 0" (click)="onSavevendors()"
+                  <p-toast position="bottom-center" key="bc"></p-toast>
+                  <button label="Save" class="p-button-success" pButton pRipple type="button"
+                    *ngIf="vendorobj.vendorId == 0" (click)="onSavevendors()" style="padding: 7px 15px 10px 15px; color: #ffffff;
+                      background: #198754;
+                      border: 1px solid #146c43;"><span *ngIf="isapicalload"
+                      class="spinner-border spinner-border-sm"></span></button>
+                  <!-- <button class="btn btn-success " *ngIf="vendorobj.vendorId == 0" (click)="onSavevendors()"
                     [disabled]="form.invalid">
-                    <span *ngIf="isapicalload" class="spinner-border spinner-border-sm"></span>Save </button>
-                  <button class="btn btn-success " *ngIf="vendorobj.vendorId!== 0" (click)="onupdatevendors()">update
-                  </button>
+                    <span *ngIf="isapicalload" class="spinner-border spinner-border-sm"></span>Save </button> -->
+
+                  <p-toast position="bottom-center" key="bc"></p-toast>
+                  <button label="Update" class="p-button-warning" pButton pRipple type="button"
+                    *ngIf="vendorobj.vendorId!== 0" (click)="onupdatevendors()" style="padding: 7px 15px 10px 15px; color: #ffffff;
+                      "></button>
+                  <!-- <button class="btn btn-success " *ngIf="vendorobj.vendorId!== 0" (click)="onupdatevendors()">update
+                  </button> -->
 
                 </div>
               </div>
@@ -256,3 +354,5 @@
     </div>
   </div>
 </div>
+<p-toast></p-toast>
+<p-table></p-table>

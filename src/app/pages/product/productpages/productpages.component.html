@@ -29,7 +29,7 @@
             </div>
             <div class="col-6">
               <label for=""><b>Select ProductID</b></label>
-              <select class="form-control form-select"  name="productId" id="" [(ngModel)]="productobj.productId">
+              <select class="form-control form-select" name="productId" id="" [(ngModel)]="productobj.productId">
                 <option [value]="productid.productId" *ngFor="let productid of prductid">{{productid.shortName}}
                 </option>
               </select>
@@ -43,7 +43,7 @@
               </div>
               <div class="col-6">
                 <label for="">Active </label>
-                <input type="checkbox" [(ngModel)]="productobj.IsThumbnailImage"  name="" id="">
+                <input type="checkbox" [(ngModel)]="productobj.IsThumbnailImage" name="" id="">
               </div>
             </div>
 
@@ -52,7 +52,12 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary" (click)="savechanges()">Save changes</button>
+          <p-toast position="bottom-center" key="bc"></p-toast>
+          <button label="Save changes" class="p-button-primary" pButton pRipple type="button" (click)="savechanges()"
+            style="padding: 7px 15px 10px 15px; color: #ffffff;
+                      background: #198754;
+                      border: 1px solid #146c43;"></button>
+          <!-- <button type="button" class="btn btn-primary" (click)="savechanges()">Save changes</button> -->
         </div>
       </div>
     </div>
@@ -87,4 +92,4 @@
       </div>
     </div>
   </div>
-
+  <p-toast></p-toast>

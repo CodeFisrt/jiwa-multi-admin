@@ -40,11 +40,14 @@
 
 
             <div class="wthree-field">
-
-              <button class="btn btn-primary" type="button" (click)="checkLoginDetails()">
+              <p-toast position="bottom-center" key="bc"></p-toast>
+              <button label="LOGIN" class="p-button" pButton pRipple type="button" (click)="checkLoginDetails()">
                 <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="loader"></span>
-                LOGIN
+
               </button>
+
+              <!-- <p-toast position="bottom-center" key="bc"></p-toast>
+              <button type="button" pButton pRipple (click)="show()" label="Show" class="p-button-success"></button>-->
             </div>
 
             <ul class="list-login">
@@ -73,7 +76,5 @@
         </div>
       </div>
     </div>
-
-
   </div>
 </section>
