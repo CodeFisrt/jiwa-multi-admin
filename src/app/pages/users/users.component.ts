@@ -56,17 +56,27 @@ export class UsersComponent {
   }
 
   userdelete(id: number) {
-    const isConfirm = confirm("Are you want to delete");
-    if (isConfirm) {
-      this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/DeleteUserById?userid=" + id).subscribe((res: any) => {
-        if (res.result) {
-          alert("user delete succcessfully");
+    // const isConfirm = confirm("Are you want to delete");
+    // if (isConfirm) {
+    //   this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/DeleteUserById?userid=" + id).subscribe((res: any) => {
+    //     if (res.result) {
+    //       alert("user delete succcessfully");
+    //       this.getAllUsers();
+    //     } else {
+    //       alert(res.message)
+    //     }
+    //   })
+    // }
+    this.confirmService.confirm({
+      message: "Are You Sure You want to delete?",
+      accept:()=>{
+        this.msgService.add({ key: "bc", severity: 'error', summary: 'Not saved', detail: 'Delivery pincode not updated', life: 1000 });
+        this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/DeleteUserById?userid=" +id).subscribe((res:any)=>{
           this.getAllUsers();
-        } else {
-          alert(res.message)
-        }
-      })
-    }
+        })
+      }
+      
+    })
   }
 
   updateuser() {

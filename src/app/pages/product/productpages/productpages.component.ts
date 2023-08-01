@@ -72,21 +72,15 @@ export class ProductpagesComponent implements OnInit {
     })
   }
   changefile(event: any) {
-    debugger
-    if (event.target.files.length > 0) {
+    debugger;
+   if (event.target.files.length > 0) {
       const file = event.target.files[0];
-      if (file.type == 'image/png' || file.type == 'image/jpeg') {
-        const formdata = new FormData();
-        formdata.append('file', file);
-        this.https.post("https://storeapi.gerasim.in/api/Customer/Upload", formdata).subscribe((res: any) => {
-          debugger;
-          this.productobj.ImageUrl = res;
-        });
-      }
-      else {
-        this.msgService.add({ key: "bc", severity: 'info', detail: 'Please select png or jpeg', life: 1000 });
-        //alert("please select png or jpeg ")
-      }
+      const formData = new FormData();
+      formData.append('file', file);
+      this.https.post('https://storeapi.gerasim.in/api/Customer/Upload', formData).subscribe((res: any) => {
+        this.productobj.imageUrl = res;
+      })
     }
   }
-}
+  }
+

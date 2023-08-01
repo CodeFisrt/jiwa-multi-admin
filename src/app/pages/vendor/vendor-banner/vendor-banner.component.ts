@@ -48,15 +48,25 @@ export class VendorBannerComponent implements OnInit {
   }
 
   onDelete(id: number) {
-    this.BannerList.splice(id - 0, 1)
-    const isYes = confirm("Are You Sure want To Delete");
-    if (isYes) {
-      this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/DeleteBannerById?id=" + id).subscribe((result: any) => {
-        this.getBannerImage();
+    // this.BannerList.splice(id - 0, 1)
+    // const isYes = confirm("Are You Sure want To Delete");
+    // if (isYes) {
+    //   this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/DeleteBannerById?id=" + id).subscribe((result: any) => {
+    //     this.getBannerImage();
 
-      })
-    }
+    //   })
+    // }
 
+    this.confirmService.confirm({
+      message: "Are You Sure You want to delete?",
+      accept:()=>{
+        this.BannerList.splice(id - 0, 1)
+          this.msgService.add({ key: "bc", severity: 'error', summary: 'Not saved', detail: 'Delivery pincode not updated', life: 1000 });
+          this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/DeleteBannerById?id=" + id).subscribe((result: any) => {
+            this.getBannerImage();
+          })
+      }
+    })
   }
 
   onChangeFile(event: any) {
@@ -69,7 +79,4 @@ export class VendorBannerComponent implements OnInit {
       })
     }
   }
-
-
-
 }
