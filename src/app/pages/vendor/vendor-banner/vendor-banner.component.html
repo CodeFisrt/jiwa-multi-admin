@@ -1,5 +1,5 @@
-<button type="button" class="btn btn-primary mt-5" data-bs-toggle="modal" data-bs-target="#exampleModal"
-  data-bs-whatever="@mdo">
+<button type="button" class="btn btn-primary mt-5" style="padding: 7px 15px 10px 15px; color: #ffffff;"
+  data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">
   Banner Image
 </button>
 
@@ -16,21 +16,21 @@
 
             <div class="col-6">
               <label for="">Order No</label>
-              <input type="id" name="OrderNo" class="form-control"  [ngModel]="Bannerobj.OrderNo" />
+              <input type="id" name="OrderNo" class="form-control" [ngModel]="Bannerobj.OrderNo" />
             </div>
           </div>
           <div class="row">
             <div class="col-6">
               <label for="">Is Active</label>
-              <input type="checkbox" name="IsActive" id=""   [ngModel]="Bannerobj.IsActive"/>
+              <input type="checkbox" name="IsActive" id="" [ngModel]="Bannerobj.IsActive" />
             </div>
 
           </div>
           <div class="row">
             <div class="col-8 mt-4 ">
               <div class="div">
-                <input type="file"  name="BannerImageUrl "(change)="onChangeFile($event)" [ngModel]="Bannerobj.BannerImageUrl"
-                  class="form-control" />
+                <input type="file" name="BannerImageUrl " (change)="onChangeFile($event)"
+                  [ngModel]="Bannerobj.BannerImageUrl" class="form-control" />
               </div>
             </div>
           </div>
@@ -38,12 +38,17 @@
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+        <button type="button" class="btn btn-secondary" style="padding: 7px 15px 10px 15px; color: #ffffff;"
+          data-bs-dismiss="modal">
           Close
         </button>
-        <button class="btn btn-primary  mb-2" (click)="onAdd()">
+        <p-toast position="bottom-center" key="bc"></p-toast>
+        <button label="Add" class="p-button-primary" pButton pRipple type="button" (click)="onAdd()" style="padding: 7px 15px 10px 15px; color: #ffffff;
+                      background: #198754;
+                      border: 1px solid #146c43;"></button>
+        <!-- <button class="btn btn-primary  mb-2" (click)="onAdd()">
           Add
-        </button>
+        </button> -->
       </div>
     </div>
   </div>
@@ -68,3 +73,4 @@
     </div>
   </div>
 </div>
+<p-toast></p-toast>

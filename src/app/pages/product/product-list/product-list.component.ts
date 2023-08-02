@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { AllServiceService } from 'src/app/service/all-service.service';
+
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -13,8 +16,11 @@ export class ProductListComponent {
   cardview: boolean = true;
   cardviewtoggle: boolean = false;
   cardmsg: boolean = true;
-
-  constructor(private http: HttpClient, private router: Router, private activateRoute: ActivatedRoute) {
+  constructor(private http: HttpClient,
+     private allservice: AllServiceService, 
+     private msgService: MessageService, 
+     private confirmService: ConfirmationService,
+     private router: Router) {
     this.getallproduct();
   }
 

@@ -4,6 +4,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ButtonModule } from 'primeng/button';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { TableModule } from 'primeng/table';
+
 import { LoginComponent } from './pages/login/login.component';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { UsersComponent } from './pages/users/users.component';
@@ -23,10 +29,17 @@ import { VendorlistComponent } from './pages/vendor/vendorlist/vendorlist.compon
 import { VendorBannerComponent } from './pages/vendor/vendor-banner/vendor-banner.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ProductListComponent } from './pages/product/product-list/product-list.component';
+
+
 import { ProductreviewComponent } from './pages/product/productreview/productreview.component';
 import { ProductFormComponent } from './pages/product/product-form/product-form.component';
 import { ProductParentPageComponent } from './pages/product/product-parent-page/product-parent-page.component';
- 
+import { ProductpagesComponent } from './pages/product/productpages/productpages.component';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -53,7 +66,9 @@ import { ProductParentPageComponent } from './pages/product/product-parent-page/
     ProductreviewComponent,
     ProductFormComponent,
     ProductreviewComponent,
-    ProductParentPageComponent
+    ProductParentPageComponent,
+    ProductpagesComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -61,8 +76,14 @@ import { ProductParentPageComponent } from './pages/product/product-parent-page/
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    ToastModule,
+    BrowserAnimationsModule,
+    ButtonModule,
+    ConfirmDialogModule,
+    AngularEditorModule,
+    TableModule
   ],
-  providers: [],
+  providers: [ConfirmationService, MessageService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

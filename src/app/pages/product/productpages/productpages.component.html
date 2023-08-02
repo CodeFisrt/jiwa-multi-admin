@@ -1,0 +1,94 @@
+<div class="row">
+  <div class="col-12">
+    <div class="d-flex mt-3 rounded-3"
+      style="background-image: linear-gradient(to right, rgb(242, 112, 156), rgb(255, 148, 114));">
+      <div class="p-2 flex-grow-1">
+        <h4 class="text-decoration-underline">product images</h4>
+      </div>
+      <div class="p-2">
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          <i class="fa-solid fa-plus fa-sm" style="color: #ffffff;"></i> Add Product
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-info">
+          <h6 class="fs-5 fw-semibold ">Add Product</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body bg-body-tertiary">
+          <div class="row">
+            <div class="col-6">
+              <form action="">
+                <label for=""><b>Select Product</b></label>
+                <input class="form-control" type="file" (change)="changefile($event)">
+              </form>
+            </div>
+            <div class="col-6">
+              <label for=""><b>Select ProductID</b></label>
+              <select class="form-control form-select" name="productId" id="" [(ngModel)]="productobj.productId">
+                <option [value]="productid.productId" *ngFor="let productid of prductid">{{productid.shortName}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="row">
+              <div class="col-6">
+                <label for="">Enter Order No</label>
+                <input type="text" class="form-control" [(ngModel)]="productobj.OrderNo" name="" id="">
+              </div>
+              <div class="col-6">
+                <label for="">Active </label>
+                <input type="checkbox" [(ngModel)]="productobj.IsThumbnailImage" name="" id="">
+              </div>
+            </div>
+
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <p-toast position="bottom-center" key="bc"></p-toast>
+          <button label="Save changes" class="p-button-primary" pButton pRipple type="button" (click)="savechanges()"
+            style="padding: 7px 15px 10px 15px; color: #ffffff;
+                      background: #198754;
+                      border: 1px solid #146c43;"></button>
+          <!-- <button type="button" class="btn btn-primary" (click)="savechanges()">Save changes</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12  mt-3">
+        <div class="row">
+          <div class="col-3 d-flex justify-content-center align-items-center mt-3" *ngFor="let card of productimages">
+            <div class="card shadow " style="width: 18rem;">
+              <div class="card-body text-center">
+               <img class="img-fluid" style="height:150px;" [src]="
+              'http://storeapi.gerasim.in/customer/' + card.imageUrl" alt="" />
+                <div class="d-flex">
+                  <div class="p-2 fw-semibold flex-fill">{{card.shortName}}</div>
+                  <div class="p-2 fw-semibold flex-fill">{{card.productBasePrice | currency:'INR'}}</div>
+                </div>
+                <h4 class="fw-bolder"></h4>
+                <div class="d-flex">
+                  <div class="p-2 flex-fill"> <button class="btn text-end" (click)="eidtproduct(card.productId)"><i
+                        class="fa-solid fa-user-pen fa-xl" style="color: #0c5a0e;"></i></button></div>
+
+                  <div class="p-2 flex-fill"><button (click)="deletecard(card.productImageId)" class="btn text-end"><i
+                        class="fa-solid fa-trash fa-xl" style="color: #eb0000;"></i></button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p-toast></p-toast>

@@ -1,1 +1,152 @@
-<p>varients works!</p>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <button class="btn btn-sm btn-success" (click)="isNewDiv = !isNewDiv">
+        Add
+      </button>
+    </div>
+  </div>
+  <div class="row" *ngIf="isNewDiv">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header bg-success">
+          <b>Product Delivery Location</b>
+        </div>
+
+        <div class="card-body">
+          <div class="row">
+            <div class="col-7">
+              <div class="row">
+                <div class="col-6">
+                  <label for="">Product Name</label>
+                  <select class="form-control" name="product" [(ngModel)]="ProductObj.productId">
+                    <option value="">Select</option>
+                    <option *ngFor="let pro of productId" [value]="pro.productId">
+                      {{ pro.shortName }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-4">
+                  <label for="">Varient Name</label>
+                  <input type="text" class="form-control" placeholder="VarientName" name="varient"
+                    [(ngModel)]="ProductObj.varientName" />
+                </div>
+                <div class="col-4">
+                  <label for="">Varient Price</label>
+                  <input type="text" class="form-control" placeholder="VarientPrice"
+                    [(ngModel)]="ProductObj.varientPrice" />
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-4">
+                  <label for="">Is Active</label>
+                  <input type="checkbox" name="IsActive" [(ngModel)]="ProductObj.isActive" />
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-2">
+                  <button class="btn btn-sm btn-success" *ngIf="ProductObj.productVarientId == 0" (click)="onSave()">
+                    Save
+                  </button>
+                  <button class="btn btn-sm btn-success" *ngIf="ProductObj.productVarientId !== 0" (click)="onUpdate()">
+                    Update
+                  </button>
+                </div>
+                <div class="col-2">
+                  <button class="btn btn-sm btn-danger" (click)="OnDelete(ProductObj.productVarientId)">
+                    Delete
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="row mt-3">
+                <div class="col-4">
+                  <label for="">SpecificationKey</label>
+                  <input type="text" class="form-control" placeholder="Specification"
+                    [(ngModel)]="SpecsObj.specificationKey" />
+                </div>
+                <div class="col-4">
+                  <label for="">SpecificationValue</label>
+                  <input type="text" class="form-control" placeholder="Value"
+                    [(ngModel)]="SpecsObj.specificationValue" />
+                </div>
+                <div class="col-4 mt-4">
+                  <div class="DIV">
+                    <button class="btn btn-sm btn-primary" (click)="onAdd()">
+                      ADD
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-3">
+                <div class="col-4">
+                  <label for="">Is Active</label>
+                  <input type="checkbox" name="IsActive" [(ngModel)]="SpecsObj.isActive" />
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-12">
+                  <table class="table table-bordered table-hover">
+                    <thead>
+                      <tr class="text-center">
+                        <th>Specification</th>
+                        <th>SpecificationValue</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="text-center" *ngFor="let product of ProductList">
+                        <td>{{ product.specificationKey }}</td>
+                        <td>{{ product.specificationValue }}</td>
+                        <td>
+                          <button class="btn btn-sm btn-danger" (click)="DeleteSpecs()">Delete</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngIf="!isNewDiv">
+    <div class="col-12">
+      <table class="table table-bordered" style="
+          background-image: linear-gradient(
+            to right,
+            rgb(242, 112, 156),
+            rgb(255, 148, 114)
+          );
+        ">
+        <thead>
+          <tr class="text-center">
+            <th>Sr No</th>
+            <th>Varient Name</th>
+            <th>Varient Price</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="text-center" *ngFor="let varient of VarientList; let index = index">
+            <td>{{ index + 1 }}</td>
+            <td>{{ varient.varientName }}</td>
+            <td>{{ varient.varientPrice }}</td>
+            <td>
+              <button class="btn btn-sm btn-primary" (click)="getEmployee(varient.productVarientId)">
+                Edit
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

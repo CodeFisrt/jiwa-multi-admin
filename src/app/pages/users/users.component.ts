@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { AllServiceService } from 'src/app/service/all-service.service';
+
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-users',
@@ -32,7 +36,7 @@ export class UsersComponent {
       "createdBy": 0
     }
   }
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router, private allservice: AllServiceService, private msgService: MessageService, private confirmService: ConfirmationService) {
     this.getAllUsers();
     this.loadAllVendor();
   }
@@ -52,26 +56,38 @@ export class UsersComponent {
   }
 
   userdelete(id: number) {
-    const isConfirm = confirm("Are you want to delete");
-    if (isConfirm) {
-      this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/DeleteUserById?userid=" + id).subscribe((res: any) => {
-        if (res.result) {
-          alert("user delete succcessfully");
+    // const isConfirm = confirm("Are you want to delete");
+    // if (isConfirm) {
+    //   this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/DeleteUserById?userid=" + id).subscribe((res: any) => {
+    //     if (res.result) {
+    //       alert("user delete succcessfully");
+    //       this.getAllUsers();
+    //     } else {
+    //       alert(res.message)
+    //     }
+    //   })
+    // }
+    this.confirmService.confirm({
+      message: "Are You Sure You want to delete?",
+      accept:()=>{
+        this.msgService.add({ key: "bc", severity: 'error', summary: 'Not saved', detail: 'Delivery pincode not updated', life: 1000 });
+        this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/DeleteUserById?userid=" +id).subscribe((res:any)=>{
           this.getAllUsers();
-        } else {
-          alert(res.message)
-        }
-      })
-    }
+        })
+      }
+      
+    })
   }
 
   updateuser() {
     this.http.post('http://onlinetestapi.gerasim.in/api/Aqua/UpdateVendorUser', this.userObj).subscribe((res: any) => {
       if (res.result) {
-        alert("user updated successfully");
+        this.msgService.add({ key: "bc", severity: 'success', summary: 'Success', detail: 'User updated successfully', life: 1000 });
+        //alert("user updated successfully");
         this.getAllUsers();
       } else {
-        alert(res.message)
+        this.msgService.add({ key: "bc", severity: 'error', summary: 'Not updated', detail: 'User not updated', life: 1000 });
+        //alert(res.message)
       }
     });
   }
@@ -81,10 +97,12 @@ export class UsersComponent {
       this.http.post("http://onlinetestapi.gerasim.in/api/Aqua/CreateVendorUser", this.userObj).subscribe((res: any) => {
         this.isapicalload = false;
         if (res.result) {
-          alert("user created successfully");
+          this.msgService.add({ key: "bc", severity: 'success', summary: 'Success', detail: 'User created successfully', life: 1000 });
+          //alert("user created successfully");
           this.getAllUsers();
         } else {
-          alert(res.message)
+          this.msgService.add({ key: "bc", severity: 'error', summary: 'Not updated', detail: 'User not created', life: 1000 });
+          //alert(res.message)
         }
 
       })

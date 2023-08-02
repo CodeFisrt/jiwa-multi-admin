@@ -17,7 +17,7 @@
               <h5 class="text">Category</h5>
             </div>
             <div class="card-body">
-              <table class="table table-hover">
+              <!-- <table class="table table-hover">
                 <thead>
                   <tr>
                     <th>Sr No</th>
@@ -30,9 +30,7 @@
                 </thead>
                 <tbody>
                   <ng-container *ngIf="!pagespinnger">
-                    <tr
-                      *ngFor="let categories of categoryArray; let sr = index"
-                    >
+                    <tr *ngFor="let categories of categoryArray; let sr = index">
                       <td>{{ sr + 1 }}</td>
                       <td>{{ categories.categoryName }}</td>
                       <td>{{ categories.bannerImage }}</td>
@@ -41,14 +39,12 @@
                         <span *ngIf="categories.isActive">Active</span>
                         <span *ngIf="!categories.isActive">De-Active</span>
                       </td>
-                      <i
-                        class="fa fa-edit text-success"
-                        (click)="editCategory(categories.categoryId)"
-                      ></i>
-                      <i
-                        class="fa fa-trash text-danger"
-                        (click)="deleteCategory(categories.categoryId)"
-                      ></i>
+                      <p-toast position="bottom-center" key="bc"></p-toast>
+                      <button class="p-button" pButton type="button"><i class="fa fa-edit text-success"
+                          (click)="editCategory(categories.categoryId)"></i></button>
+
+                      <i class="fa fa-edit text-success" (click)="editCategory(categories.categoryId)"></i> 
+                      <i class="fa fa-trash text-danger" (click)="deleteCategory(categories.categoryId)"></i>
                     </tr>
                   </ng-container>
                   <ng-container *ngIf="pagespinnger">
@@ -67,7 +63,71 @@
                     </tr>
                   </ng-container>
                 </tbody>
-              </table>
+              </table> -->
+              <p-table [value]="categoryArray" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+                [tableStyle]="{ 'min-width': '50rem' }"
+                currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+                [rowsPerPageOptions]="[10, 25, 50]">
+                <ng-template pTemplate="header">
+                  <tr>
+                    <th>Sr No</th>
+                    <th>Category Name</th>
+                    <th>Banner Image</th>
+                    <th>Thumbnail Image</th>
+                    <th>IsActive</th>
+                    <th>Action</th>
+                  </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-customer>
+                  <ng-container *ngIf="!pagespinnger">
+                    <tr *ngFor="let categories of categoryArray; let sr = index">
+                      <td>{{ sr + 1 }}</td>
+                      <td>{{ categories.categoryName }}</td>
+                      <td>{{ categories.bannerImage }}</td>
+                      <td>{{ categories.thumbnailImage }}</td>
+                      <td>
+                        <span *ngIf="categories.isActive">Active</span>
+                        <span *ngIf="!categories.isActive">De-Active</span>
+                      </td>
+
+                      <button class="p-button-success" pButton type="button" style="    color: #fff;
+                      padding: 10px 10px;
+                      margin: 5px 2px;"><i class="fa fa-edit "
+                          (click)="editCategory(categories.categoryId)"></i></button>
+
+                      <button class="p-button-danger" pButton type="button" style="    color: #fff;
+                      padding: 10px 10px;
+                      margin: 5px 2px;"><i class="fa-regular fa-trash-can"
+                          (click)=" deleteCategory(categories.categoryId)"></i></button>
+
+                      <td>
+
+                      </td>
+                    </tr>
+                  </ng-container>
+                  <ng-container *ngIf="pagespinnger">
+                    <tr>
+                      <td colspan="8">
+                        <div class="spinner-grow text-muted"></div>
+                        <div class="spinner-grow text-primary"></div>
+                        <div class="spinner-grow text-success"></div>
+                        <div class="spinner-grow text-info"></div>
+                        <div class="spinner-grow text-warning"></div>
+                        <div class="spinner-grow text-danger"></div>
+                        <div class="spinner-grow text-secondary"></div>
+                        <div class="spinner-grow text-dark"></div>
+                        <div class="spinner-grow text-light"></div>
+                      </td>
+                    </tr>
+                  </ng-container>
+                </ng-template>
+                <ng-template pTemplate="paginatorleft">
+                  <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+                </ng-template>
+                <ng-template pTemplate="paginatorright">
+                  <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+                </ng-template>
+              </p-table>
             </div>
           </div>
         </div>
@@ -80,31 +140,17 @@
               <div class="row">
                 <div class="col-6 ps-0">
                   <label for="">Category Name</label>
-                  <input
-                    type="text"
-                    name="categoryName"
-                    class="form-control"
-                    [(ngModel)]="categoryObj.categoryName"
-                    placeholder="Enter Category Name"
-                  />
+                  <input type="text" name="categoryName" class="form-control" [(ngModel)]="categoryObj.categoryName"
+                    placeholder="Enter Category Name" />
                 </div>
                 <div class="col-6">
                   <label for="">Category Description</label>
-                  <input
-                    type="text"
-                    name="CategoryDescription"
-                    class="form-control"
-                    [(ngModel)]="categoryObj.categoryDescription"
-                    placeholder="Category Description"
-                  />
+                  <input type="text" name="CategoryDescription" class="form-control"
+                    [(ngModel)]="categoryObj.categoryDescription" placeholder="Category Description" />
                 </div>
                 <div class="col-6 ps-0 pt-4">
                   <label for="">Banner Image</label>
-                  <input
-                    type="file"
-                    (change)="onChangeFile($event)"
-                    name="bannerImage"
-                  />
+                  <input type="file" (change)="onChangeFile($event)" name="bannerImage" />
                 </div>
                 <div class="col-12 ps-0 pt-4">
                   <label for="">Thumbnail Image</label>
@@ -112,12 +158,7 @@
                 </div>
                 <div class="col-6 ps-0 p-3">
                   <label for="">IsActive</label>
-                  <input
-                    type="checkbox"
-                    class="ms-3 mt-2"
-                    name="isActive"
-                    [(ngModel)]="categoryObj.isActive"
-                  />
+                  <input type="checkbox" class="ms-3 mt-2" name="isActive" [(ngModel)]="categoryObj.isActive" />
                 </div>
                 <div class="row">
                   <div class="col-6 text-center">
@@ -126,18 +167,10 @@
                     </button>
                   </div>
                   <div class="col-6">
-                    <button
-                      class="btn btn-success"
-                      *ngIf="categoryObj.categoryId == 0"
-                      (click)="onSavecategory()"
-                    >
+                    <button class="btn btn-success" *ngIf="categoryObj.categoryId == 0" (click)="onSavecategory()">
                       Save
                     </button>
-                    <button
-                      class="btn btn-warning"
-                      *ngIf="categoryObj.categoryId != 0"
-                      (click)="updateCategory()"
-                    >
+                    <button class="btn btn-warning" *ngIf="categoryObj.categoryId != 0" (click)="updateCategory()">
                       Update
                     </button>
                   </div>
@@ -153,25 +186,16 @@
   <div class="row">
     <div class="col-12 mt-3" *ngIf="cardviewtoggle">
       <div class="row">
-        <div
-          class="col-3 d-flex justify-content-center align-items-center mt-3"
-          *ngFor="let card of categoryArray"
-        >
+        <div class="col-3 d-flex justify-content-center align-items-center mt-3" *ngFor="let card of categoryArray">
           <div class="card shadow" style="width: 18rem">
             <div class="card-header">
-              <h5
-                class="fw-bolder text-danger-emphasis text-decoration-underline"
-              >
+              <h5 class="fw-bolder text-danger-emphasis text-decoration-underline">
                 {{ card.shortName }}
               </h5>
             </div>
             <div class="card-body text-center">
-              <img
-                alt="Card image"
-                class="card-img-top"
-                height="150px"
-                src="http://storeapi.gerasim.in/customer/{{ card.bannerImage }}"
-              />
+              <img alt="Card image" class="card-img-top" height="150px"
+                src="http://storeapi.gerasim.in/customer/{{ card.bannerImage }}" />
               <b class="text-danger fs-6">Category Name</b>
               <h4 class="fw-bolder text-decoration-underline">
                 {{ card.categoryName }}
@@ -182,7 +206,7 @@
         </div>
       </div>
     </div>
-      
   </div>
 </div>
-<!-- s -->
+<p-toast></p-toast>
+<p-table></p-table>

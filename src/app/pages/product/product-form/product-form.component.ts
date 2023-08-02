@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input } from '@angular/core';
+import { AngularEditorConfig } from '@kolkov/angular-editor';
 
 @Component({
   selector: 'app-product-form',
@@ -95,4 +96,23 @@ export class ProductFormComponent {
     this.productObj.searchKeyWords = "";
     this.productObj.thumbnailImageUrl = "";
   }
+
+        // Editor
+ editorConfig: AngularEditorConfig = {
+  editable: true,
+    spellcheck: true,
+    height: 'auto',
+    minHeight: '0',
+    maxHeight: 'auto',
+    width: 'auto',
+    minWidth: '0',
+    translate: 'yes',
+    enableToolbar: true,
+    showToolbar: true,
+    placeholder: 'Enter text here...',
+    defaultParagraphSeparator: '',
+    defaultFontName: '',
+    defaultFontSize: '',
+ }
+
 }

@@ -9,7 +9,7 @@
           );
         ">
         <div class="p-2 flex-grow-1">
-          <h4>Product's</h4>
+          <h4>Products</h4>
         </div>
         <div class="p-2">
           <button class="btn btn-success text-white text-dark" (click)="cardtoggle()">
@@ -17,9 +17,13 @@
           </button>
         </div>
         <div class="p-2">
-          <button routerLink="/productList" class="btn btn-success text-white text-dark">
+          <p-toast position="bottom-center" key="bc"></p-toast>
+          <button label="Add Product" class="p-button-success" pButton pRipple type="button" style="padding: 5px 15px 6px 15px; color: #ffffff;
+                      background: #198754;
+                      border: 1px solid #146c43;"> <i class="fa-solid fa-plus" style="color: #f7f7f7"></i></button>
+          <!-- <button class="btn btn-success text-white text-dark">
             <i class="fa-solid fa-plus" style="color: #f7f7f7"></i> Add Product
-          </button>
+          </button> -->
         </div>
       </div>
     </div>
@@ -28,7 +32,7 @@
     <div class="col-12" *ngIf="cardview">
       <div class="card">
         <div class="card-body text-center">
-          <table class="table table-hover">
+          <!-- <table class="table table-hover">
             <thead>
               <tr>
                 <th>Sr No</th>
@@ -55,8 +59,8 @@
                         style="font-size: 20px; color: red"></i></span>
                   </td>
                   <td>
-                    <button class="btn" (click)="editProduct(product.productId)">
-                      <i class="fa-solid fa-user-pen fa-lg" style="color: #005eff"> </i>
+                    <button class="btn">
+                      <i class="fa-solid fa-user-pen fa-lg" style="color: #005eff"></i>
                     </button>
                     <button class="btn">
                       <i class="fa-sharp fa-solid fa-trash fa-lg" style="color: #ff0000"></i>
@@ -80,7 +84,70 @@
                 </tr>
               </ng-container>
             </tbody>
-          </table>
+          </table> -->
+
+          <p-table [value]="myproduct" [paginator]="true" [rows]="10" [showCurrentPageReport]="true"
+            [tableStyle]="{ 'min-width': '50rem' }"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [rowsPerPageOptions]="[10, 25, 50]">
+            <ng-template pTemplate="header">
+              <tr>
+                <th>Sr No</th>
+                <th>Name</th>
+                <th>SKU</th>
+                <th>vendor Name</th>
+                <th>Price</th>
+                <th>Available</th>
+                <th>Action</th>
+              </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-customer>
+              <ng-container *ngIf="!pagespinnger">
+                <tr *ngFor="let product of myproduct; let srno = index">
+                  <td>{{ srno + 1 }}</td>
+                  <td>{{ product.shortName }}</td>
+                  <td>{{ product.sku }}</td>
+                  <td>{{ product.vendorName }}</td>
+                  <td>{{ product.productBasePrice }}</td>
+                  <td>
+                    <span *ngIf="product.isStockAvailable"><i class="fa fa-check-square"
+                        style="font-size: 20px; color: green"></i></span>
+                    <span *ngIf="!product.isStockAvailable"><i class="fa fa-times-circle"
+                        style="font-size: 20px; color: red"></i></span>
+                  </td>
+                  <td>
+                    <button class="btn">
+                      <i class="fa-solid fa-user-pen fa-lg" style="color: #005eff"></i>
+                    </button>
+                    <button class="btn">
+                      <i class="fa-sharp fa-solid fa-trash fa-lg" style="color: #ff0000"></i>
+                    </button>
+                  </td>
+                </tr>
+              </ng-container>
+              <ng-container *ngIf="pagespinnger">
+                <tr>
+                  <td colspan="8">
+                    <div class="spinner-grow text-muted"></div>
+                    <div class="spinner-grow text-primary"></div>
+                    <div class="spinner-grow text-success"></div>
+                    <div class="spinner-grow text-info"></div>
+                    <div class="spinner-grow text-warning"></div>
+                    <div class="spinner-grow text-danger"></div>
+                    <div class="spinner-grow text-secondary"></div>
+                    <div class="spinner-grow text-dark"></div>
+                    <div class="spinner-grow text-light"></div>
+                  </td>
+                </tr>
+              </ng-container>
+            </ng-template>
+            <ng-template pTemplate="paginatorleft">
+              <p-button type="button" icon="pi pi-plus" styleClass="p-button-text"></p-button>
+            </ng-template>
+            <ng-template pTemplate="paginatorright">
+              <p-button type="button" icon="pi pi-cloud" styleClass="p-button-text"></p-button>
+            </ng-template>
+          </p-table>
         </div>
       </div>
     </div>
@@ -109,3 +176,5 @@
     </div>
   </div>
 </div>
+<p-toast></p-toast>
+<p-table></p-table>

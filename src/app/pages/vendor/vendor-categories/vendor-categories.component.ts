@@ -1,10 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { AllServiceService } from 'src/app/service/all-service.service';
+import { ConfirmationService, MessageService } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-vendor-categories',
   templateUrl: './vendor-categories.component.html',
-  styleUrls: ['./vendor-categories.component.css'],
+  styleUrls: ['./vendor-categories.component.css']
+
 })
 export class VendorCategoriesComponent {
   isFirstDiv: boolean = true;
@@ -45,7 +49,7 @@ export class VendorCategoriesComponent {
   cardview: boolean = true;
   pagespinnger: boolean = false;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router, private allservice: AllServiceService, private msgService: MessageService, private confirmService: ConfirmationService) {
     this.getcategory();
   }
 
@@ -86,10 +90,12 @@ export class VendorCategoriesComponent {
       )
       .subscribe((Res: any) => {
         if (Res.result) {
-          alert('Category Saved Success');
+          this.msgService.add({ key: "bc", severity: 'success', summary: 'Success', detail: 'Category saved successfully', life: 1000 });
+          // alert('Category Saved Success');
           this.getcategory();
         } else {
-          alert(Res.message);
+          this.msgService.add({ key: "bc", severity: 'error', summary: 'Not saved', detail: 'Category not saved', life: 1000 });
+          //alert(Res.message);
         }
       });
   }
@@ -100,6 +106,7 @@ export class VendorCategoriesComponent {
         this.categoryObj = res.data;
       });
   }
+
   updateCategory() {
     this.http
       .post(
@@ -108,24 +115,26 @@ export class VendorCategoriesComponent {
       )
       .subscribe((Res: any) => {
         if (Res.result) {
-          alert('Category Update Success');
+          this.msgService.add({ key: "bc", severity: 'success', summary: 'Success', detail: 'Category updated successfully', life: 1000 });
+          //alert('Category Update Success');
           this.getcategory();
         } else {
-          alert(Res.message);
+          this.msgService.add({ key: "bc", severity: 'error', summary: 'Not saved', detail: 'Category not updated', life: 1000 });
+          // alert(Res.message);
         }
       });
   }
   deleteCategory(id: number) {
     const isConfirm = confirm('Are you want to delete');
     if (isConfirm) {
-      this.http.get('http://onlinetestapi.gerasim.in/api/Aqua/DeleteCategoryById?id=' +id,{}).subscribe((Res: any) => {
-          if (Res.result) {
-            alert('Category deleted Success');
-            this.getcategory();
-          } else {
-            alert(Res.message);
-          }
-        });
+      this.http.get('http://onlinetestapi.gerasim.in/api/Aqua/DeleteCategoryById?id=' + id, {}).subscribe((Res: any) => {
+        if (Res.result) {
+          alert('Category deleted Success');
+          this.getcategory();
+        } else {
+          alert(Res.message);
+        }
+      });
     }
   }
 
