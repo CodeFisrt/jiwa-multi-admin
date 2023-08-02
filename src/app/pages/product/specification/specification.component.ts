@@ -17,7 +17,13 @@ export class SpecificationComponent implements OnInit {
   editMode: boolean = false;
 
   specificationArray: SpecificationArray[] = [];
-  specification: SpecificationObjArray[] = []
+  specification: SpecificationObjArray[] = [{
+    productSpecificationId: 0,
+    productId: 0,
+    specificationKey: "",
+    specificationValue: "" ,
+    isActive: false
+  }];
 
 
   constructor(private productSrv: ProductService, private router: Router) { }

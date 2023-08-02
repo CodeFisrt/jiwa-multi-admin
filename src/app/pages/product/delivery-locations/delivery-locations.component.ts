@@ -15,8 +15,6 @@ import { ConfirmationService, MessageService } from 'primeng/api';
   providers: [MessageService]
 })
 export class DeliveryLocationsComponent {
-
-
   headerColor: boolean = true;
   showFirstDiv = true;
   showSecondDiv = false;

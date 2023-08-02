@@ -6,21 +6,21 @@
             <div class="col-3">
               <div class="form-group">
                 <label for="specificationKey">Specification Key</label>
-                <input type="text" name="specificationKey" class="form-control"
+                <input type="text" name="specification[0].specificationKey" class="form-control"
                   [(ngModel)]="specification[0].specificationKey">
               </div>
             </div>
             <div class="col-3">
               <div class="form-group">
                 <label for="specificationValue">Specification Value</label>
-                <input type="text" name="specificationValue" class="form-control"
+                <input type="text" name="specification[0].specificationValue" class="form-control"
                   [(ngModel)]="specification[0].specificationValue">
               </div>
             </div>
             <div class="col-1">
               <div class="form-group">
                 <label for="isActive">IsActive</label> <br>
-                <input type="checkbox" name="isActive" [(ngModel)]="specification[0].isActive">
+                <input type="checkbox" name="specification[0].isActive" [(ngModel)]="specification[0].isActive">
               </div>
             </div>
             <div class="col-2">

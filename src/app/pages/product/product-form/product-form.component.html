@@ -3,7 +3,7 @@
     <div class="col-8">
       <tr *ngFor="let prod of productArray"></tr>
     </div>
-    <div class="col-4">
+    <div class="col-12">
       <section>
         <form>
           <div class="href-target " id="input-types"></div>
@@ -21,36 +21,36 @@
           </h1>
           <div class="nice-form-group fw-bold">
             <label>Name</label>
-            <input type="text" placeholder="Enter name" value="" [(ngModel)]="productObj.fullName" />
+            <input type="text" placeholder="Enter name" name="productObj.fullName" [(ngModel)]="productObj.fullName" />
           </div>
 
           <div class="nice-form-group fw-bold">
             <label> Short Name</label>
-            <input type="text" placeholder="Short name" value="" [(ngModel)]="productObj.ShortName" />
+            <input type="text" placeholder="Short name" name="productObj.shortName" [(ngModel)]="productObj.ShortName" />
           </div>
           <div class="d-flex pt-2 fw-bold">
             <div class="">
               <label>Product Id</label> <br>
-              <select name="productId" class="form-control form-select" [(ngModel)]="productObj.productId">
+              <select name="productObj.productId" class="form-control form-select" [(ngModel)]="productObj.productId">
                 <option value="prod.productId" *ngFor="let prod of productArray">{{prod.productId}}</option>
               </select>
             </div>
             <div class="ms-4">
               <label>Vendor Id</label> <br>
-              <select name="vendorId" class="form-select form-control" [(ngModel)]="productObj.vendorId">
+              <select name="productObj.vendorId" class="form-select form-control" [(ngModel)]="productObj.vendorId">
                 <option value="prod.vendorId" *ngFor="let prod of productArray">{{prod.vendorId}}</option>
               </select>
             </div>
             <div class="ms-4">
               <label>Category Id</label> <br>
-              <select name="catId" class="form-select" [(ngModel)]="productObj.productCategoryId">
+              <select name="productCategoryId" class="form-select" [(ngModel)]="productObj.productCategoryId">
                 <option value="prod.productCategoryId" *ngFor="let prod of productArray">{{prod.productCategoryId}}
                 </option>
               </select>
             </div>
             <div class="ms-4">
               <label>Product Type</label> <br>
-              <select type="text" name="" [(ngModel)]="productObj.productType" class="form-control form-select">
+              <select type="text" name="productObj.productType" [(ngModel)]="productObj.productType" class="form-control form-select">
                 <option value="prod.ProductType" *ngFor="let prod  of productArray">{{prod.ProductType}}</option>
               </select>
             </div>
@@ -58,13 +58,13 @@
           <div class="d-flex pt-2 fw-bold">
             <div class="">
               <label>SKU</label> <br>
-              <input type="text" placeholder="sku" value="" [(ngModel)]="productObj.sku" />
+              <input type="text" name="productObj.sku" placeholder="sku" value="" [(ngModel)]="productObj.sku" />
             </div>
             <div class="ms-4">
               <fieldset class="nice-form-group ">
                 <div class="fw-bold">
                   <label for="check-1" class="me-1">Is Stock Available</label>
-                  <input type="checkbox" [(ngModel)]="productObj.isStockAvailable" id="check-1" />
+                  <input type="checkbox" name="productObj.isStockAvailable" [(ngModel)]="productObj.isStockAvailable" id="check-1" />
                 </div>
               </fieldset>
             </div>
@@ -72,11 +72,11 @@
           <div class="d-flex pt-2 fw-bold">
             <div class="">
               <label>Short Description</label> <br>
-              <input type="text" placeholder="" value="" [(ngModel)]="productObj.shortDescription" />
+              <input type="text" placeholder="" name="productObj.shortDescription" [(ngModel)]="productObj.shortDescription" />
             </div>
             <div class="ms-2">
               <label>Long Description</label> <br>
-              <angular-editor [placeholder]="'Enter text here...'" [(ngModel)]="productObj.longDescription"
+              <angular-editor [placeholder]="'Enter text here...'" name="productObj.longDescription" [(ngModel)]="productObj.longDescription"
                 [config]="editorConfig"></angular-editor>
             </div>
           </div>
@@ -87,48 +87,48 @@
           <div class="d-flex pt-2 fw-bold">
             <div class="">
               <label>ProductBasePrice</label> <br>
-              <input type="text" placeholder="" value="" [(ngModel)]="productObj.productBasePrice" />
+              <input type="text" placeholder=""name="productObj.productBasePrice" [(ngModel)]="productObj.productBasePrice" />
             </div>
             <div class="ms-2">
               <label>SearchKeyWords</label> <br>
-              <input type="search" placeholder="" value="" [(ngModel)]="productObj.SearchKeyWords" />
+              <input type="search" placeholder="" name="productObj.SearchKeyWords" [(ngModel)]="productObj.SearchKeyWords" />
             </div>
           </div>
 
           <div class="nice-form-group fw-bold">
             <label>Thumbnail Image Url</label>
-            <input type="url" placeholder="www.google.com" [(ngModel)]="productObj.thumbnailImageUrl" value="" />
+            <input type="url" placeholder="www.google.com" name="productObj.thumbnailImageUrl" [(ngModel)]="productObj.thumbnailImageUrl" value="" />
           </div>
 
           <div class="d-flex pt-2 fw-bold">
             <div class="">
               <label>Is Varient Available</label> <br>
-              <input type="text" placeholder="" value="" [(ngModel)]="productObj.isVarientAvailable" />
+              <input type="text" placeholder="" name="productObj.isVarientAvailable" [(ngModel)]="productObj.isVarientAvailable" />
             </div>
             <div class="ms-2">
               <label>Is Specification Available</label> <br>
-              <input type="text" placeholder="" value="" [(ngModel)]="productObj.isSpecificationAvailable" />
+              <input type="text" placeholder="" name="productObj.isSpecificationAvailable" [(ngModel)]="productObj.isSpecificationAvailable" />
             </div>
           </div>
           <div class="d-flex pt-2 fw-bold">
             <div class="">
               <label>Modified On</label> <br>
-              <input type="text" placeholder="" value="" [(ngModel)]="productObj.modifiedOn" />
+              <input type="text" placeholder="" name="productObj.modifiedOn" [(ngModel)]="productObj.modifiedOn" />
             </div>
             <div class="ms-2">
               <label>Modified By</label> <br>
-              <input type="search" placeholder="" value="" [(ngModel)]="productObj.modifiedBy" />
+              <input type="search" placeholder="" name="productObj.modifiedBy" [(ngModel)]="productObj.modifiedBy" />
             </div>
           </div>
 
           <div class="d-flex pt-2 fw-bold">
             <div class="">
               <label>Created On</label> <br>
-              <input type="text" placeholder="" value="" [(ngModel)]="productObj.createdOn" />
+              <input type="text" placeholder="" name="productObj.createdOn" [(ngModel)]="productObj.createdOn" />
             </div>
             <div class="ms-2">
               <label>Created By</label> <br>
-              <input type="search" placeholder="" value="" [(ngModel)]="productObj.createdBy" />
+              <input type="search" placeholder="" name="productObj.createdBy" [(ngModel)]="productObj.createdBy" />
             </div>
           </div>
           <div>

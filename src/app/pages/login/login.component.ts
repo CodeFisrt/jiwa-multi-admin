@@ -26,7 +26,7 @@ export class LoginComponent {
   }
 
   checkLoginDetails() {
-    debugger;
+    // debugger;
     this.loader = true;
     this.http.post("https://onlinetestapi.gerasim.in/api/Aqua/VendorLogin", this.loginObj).subscribe((res: any) => {
       if (res.result) {

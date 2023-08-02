@@ -139,7 +139,7 @@
           <div class="row">
             <div class="col-6">
               <label for="">Select customerId </label>
-              <select class="form-control" placeholder="Select customer name" [(ngModel)]="userObj.customerId">
+              <select class="form-control" placeholder="Select customer name" name=" userObj.customerId" [(ngModel)]="userObj.customerId">
                 <option *ngFor="let customer of customerArray" [value]="customer.customerId">{{ customer.firstName }}
                 </option>
               </select>
@@ -147,7 +147,7 @@
             <div class="col-6">
               <label for="">Select productId</label>
               <select class="form-control" placeholder="Select product" placeholder="Select product name"
-                [(ngModel)]="userObj.productId">
+                name=" userObj.productId" [(ngModel)]="userObj.productId">
                 <option *ngFor="let product of  productArray" [value]="product.productId">{{ product.shortName }}
                 </option>
               </select>
@@ -157,30 +157,30 @@
             <div class="col-6 p-3">
               <label for="">Created Date</label>
               <input type="date" name="createdDate" class="form-control" placeholder="Select Created Date"
-                [(ngModel)]="userObj.createdDate" placeholder="Enter User Role">
+                name=" userObj.createdDate" [(ngModel)]="userObj.createdDate" placeholder="Enter User Role">
             </div>
             <div class="col-6 p-3">
               <label for="">Review Title</label>
               <input type="text" name="reviewTitle" class="form-control" placeholder=" Enter Review Title"
-                [(ngModel)]="userObj.reviewTitle" placeholder="reviewTitle">
+                name=" userObj.reviewTitle" [(ngModel)]="userObj.reviewTitle" placeholder="reviewTitle">
             </div>
           </div>
           <div class="row">
             <div class="col-6 p-3">
               <label for="">Review</label>
               <input type="text" name="Enter Review" required class="form-control" placeholder=" Enter Review "
-                [(ngModel)]="userObj.review" placeholder="review">
+                name=" userObj.review" [(ngModel)]="userObj.review" placeholder="review">
             </div>
             <div class="col-6 p-3">
               <label for="">Product Rating</label>
               <input type="text" name="productRating" class="form-control" placeholder=" Enter Product Rating "
-                [(ngModel)]="userObj.productRating" placeholder="Enter productRating">
+                name=" userObj.productRating" [(ngModel)]="userObj.productRating" placeholder="Enter productRating">
             </div>
           </div>
           <div class="row">
             <div class="col-6 p-3">
               <label for="">ShowOn Website</label>
-              <input type="checkbox" name="showOnWebsite" [(ngModel)]="userObj.showOnWebsite"
+              <input type="checkbox" name="showOnWebsite" name=" userObj.showOnWebsite" [(ngModel)]="userObj.showOnWebsite"
                 placeholder="Enter showOnWebsite">
             </div>
           </div>
