@@ -1,13 +1,15 @@
 export interface ProductArray {
-    productId: 0,
-    shortName: '',
-    sku: '',
-    isVarientAvailable: false,
-    isSpecificationAvailable: false,
-    searchKeyWords: '',
-    vendorName: '',
-    thumbnailImageUrl: '',
+    productId: number,
+    shortName: string,
+    sku: string,
+    isVarientAvailable: Boolean,
+    isSpecificationAvailable: Boolean,
+    searchKeyWords: string,
+    vendorName: string,
+    thumbnailImageUrl: string,
     productBasePrice: number,
-    isStockAvailable: false
+    isStockAvailable: Boolean
 }
+
+
 

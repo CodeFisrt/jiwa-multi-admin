@@ -28,7 +28,7 @@ export class DeliveryLocationsComponent {
   ngOnInit(): void {
     this.getproductList();
 
-    //  this.getDeliveryLocations(this.deliveryObjarray[0].productId);
+    this.getDeliveryLocations(this.deliveryObjarray[0].productId);
   }
 
   getproductList() {

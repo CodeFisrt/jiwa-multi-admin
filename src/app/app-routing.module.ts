@@ -141,6 +141,10 @@ const routes: Routes = [
         component: ProductFormComponent
       },
       {
+        path:"editProduct/:id",
+        component:ProductParentPageComponent
+      },
+      {
         path:"product-page",
         component:ProductParentPageComponent
       }

@@ -1,29 +1,29 @@
 <div class="row">
     <div class="col-12">
         <div class="btn-group btn-group-lg">
-            <button type="button" class="btn btn-primary">Basic Details</button>
-            <button type="button" class="btn btn-primary">Variant</button>
-            <button type="button" class="btn btn-primary">Images</button>
-            <button type="button" class="btn btn-primary">Specification</button>
-            <button type="button" class="btn btn-primary">Reviews</button>
+            <button type="button" [ngClass]="selectedTab == 'basic'?'btn-success':'btn-primary'" class="btn " (click)="chnageTab('basic')">Basic Details</button>
+            <button type="button" [ngClass]="selectedTab == 'varient'?'btn-success':'btn-primary'" class="btn " (click)="chnageTab('varient')">Variant</button>
+            <button type="button" [ngClass]="selectedTab == 'images'?'btn-success':'btn-primary'" class="btn " (click)="chnageTab('images')">Images</button>
+            <button type="button" [ngClass]="selectedTab == 'specification'?'btn-success':'btn-primary'" class="btn " (click)="chnageTab('specification')">Specification</button>
+            <button type="button" [ngClass]="selectedTab == 'reviews'?'btn-success':'btn-primary'" class="btn " (click)="chnageTab('reviews')">Reviews</button>
           </div>
         </div>
 </div>
 <div class="row">
-    <div class="col-12">
-        <app-product-form></app-product-form>
+    <div class="col-12" *ngIf="selectedTab == 'basic'">
+        <app-product-form [productId]="productId"></app-product-form>
     </div>
-    <div class="col-12">
+    <div class="col-12" *ngIf="selectedTab == 'varient'">
         <app-varients></app-varients>
     </div>
-    <div class="col-12">
+    <div class="col-12" *ngIf="selectedTab == 'images'">
         <app-vendor-registrations></app-vendor-registrations>
     </div>
-    <div class="col-12">
-        <app-specification></app-specification>
+    <div class="col-12" *ngIf="selectedTab == 'specification'">
+        <app-specification [productId]="productId"></app-specification>
     </div>
-    <div class="col-12">
-        <app-productreview></app-productreview>
+    <div class="col-12" *ngIf="selectedTab == 'reviews'">
+        <app-productreview [productId]="productId"></app-productreview>
     </div>
 
 </div>

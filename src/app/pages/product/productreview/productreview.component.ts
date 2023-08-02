@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-productreview',
@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./productreview.component.css']
 })
 export class ProductreviewComponent {
+  @Input() productId: number= 0;
   isFirstDiv: boolean = true;
   istableloader:boolean=false;
   isapicalload:boolean=false;
@@ -14,6 +15,7 @@ export class ProductreviewComponent {
   customerArray: any[] = [];
   vendorArray: any[] = [];
   productArray: any[] = [];
+  
   userObj: any = {
     productId: 0,
     customerId: 0,
@@ -31,8 +33,9 @@ export class ProductreviewComponent {
   }
 
   loadProductReview() {
+    debugger;
     this.istableloader=true;
-    this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/GetProductReviewsByProductId").subscribe((res: any) => {
+    this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/GetProductReviewsByProductId?id="+this.productId).subscribe((res: any) => {
       this.vendorArray = res.data;
       setTimeout(()=>{
         this.istableloader=false;

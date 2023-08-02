@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DeliveryLocationCreateArray, DeliveryLocObjArrayData } from '../interfaces/deliverLocation';
 import { ProductArray } from '../interfaces/product';
+import { SpecificationArray, SpecificationObjArray } from '../interfaces/specification';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,10 @@ export class ProductService {
   url = "http://onlinetestapi.gerasim.in/api/Aqua"
 
   constructor(private http: HttpClient) { }
+  /**
+   * Delivery Locations
+   * @returns 
+   */
 
   getAllProducts():Observable<ProductArray[]> {
     return this.http.get<ProductArray[]>(this.url + "/GetAllProduct");
@@ -31,5 +36,35 @@ export class ProductService {
   deleteDeliveryLocation(id: number): Observable<DeliveryLocationCreateArray[]> {
     return this.http.get<DeliveryLocationCreateArray[]>( this.url +"/DeleteDeliveryLocationById?id=" + id)
   }
+
+/**
+ * Product Specification 
+ * @param specificationObj 
+ * @returns 
+ */
+  createSpecification(specificationObj: SpecificationArray[]): Observable<SpecificationArray[]> {
+    return this.http.post<SpecificationArray[]>(this.url + "/AddProductBulkSpecification", specificationObj);
+  }
+  GetSpecificationByProductId(id:number):Observable<SpecificationObjArray[]> {
+    return this.http.get<SpecificationObjArray[]>(this.url + "/GetSpecificationByProductId?id=" +id);
+  }
+
+  updateSpecification(specificationObj: SpecificationArray[]): Observable<SpecificationArray[]> {
+    return this.http.post<SpecificationArray[]>(this.url + "/AddProductBulkSpecification", specificationObj);
+  }
+
+  deleteSpecification(id: number): Observable<SpecificationArray[]> {
+    return this.http.get<SpecificationArray[]>( this.url +"/DeleteProductSpecificationById?id=" + id)
+  }
+
+  /**
+   * Product Form
+   */
+
+  
+
+  /**
+   * Product List
+   */
 
 }

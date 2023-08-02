@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-product-form',
@@ -7,64 +7,92 @@ import { Component } from '@angular/core';
   styleUrls: ['./product-form.component.css']
 })
 export class ProductFormComponent {
-    productArray: any [] = [];
-    productObj: any = {
-      "productId": 0,
-      "vendorId": 0,
-      "sku": "",
-      "shortName": "",
-      "fullName": "",
-      "productCategoryId": 0,
-      "shortDescription": "",
-      "songDescription": "",
-      "createdOn": "2023-07-14T22:51:15.762Z",
-      "createdBy": 0,
-      "productType": "",
-      "isStockAvailable":"" ,
-      "modifiedOn": "2023-07-14T22:51:15.762Z",
-      "modifiedBy": 0,
-      "isVarientAvailable": "" ,
-      "isSpecificationAvailable": "",
-      "productBaseprice": 0,
-      "searchKeyWords": "",
-      "thumbnailImageUrl": ""
-    }
-      constructor(private http: HttpClient){this.getAllproduct();}
-     getAllproduct(){
-        this.http.get("https://onlinetestapi.gerasim.in/api/Aqua/GetAllproduct").subscribe((res:any)=>{
-       this.productArray = res.data;
-       })
-      }
-    // save
-       onSave() {
-       this.http.get("https://onlinetestapi.gerasim.in/api/Aqua/CreateAllproduct").subscribe((res:any)=>{
-        if(res.result) {
-         alert("Save Success")
-        this.getAllproduct();
-        } else { alert(res.message) }
-      })
-     }
-    // reset
-      onReset() {
-      this.productObj.productId="";
-      this.productObj.vendorId = "";
-      this.productObj.sku = "";
-      this.productObj.shortName = "";
-      this.productObj.fullName = "";
-      this.productObj.productCategoryId = "";
-      this.productObj.shortDescription = "";
-      this.productObj.longDescription = "";
-      this.productObj.createdOn = "";
-      this.productObj.createdBy = "";
-      this.productObj.productType ="";
-      this.productObj.isStockAvailable = "";
-      this.productObj.modifiedOn = "";
-      this.productObj.modifiedBy ="";
-      this.productObj.isVarientAvailable = "";
-     this.productObj.isSpecificationAvailable ="";
-      this.productObj.productBaseprice ="";
-      this.productObj.searchKeyWords ="";
-      this.productObj.thumbnailImageUrl = "";
-      }
+  @Input() productId: number = 0;
+  productArray: any[] = [];
+  productObj: any = {
+    "productId": 0,
+    "vendorId": 0,
+    "sku": "",
+    "shortName": "",
+    "fullName": "",
+    "productCategoryId": 0,
+    "shortDescription": "",
+    "songDescription": "",
+    "createdOn": "",
+    "createdBy": 0,
+    "productType": "",
+    "isStockAvailable": "",
+    "modifiedOn": "",
+    "modifiedBy": 0,
+    "isVarientAvailable": "",
+    "isSpecificationAvailable": "",
+    "productBaseprice": 0,
+    "searchKeyWords": "",
+    "thumbnailImageUrl": ""
+  }
+  constructor(private http: HttpClient) { 
+    this.getAllproduct();
+  }
 
+  //get all products
+  getAllproduct() {
+    this.http.get("https://onlinetestapi.gerasim.in/api/Aqua/GetAllproduct").subscribe((response: any) => {
+      this.productArray = response.data;
+    })
+  }
+
+  // Create product
+  onSave() {
+    this.http.post("https://onlinetestapi.gerasim.in/api/Aqua/CreateAllproduct",this.productObj).subscribe((response: any) => {
+      if (response.result) {
+        alert("Product added successfully");
+        this.getAllproduct();
+      } else {
+         alert(response.message);
+        }
+    })
+  }
+
+  // Edit product by id
+  onEditProduct() {
+    debugger;
+    this.http.get("http://onlinetestapi.gerasim.in/api/Aqua/GetProductById?id=" +this.productId);
+  }
+
+  //update product
+  updateProduct() {
+    this.http.post("http://onlinetestapi.gerasim.in/api/Aqua/UpdateProduct",this.productObj)
+    .subscribe((response:any) => {
+    if(response.result) {
+      alert("Product updated successfully");
+      this.getAllproduct();
+    }
+    else {
+      alert(response.message);
+    }
+    })
+  }
+
+  // reset
+  onReset() {
+    this.productObj.productId = "";
+    this.productObj.vendorId = "";
+    this.productObj.sku = "";
+    this.productObj.shortName = "";
+    this.productObj.fullName = "";
+    this.productObj.productCategoryId = "";
+    this.productObj.shortDescription = "";
+    this.productObj.longDescription = "";
+    this.productObj.createdOn = "";
+    this.productObj.createdBy = "";
+    this.productObj.productType = "";
+    this.productObj.isStockAvailable = "";
+    this.productObj.modifiedOn = "";
+    this.productObj.modifiedBy = "";
+    this.productObj.isVarientAvailable = "";
+    this.productObj.isSpecificationAvailable = "";
+    this.productObj.productBaseprice = "";
+    this.productObj.searchKeyWords = "";
+    this.productObj.thumbnailImageUrl = "";
+  }
 }

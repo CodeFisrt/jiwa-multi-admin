@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-product-list',
@@ -12,9 +13,11 @@ export class ProductListComponent {
   cardview: boolean = true;
   cardviewtoggle: boolean = false;
   cardmsg: boolean = true;
-  constructor(private http: HttpClient) {
+
+  constructor(private http: HttpClient, private router: Router, private activateRoute: ActivatedRoute) {
     this.getallproduct();
   }
+
   cardtoggle() {
     this.cardview = !this.cardview;
     this.cardviewtoggle = !this.cardview;
@@ -27,8 +30,13 @@ export class ProductListComponent {
       .subscribe((res: any) => {
         this.myproduct = res.data;
         setTimeout(() => {
+          1
           this.pagespinnger = false;
         }, 500);
       });
+  }
+
+  editProduct(id: number) {
+    this.router.navigate(['/editProduct', id]);
   }
 }

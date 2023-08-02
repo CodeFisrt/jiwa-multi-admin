@@ -1,1 +1,110 @@
-<p>specification works!</p>
+<div class="container-fluid">
+    <div class="row">
+      <div class="col-12 mt-3 mb-3">
+        <form>
+          <div class="row">
+            <div class="col-3">
+              <div class="form-group">
+                <label for="specificationKey">Specification Key</label>
+                <input type="text" name="specificationKey" class="form-control"
+                  [(ngModel)]="specification[0].specificationKey">
+              </div>
+            </div>
+            <div class="col-3">
+              <div class="form-group">
+                <label for="specificationValue">Specification Value</label>
+                <input type="text" name="specificationValue" class="form-control"
+                  [(ngModel)]="specification[0].specificationValue">
+              </div>
+            </div>
+            <div class="col-1">
+              <div class="form-group">
+                <label for="isActive">IsActive</label> <br>
+                <input type="checkbox" name="isActive" [(ngModel)]="specification[0].isActive">
+              </div>
+            </div>
+            <div class="col-2">
+              <div class="form-group">
+                <label>&nbsp;</label>
+                <div class="d-flex justify-content-start">
+                  <!-- Optional reset button -->
+                  <!-- <button class="btn btn-primary me-2" (click)="reset()">Reset</button>
+                  <button type="button" class="btn btn-success" (click)="createNewSpecificationRow()">Add New
+                    Specification</button> -->
+                  <button type="submit" class="btn btn-success" (click)="createSpecification()">
+                    Add</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header bg-success">
+            <div class="row">
+              <div class="col-12 d-flex justify-content-between align-items-center text-white">
+                <h4 class="m-0">Product Specification</h4>
+                <button class="btn btn-success btn-sm" (click)="goBack()">Back</button>
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="col-12" *ngIf="specificationAvialable;">
+              <ul class="list-group">
+                <li class="list-group-item" *ngFor="let specification of specification; let i = index;">
+                  <div class="row">
+                    <div class="col-2">
+                      <div class="form-group">
+                        <label>Specification Key</label>
+                        <input type="text" class="form-control" [(ngModel)]="specification.specificationKey" [disabled]="i > 0">
+                      </div>
+                    </div>
+                    <div class="col-3">
+                      <div class="form-group">
+                        <label>Specification Value</label>
+                        <input type="text" class="form-control" [(ngModel)]="specification.specificationValue" [disabled]="i > 0">
+                      </div>
+                    </div>
+                    <div class="col-2">
+                      <div class="form-group">
+                        <label>IsActive</label> <br>
+                        <input type="checkbox" [(ngModel)]="specification.isActive" [disabled]="i > 0">
+                      </div>
+                    </div>
+                    <div class="col-1">
+                      <div class="form-group">
+                        <label>&nbsp;</label>
+                      </div>
+                    </div>
+                    <div class="col-1">
+                      <div class="form-group">
+                        <label>&nbsp;</label>
+                        <div class="d-flex justify-content-start">
+                          <i class="fa fa-trash text-danger pointer-cursor" *ngIf="i > 0" (click)="deleteSpecification(specification.productSpecificationId)"></i>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-1">
+                      <div class="form-group">
+                        <label>&nbsp;</label>
+                        <div class="d-flex justify-content-start">
+                          <button type="button" class="btn btn-success btn-sm" *ngIf="i > 0" (click)="updateSpecification()"> Update</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div *ngIf="!specificationAvialable">
+              <p>Specification not available for this product.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
